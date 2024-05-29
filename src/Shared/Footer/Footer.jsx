@@ -111,7 +111,7 @@ const Footer = () => {
         businesses.
       </p>
       <p className="text-center pb-4 text-sm">
-        Copyright©2024 Heritage Walk Dhaka. All rights reserved.
+        C© All Rights Reserved, ARK POWER LTD.
       </p>
     </div>
   );
