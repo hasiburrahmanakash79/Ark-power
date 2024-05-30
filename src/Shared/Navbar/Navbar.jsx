@@ -8,7 +8,7 @@ const Navbar = () => {
     { name: "Service", link: "/service" },
     { name: "Products", link: "/products" },
     { name: "News & Event", link: "/news-event" },
-    { name: "About us",  dropdown: true },
+    { name: "About us", dropdown: true },
     { name: "Contact", link: "/contact" },
   ];
 
@@ -23,6 +23,11 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
+
+  const handleLinkClick = () => {
+    setOpen(false); // Close the main menu
+    setDropdownOpen(false); // Close the dropdown menu
+  };
 
   return (
     <div className="shadow-md w-full fixed top-0 z-50 left-0">
@@ -62,6 +67,7 @@ const Navbar = () => {
                   className={`text-gray-800 hover:text-blue-400 duration-500 ${
                     location.pathname === link.link ? "text-[#00ADF2]" : ""
                   }`}
+                  onClick={handleLinkClick} // Close dropdown on link click
                 >
                   {link.name}
                 </Link>
@@ -79,6 +85,7 @@ const Navbar = () => {
                       <Link
                         to={dropdownLink.link}
                         className="text-gray-800 hover:text-blue-400 duration-500"
+                        onClick={handleLinkClick} // Close dropdown on link click
                       >
                         {dropdownLink.name}
                       </Link>
@@ -93,6 +100,7 @@ const Navbar = () => {
                       <Link
                         to={dropdownLink.link}
                         className="text-gray-800 hover:text-blue-400 duration-500"
+                        onClick={handleLinkClick} // Close dropdown on link click
                       >
                         {dropdownLink.name}
                       </Link>
