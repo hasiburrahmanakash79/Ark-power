@@ -1,6 +1,9 @@
 import {
+  FaEnvelope,
   FaFacebook,
   FaInstagram,
+  FaLocationDot,
+  FaPhone,
   FaTelegram,
   FaTwitter,
   FaYoutube,
@@ -9,110 +12,110 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div>
-      <div className="border-b border-t p-3">
-        <div className="container mx-auto md:grid grid-cols-2 py-7">
-          <div className="flex justify-between items-center gap-5">
-            <div className="text-center">
-              <h1 className="md:text-5xl text-2xl font-bold uppercase">
-                Pathao
-              </h1>
-              <p className="md:text-xl text-sm font-bold">Tour Partner</p>
-            </div>
-            <div className="text-center">
-              <p className="md:text-xl text-sm font-bold">Sponsor by</p>
-              <h1 className="md:text-4xl text-2xl font-bold uppercase">ubar</h1>
-            </div>
-          </div>
-          <div>
-            <div className="flex md:justify-end justify-center items-center gap-5">
-              <h1 className="my-5">Follow Us: </h1>
-              <a href="#">
-                <FaFacebook className="text-3xl hover:text-blue-700 " />
-              </a>
-              <a href="#">
-                <FaInstagram className="text-3xl hover:text-pink-500" />
-              </a>
-              <a href="#">
-                <FaYoutube className="text-3xl hover:text-red-600" />
-              </a>
-              <a href="#">
-                <FaTwitter className="text-3xl hover:text-blue-700" />
-              </a>
-              <a href="#">
-                <FaTelegram className="text-3xl hover:text-blue-700" />
-              </a>
-            </div>
-          </div>
+    <div className="bg-black/70 text-white">
+      <div className="grid grid-cols-4 py-10 px-5 gap-5">
+        <div>
+          <img
+            src="https://www.arkpowerltd.com.bd/assets/images/arkpower/logo.jpg"
+            alt=""
+          />
+          <p className="text-[10px] mt-3">
+            Ark Power is a leading integrated Power, Electronic & communication
+            technology company that develops, manufactures, markets and sells
+            the related equipments. The Company is dedicated to improving power
+            protection & generation all the sectors throughout the Bangladesh.
+            Ark is focused on improving timely delivery, enhancing the quality
+            and customers satisfaction. Located at a prime business location at
+            Banani, Dhaka, the Capital of Bangladesh.
+          </p>
+        </div>
+        <div className="ps-10">
+          <h1 className="text-xl font-bold uppercase opacity-80 pb-3">
+            Quick Link
+          </h1>
+          <ul className="space-y-2">
+            <li>
+              <Link>Home</Link>
+            </li>
+            <li>
+              <Link>About us</Link>
+            </li>
+            <li>
+              <Link>Our Products</Link>
+            </li>
+            <li>
+              <Link>Our Clients</Link>
+            </li>
+            <li>
+              <Link>Contact Us</Link>
+            </li>
+            <li>
+              <Link>Terms & Conditions</Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1 className="text-xl font-bold uppercase opacity-80 pb-3">
+            Address
+          </h1>
+          <ul className="space-y-2">
+            <li>
+              <Link className="flex items-center gap-3">
+                <FaLocationDot className="text-3xl" />
+                <p>
+                  12B ATATURK TOWER, 22 KEMAL ATATURK AVENUE, BANANI, DHAKA-1213
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link className="flex items-center gap-3">
+                <FaPhone className="text-xl" />
+                <p>
+                  <span className="font-bold">Hot Line</span> <br />
+                  Sales - 01678090037 <br />
+                  Support - 01678090036
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link className="flex items-center gap-3">
+                <FaEnvelope className="text-xl" />
+                <p>info@arkpowerltd.com.bd</p>
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1 className="text-xl font-bold uppercase opacity-80 pb-3">
+            KEEP IN TOUCH
+          </h1>
+          <ul className="space-y-2 pr-5">
+            <li>
+              <p>Subscribe to Our Newsletter to get Important News & Offers</p>
+              <div className="mt-3">
+                <input
+                  type="text"
+                  placeholder="Enter Your Email"
+                  className="p-2"
+                />
+                <button className="bg-[#00ADF2] p-2">SEND</button>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="bg-blue-gray-50 grid md:grid-cols-6 grid-cols-2 place-items-center text-sm text-center">
-        <Link to="/" className="hover:underline p-3">
-          Contact
-        </Link>
-        <Link to="/" className="hover:underline p-3">
-          About Us
-        </Link>
-        <Link to="/" className="hover:underline p-3">
-          Advertise with us
-        </Link>
-        <Link to="/" className="hover:underline p-3">
-          Sustainability
-        </Link>
-        <Link to="/" className="hover:underline p-3">
-          Accessibility
-        </Link>
-        <Link to="/" className="hover:underline p-3">
-          Terms & Conditions
-        </Link>
-      </div>
-      <div className="py-7 px-3">
-        <p className="text-center pb-3">Affiliates and Content Partners</p>
-        <div className="grid md:grid-cols-6 grid-cols-3 place-items-center md:w-2/3 mx-auto gap-7">
-          <img
-            className="md:w-14 w-8"
-            src="https://www.bdosn.org//images/2019/03/21/bdosn-logo.jpg"
-            alt=""
-          />
-          <img
-            className="md:w-14 w-8"
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
-            alt=""
-          />
-          <img
-            className="md:w-14 w-8"
-            src="https://logos-world.net/wp-content/uploads/2020/09/Mastercard-Logo.png"
-            alt=""
-          />
-          <img
-            className="md:w-14 w-8"
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Pathao-logo.jpg"
-            alt=""
-          />
-          <img
-            className="md:w-14 w-8"
-            src="https://upload.wikimedia.org/wikipedia/commons/5/58/Uber_logo_2018.svg"
-            alt=""
-          />
-          <img
-            className="md:w-14 w-8"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/1024px-PayPal_logo.svg.png"
-            alt=""
-          />
+
+      <div className="bg-black p-4 text-sm flex justify-between items-center">
+        <p className="">© All Rights Reserved, ARK POWER LTD.</p>
+        <div className="flex items-center gap-3">
+          <p>Follow us: </p>
+          <FaFacebook className="text-xl"/>
+          <FaTelegram className="text-xl"/>
+          <FaTwitter className="text-xl"/>
+          <FaInstagram className="text-xl"/>
+          <FaYoutube className="text-xl"/>
         </div>
       </div>
-      <p className="text-[10px] text-center pb-7 px-3">
-        Pathau & Partners is registered in Bangladesh under no. 723828923.
-        Registered Office: Pathau & Partners, Mohakhali DOHS, Dhaka, Bangladesh,
-        SE1 0LL. <br />
-        Dhaka & Partners is the business growth and destination agency for
-        DHaka. We are a social enterprise, combining purpose with commercial
-        rigour. We are funded by grants, partners and our portfolio of venture
-        businesses.
-      </p>
-      <p className="text-center pb-4 text-sm">
-        C© All Rights Reserved, ARK POWER LTD.
-      </p>
     </div>
   );
 };
