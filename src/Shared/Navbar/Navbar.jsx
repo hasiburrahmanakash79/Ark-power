@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars3BottomRightIcon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
@@ -8,11 +8,20 @@ const Navbar = () => {
     { name: "Service", link: "/service" },
     { name: "Products", link: "/products" },
     { name: "News & Event", link: "/news-event" },
-    { name: "About us", link: "/about" },
+    { name: "About us",  dropdown: true },
     { name: "Contact", link: "/contact" },
   ];
 
+  const dropdownLinks = [
+    { name: "What we do", link: "/what-do" },
+    { name: "Our Policy", link: "/policy" },
+    { name: "Mission & Vision", link: "/mission" },
+    { name: "Board of Directors", link: "/directors" },
+    { name: "Management", link: "/management" },
+  ];
+
   const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
 
   return (
@@ -40,15 +49,57 @@ const Navbar = () => {
           }`}
         >
           {Links.map((link) => (
-            <li key={link.name} className="md:ml-8 md:my-0 my-5">
-              <a
-                href={link.link}
-                className={`text-gray-800 hover:text-blue-400 duration-500 ${
-                  location.pathname === link.link ? "text-[#00ADF2]" : ""
-                }`}
-              >
-                {link.name}
-              </a>
+            <li
+              key={link.name}
+              className="md:ml-8 md:my-0 my-5 relative"
+              onMouseEnter={() => link.dropdown && setDropdownOpen(true)}
+              onMouseLeave={() => link.dropdown && setDropdownOpen(false)}
+              onClick={() => link.dropdown && setDropdownOpen(!dropdownOpen)}
+            >
+              <div className="flex items-center">
+                <Link
+                  to={link.link}
+                  className={`text-gray-800 hover:text-blue-400 duration-500 ${
+                    location.pathname === link.link ? "text-[#00ADF2]" : ""
+                  }`}
+                >
+                  {link.name}
+                </Link>
+                {link.dropdown && (
+                  dropdownOpen ? 
+                  <ChevronUpIcon className="w-3 h-3 ml-1 text-gray-800" />
+                  : 
+                  <ChevronDownIcon className="w-3 h-3 ml-1 text-gray-800" />
+                )}
+              </div>
+              {link.dropdown && dropdownOpen && (
+                <ul className="absolute bg-white shadow-md rounded-md md:block hidden md:group-hover:block md:w-40">
+                  {dropdownLinks.map((dropdownLink) => (
+                    <li key={dropdownLink.name} className="px-4 py-2">
+                      <Link
+                        to={dropdownLink.link}
+                        className="text-gray-800 hover:text-blue-400 duration-500"
+                      >
+                        {dropdownLink.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {link.dropdown && open && (
+                <ul className="md:hidden bg-white shadow-md rounded-md md:w-40">
+                  {dropdownLinks.map((dropdownLink) => (
+                    <li key={dropdownLink.name} className="px-4 py-2">
+                      <Link
+                        to={dropdownLink.link}
+                        className="text-gray-800 hover:text-blue-400 duration-500"
+                      >
+                        {dropdownLink.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
