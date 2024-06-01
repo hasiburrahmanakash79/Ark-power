@@ -29,8 +29,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="shadow-md w-full fixed top-0 z-50 left-0">
-      <div className="md:flex items-center justify-between bg-white container mx-auto p-3">
+    <div className="shadow-md w-full fixed top-0 z-50 bg-white left-0">
+      <div className="md:flex items-center justify-between  container mx-auto p-3">
         {/* logo section */}
         <Link to='/' className="font-bold text-2xl cursor-pointer flex items-center gap-1">
           <img
