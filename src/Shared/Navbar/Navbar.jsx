@@ -15,7 +15,6 @@ const Navbar = () => {
   const dropdownLinks = [
     { name: "What we do", link: "/what-do" },
     { name: "Our Policy", link: "/policy" },
-    { name: "Mission & Vision", link: "/mission" },
     { name: "Board of Directors", link: "/directors" },
     { name: "Management", link: "/management" },
   ];

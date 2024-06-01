@@ -5,6 +5,9 @@ import Home from "../Pages/HomePage/Home";
 import Products from "../Pages/Products/Products";
 import NewsEvent from "../Pages/NewsEvent/NewsEvent";
 import Contact from "../Pages/Contact/Contact";
+import OurPolicy from "../Pages/About/OurPolicy";
+import Directors from "../Pages/About/Directors";
+import Management from "../Pages/About/Management";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
         {
           path: '/what-do',
           element: <About/>,
+        },
+        {
+          path: '/policy',
+          element: <OurPolicy/>
+        },
+        {
+          path: '/directors',
+          element: <Directors/>
+        },
+        {
+          path: '/management',
+          element: <Management/>
         },
         {
           path: '/products',
