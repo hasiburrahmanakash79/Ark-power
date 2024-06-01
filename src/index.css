@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-primary{
+  color: #00ADF2;
+}
+
 .btn-primary {
     background-color: #00ADF2;
     color: black;

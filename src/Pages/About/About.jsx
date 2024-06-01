@@ -2,7 +2,9 @@ const About = () => {
   return (
     <div className="grid grid-cols-2 p-5 gap-12">
       <div>
-        <h1 className="text-4xl uppercase font-bold mb-5">Ark Power Limited</h1>
+        <h1 className="text-4xl uppercase font-bold mb-5 text-primary">
+          Ark Power Limited
+        </h1>
         <p>
           Ark Power, a prominent integrated Power, Electronic, and Communication
           technology company, has positioned itself as a leader in Bangladesh's
@@ -36,7 +38,37 @@ const About = () => {
           Power continues to make significant strides in shaping the future of
           the energy sector.
         </p>
-        
+        <div>
+          <div className="text-primary mt-8">
+            <p className="text-xl">About us</p>
+            <h1 className="text-3xl uppercase font-bold">Mission & Vision</h1>
+          </div>
+          <div className="mt-5 grid grid-cols-2 gap-5">
+            <div>
+              <h1 className="text-primary font-bold text-2xl border-b border-[#00ADF2] mb-3">
+                Our Mission
+              </h1>
+              <p>
+                We want to be an eligible organization and to have eligible
+                associates with us for the construction & implementation of any
+                level of projects in Power & Energy sector, Oil & Gas sector,
+                Telecommunication sector & Roads & Highway sector to implement
+                any project in Bangladesh.
+              </p>
+            </div>
+            <div>
+              <h1 className="text-primary font-bold text-2xl border-b border-[#00ADF2] mb-3">
+                Our Vision
+              </h1>
+              <p>
+                We will make the organization as most desired work place for
+                most competent and professionals in the field of infrastructural
+                works of Power & Energy, Oil & Gas, Telecommunication and Roads
+                & Highways.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="drop-shadow-2xl ">
         <img
