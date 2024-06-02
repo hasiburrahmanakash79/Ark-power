@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2020: true, node: true },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -13,6 +13,7 @@ module.exports = {
   plugins: ["react-refresh"],
 
   rules: {
+    "react/prop-types": "off",
     "react/no-unescaped-entities": 0,
     "react/jsx-no-target-blank": "off",
     "react/jsx-uses-react": "error",

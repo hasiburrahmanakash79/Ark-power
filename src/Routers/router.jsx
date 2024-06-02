@@ -2,12 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import About from "../Pages/About/About";
 import Home from "../Pages/HomePage/Home";
-import Products from "../Pages/Products/Products";
 import NewsEvent from "../Pages/NewsEvent/NewsEvent";
 import Contact from "../Pages/Contact/Contact";
 import OurPolicy from "../Pages/About/OurPolicy";
 import Directors from "../Pages/About/Directors";
 import Management from "../Pages/About/Management";
+import ProductSlider from "../Pages/Products/ProductSlider";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/products',
-          element: <Products/>
+          element: <ProductSlider/>
         },
         {
           path: '/news-event',

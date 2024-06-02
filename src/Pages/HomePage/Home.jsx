@@ -1,4 +1,6 @@
 import Hero from "./HeroSection/Hero";
+// import MostValuable from "./ProductsAndServices/MostValuable";
+import ProductsAndServices from "./ProductsAndServices/ProductsAndServices";
 
 
 const Home = () => {
@@ -6,7 +8,8 @@ const Home = () => {
         <div>
             <Hero/>
             <div className="mx-auto container my-10">
-                <h1>body</h1>
+                <ProductsAndServices/>
+                {/* <MostValuable/> */}
             </div>
         </div>
     );
