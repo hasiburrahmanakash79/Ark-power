@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductsAndServices = () => {
   return (
-    <div>
+    <div className="my-16">
       <h1 className="text-4xl text-center uppercase font-bold mb-16 text-primary">
         Products and Services
       </h1>

@@ -34,7 +34,7 @@ const ManagementAndNews = () => {
         }
     ]
   return (
-    <div className="mb-10">
+    <div className="">
       <div className="grid grid-cols-2 gap-20">
         <div>
           <h1 className="text-2xl font-bold uppercase mb-10">News and event</h1>
@@ -68,7 +68,10 @@ const ManagementAndNews = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Adipisci corrupti vel suscipit explicabo asperiores quod?
               </p>
-              <Link className="text-[#00ADF2] text-lg">View details ---</Link>
+              <Link className="text-[#00ADF2] flex gap-3 items-center">
+                <p>View details</p>
+                <FaArrowRight />
+              </Link>
             </div>
           </div>
         </div>
