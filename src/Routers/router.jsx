@@ -7,7 +7,7 @@ import Contact from "../Pages/Contact/Contact";
 import OurPolicy from "../Pages/About/OurPolicy";
 import Directors from "../Pages/About/Directors";
 import Management from "../Pages/About/Management";
-import ProductSlider from "../Pages/Products/ProductSlider";
+import Products from "../Pages/Products/Products";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/products',
-          element: <ProductSlider/>
+          element: <Products/>
         },
         {
           path: '/news-event',
