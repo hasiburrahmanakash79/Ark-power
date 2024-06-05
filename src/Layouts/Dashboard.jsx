@@ -56,7 +56,7 @@ const Dashboard = () => {
     },
     {
       title: 'Manage Product',
-      path: '/dashboard/manageProduct',
+      path: '/dashboard/manageProducts',
       icon: iconMappings.Product_manage,
       role: 'admin'
     },
@@ -180,7 +180,7 @@ const Dashboard = () => {
       <div
         className={` ${
           open ? 'pl-60 pr-4' : 'pl-16 pr-2'
-        }  flex-1  overflow-y-auto  duration-500 transition-all h-[100vh] ${
+        }  flex justify-center items-center duration-500 transition-all h-[100vh] mx-auto${
           isAdmin
             ? ''
             :''

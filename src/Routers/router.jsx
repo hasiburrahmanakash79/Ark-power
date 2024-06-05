@@ -9,6 +9,7 @@ import Directors from "../Pages/About/Directors";
 import Management from "../Pages/About/Management";
 import Products from "../Pages/Products/Products";
 import Dashboard from "../Layouts/Dashboard";
+import ManageProducts from "../Pages/AdminDashboard/ManageProducts/ManageProducts";
 
 const router = createBrowserRouter([
     {
@@ -51,7 +52,13 @@ const router = createBrowserRouter([
     },
     {
       path: '/dashboard',
-      element: <Dashboard/>
+      element: <Dashboard/>,
+      children: [
+        {
+          path: 'manageProducts',
+          element: <ManageProducts/>
+        }
+      ]
     },
   ]);
   export default router;
