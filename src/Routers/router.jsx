@@ -8,6 +8,7 @@ import OurPolicy from "../Pages/About/OurPolicy";
 import Directors from "../Pages/About/Directors";
 import Management from "../Pages/About/Management";
 import Products from "../Pages/Products/Products";
+import Dashboard from "../Layouts/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           element: <Contact/>
         },
       ]
+    },
+    {
+      path: '/dashboard',
+      element: <Dashboard/>
     },
   ]);
   export default router;
