@@ -5,24 +5,15 @@ import {
 } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useProducts from "../../Hooks/useProducts";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [products] = useProducts()
   const [currentPage, setCurrentPage] = useState(() => {
     const savedPage = localStorage.getItem("currentPage");
     return savedPage ? Number(savedPage) : 1;
   });
   const productsPerPage = 6;
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch("http://localhost:3000/products");
-      const data = await response.json();
-      setProducts(data);
-      console.log(data);
-    };
-    fetchProducts();
-  }, []);
 
   // Save current page to localStorage whenever it changes
   useEffect(() => {
@@ -32,7 +23,8 @@ const Products = () => {
   // Calculate the indices for the products to display on the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products ? products.slice(indexOfFirstProduct, indexOfLastProduct) : [];
+
 
   // Calculate total number of pages
   const totalPages = Math.ceil(products.length / productsPerPage);

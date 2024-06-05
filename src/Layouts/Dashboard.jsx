@@ -6,8 +6,7 @@ import {
   FaHome,
   FaComment,
 } from 'react-icons/fa'
-import { AiFillNotification } from 'react-icons/ai'
-import { FaImages } from 'react-icons/fa6'
+import { FaFileMedical, FaFileInvoice } from 'react-icons/fa6'
 import { MdHomeWork } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 import arrow from '../assets/control.png'
@@ -36,9 +35,9 @@ const Dashboard = () => {
     RoleHome: MdHomeWork,
     Users: FaUser,
     Home: FaHome,
-    Photos: FaImages,
-    Blog: FaComment,
-    Notice: AiFillNotification,
+    News: FaComment,
+    Product_add: FaFileMedical,
+    Product_manage: FaFileInvoice,
   }
 
   const Menus = [
@@ -50,27 +49,27 @@ const Dashboard = () => {
       gap: true
     },
     {
-      title: 'Manage Users',
-      path: '/dashboard/manageUsers',
+      title: 'Manage Admin',
+      path: '/dashboard/manageAdmin',
       icon: iconMappings.Users,
       role: 'admin',
     },
     {
-      title: 'Create Features',
-      path: '/dashboard/createFeature',
-      icon: iconMappings.Notice,
+      title: 'Manage Product',
+      path: '/dashboard/manageProduct',
+      icon: iconMappings.Product_manage,
       role: 'admin'
     },
     {
-      title: 'Add Blog',
-      path: '/dashboard/addBlog',
-      icon: iconMappings.Blog,
+      title: 'Add Product',
+      path: '/dashboard/addProduct',
+      icon: iconMappings.Product_add,
       role: 'admin'
     },
     {
-      title: 'Add Photo Gallery',
-      path: '/dashboard/addPhoto',
-      icon: iconMappings.Photos,
+      title: 'Add News',
+      path: '/dashboard/addNews',
+      icon: iconMappings.News,
       role: 'admin'
     },
     {
