@@ -4,14 +4,17 @@ import { Card, Typography } from "@material-tailwind/react";
 
 const ManageProducts = () => {
   const [products] = useProducts();
-  const TABLE_HEAD = ["Name", "Price", "Description", "Action"];
+  const TABLE_HEAD = [" ", "Name", "Price", "Description", "Action"];
   console.log(products);
 
   return (
     <Card className="h-full w-full">
+      <h1 className="text-center text-primary font-bold text-2xl py-5">
+        All Products
+      </h1>
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto text-left">
-          <thead>
+          <thead className="">
             <tr>
               {TABLE_HEAD.map((head) => (
                 <th
@@ -30,20 +33,42 @@ const ManageProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map(({ name, price, description }, index) => (
+            {products.map(({ name, price, description, imageUrl }, index) => (
               <tr key={index} className="even:bg-blue-gray-50/50">
                 <td className="p-2 md:p-4">
-                  <Typography variant="small" color="blue-gray" className="font-normal text-xs md:text-base">
+                  <div className="avatar">
+                    <div className="w-20 rounded">
+                      <img
+                        src={imageUrl}
+                        alt="Tailwind-CSS-Avatar-component"
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td className="p-2 md:p-4">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal text-xs md:text-base"
+                  >
                     {name}
                   </Typography>
                 </td>
                 <td className="p-2 md:p-4">
-                  <Typography variant="small" color="blue-gray" className="font-normal text-xs md:text-base">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal text-xs md:text-base"
+                  >
                     {price}
                   </Typography>
                 </td>
                 <td className="p-2 md:p-4">
-                  <Typography variant="small" color="blue-gray" className="font-normal text-xs md:text-base">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal text-xs md:text-base"
+                  >
                     {description.slice(0, 50)}
                   </Typography>
                 </td>
