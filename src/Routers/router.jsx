@@ -10,6 +10,8 @@ import Management from "../Pages/About/Management";
 import Products from "../Pages/Products/Products";
 import Dashboard from "../Layouts/Dashboard";
 import ManageProducts from "../Pages/AdminDashboard/ManageProducts/ManageProducts";
+import AddProduct from "../Pages/AdminDashboard/AddProduct/AddProduct";
+import ProductDetails from "../Pages/Products/ProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
           element: <Products/>
         },
         {
+          path: '/ProductDetails/:id',
+          element: <ProductDetails/>
+        },
+        {
           path: '/news-event',
           element: <NewsEvent/>
         },
@@ -57,6 +63,10 @@ const router = createBrowserRouter([
         {
           path: 'manageProducts',
           element: <ManageProducts/>
+        },
+        {
+          path: 'addProduct',
+          element: <AddProduct/>
         }
       ]
     },

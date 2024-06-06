@@ -6,9 +6,11 @@ import {
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useProducts from "../../Hooks/useProducts";
+import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const Products = () => {
-  const [products] = useProducts()
+  const [products, isLoading] = useProducts()
+  
   const [currentPage, setCurrentPage] = useState(() => {
     const savedPage = localStorage.getItem("currentPage");
     return savedPage ? Number(savedPage) : 1;
@@ -20,6 +22,9 @@ const Products = () => {
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
   // Calculate the indices for the products to display on the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -77,7 +82,7 @@ const Products = () => {
                 <div>
                   <span>
                     {product.description.slice(0, 100)}.....{" "}
-                    <Link to={`/ProductDetails/${product.id}`} className="text-blue-700 hover:underline">
+                    <Link to={`/ProductDetails/${product._id}`} className="text-blue-700 hover:underline">
                       Read more
                     </Link>
                   </span>
