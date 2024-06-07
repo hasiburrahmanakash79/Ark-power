@@ -75,7 +75,7 @@ const Contact = () => {
               <div className="">
                 <h1 className="text-xl font-bold text-primary ">Hot Line:</h1>
                 <p>
-                  LSales – 01678090037 <br />
+                  Sales – 01678090037 <br />
                   Support – 01678090036.
                 </p>
               </div>
