@@ -1,48 +1,14 @@
 import { Link } from "react-router-dom";
+import useNewsAndEvents from "../../Hooks/useNewsAndEvents";
+import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const NewsEvent = () => {
-  const newsEvent = [
-    {
-      id: 1,
-      Category: "News",
-      date: "04-june-2023",
-      title: "title for news 1",
-      imageUrl:
-        "https://youmatter.world/app/uploads/2019/01/sun-solar-energy-green-clean-renewable.jpg",
-      details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Perferendis, eligendi ipsa. Harum, eos voluptatum. Sint doloremque obcaecati molestias, dolores nostrum nam cumque totam numquam! Ab mollitia fugit voluptas dolores quia maiores enim? Odit numquam deleniti exercitationem praesentium temporibus recusandae nostrum!",
-    },
-    {
-      id: 2,
-      Category: "News",
-      date: "04-june-2023",
-      title: "title for news 2",
-      imageUrl:
-        "https://www.arkpowerltd.com.bd/assets/images/news&event/DSC_5528.jpg",
-      details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Perferendis, eligendi ipsa. Harum, eos voluptatum. Sint doloremque obcaecati molestias, dolores nostrum nam cumque totam numquam! Ab mollitia fugit voluptas dolores quia maiores enim? Odit numquam deleniti exercitationem praesentium temporibus recusandae nostrum!",
-    },
-    {
-      id: 3,
-      Category: "News",
-      date: "04-june-2023",
-      title: "title for news 3",
-      imageUrl:
-        "https://www.arkpowerltd.com.bd/assets/images/news&event/DSC_5601.JPG",
-      details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Perferendis, eligendi ipsa. Harum, eos voluptatum. Sint doloremque obcaecati molestias, dolores nostrum nam cumque totam numquam! Ab mollitia fugit voluptas dolores quia maiores enim? Odit numquam deleniti exercitationem praesentium temporibus recusandae nostrum!",
-    },
-    {
-      id: 4,
-      Category: "News",
-      date: "04-june-2023",
-      title: "title for news 4",
-      imageUrl:
-        "https://youmatter.world/app/uploads/2019/01/sun-solar-energy-green-clean-renewable.jpg",
-      details:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Perferendis, eligendi ipsa. Harum, eos voluptatum. Sint doloremque obcaecati molestias, dolores nostrum nam cumque totam numquam! Ab mollitia fugit voluptas dolores quia maiores enim? Odit numquam deleniti exercitationem praesentium temporibus recusandae nostrum!",
-    },
-  ];
+  const [newsEvent, isLoading] = useNewsAndEvents()
+
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div className="min-h-screen container mx-auto bg-slate-50 flex items-center justify-center p-6">
       <div>
@@ -70,7 +36,7 @@ const NewsEvent = () => {
                 <span>
                   {news.details.slice(0, 100)}.....{" "}
                   <Link
-                    to={`/newsDetails/${news.id}`}
+                    to={`/newsDetails/${news._id}`}
                     className="text-blue-700 hover:underline"
                   >
                     Read Details
