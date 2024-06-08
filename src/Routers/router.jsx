@@ -12,6 +12,7 @@ import Dashboard from "../Layouts/Dashboard";
 import ManageProducts from "../Pages/AdminDashboard/ManageProducts/ManageProducts";
 import AddProduct from "../Pages/AdminDashboard/AddProduct/AddProduct";
 import ProductDetails from "../Pages/Products/ProductDetails";
+import NewsDetails from "../Pages/NewsEvent/NewsDetails";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         {
           path: '/news-event',
           element: <NewsEvent/>
+        },
+        {
+          path: '/newsDetails/:id',
+          element: <NewsDetails/>
         },
         {
           path: '/contact',

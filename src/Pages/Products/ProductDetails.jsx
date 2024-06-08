@@ -3,6 +3,7 @@ import useProducts from "../../Hooks/useProducts";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
+
 const ProductDetails = () => {
   const [products, isLoading] = useProducts();
   const { id } = useParams();
@@ -36,35 +37,11 @@ const ProductDetails = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              View PDF
+              download PDF
             </a>
             </div>
           </div>
         </div>
-        <div className="mb-6">
-          <h4 className="text-xl font-bold text-gray-700 mb-2">
-            Product Images
-          </h4>
-          <div className="flex flex-wrap gap-4">
-            {/* {productDetail?.images.map((image, index) => (
-              <img key={index} src={image} alt={`Product Image ${index + 1}`} className="w-32 h-32 object-cover rounded-lg" />
-            ))} */}
-          </div>
-        </div>
-
-        {productDetail?.pdfLink && (
-          <div className="mb-6">
-            <h4 className="text-xl font-bold text-gray-700 mb-2">PDF Link</h4>
-            <a
-              href={productDetail?.pdfLink}
-              className="text-blue-500 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View PDF
-            </a>
-          </div>
-        )}
       </div>
     </div>
   );
