@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useNewsAndEvents = () => {
-  const [newsAndEvents, setNewsAndEvents] = useState([]);
+// Shuffle function to randomize the array
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+const useShuffleNews = () => {
+  const [shuffleNews, setShuffleNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Initialize loading state
 
   useEffect(() => {
     setIsLoading(true); // Set loading to true before starting the data fetch
     axios.get("http://localhost:3000/news")
       .then((response) => {
-        setNewsAndEvents(response.data);
+        const shuffledData = shuffleArray(response.data);
+        setShuffleNews(shuffledData);
       })
       .catch((error) => {
         console.error("Error fetching data with Axios", error);
@@ -19,7 +29,7 @@ const useNewsAndEvents = () => {
       });
   }, []);
 
-  return [newsAndEvents, isLoading]; // Return the newsAndEvents and loading state
+  return [shuffleNews, isLoading]; // Return the ShuffleNews and loading state
 };
 
-export default useNewsAndEvents;
+export default useShuffleNews;

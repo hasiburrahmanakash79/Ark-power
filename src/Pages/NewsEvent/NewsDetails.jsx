@@ -2,9 +2,12 @@ import React from "react";
 import useNewsAndEvents from "../../Hooks/useNewsAndEvents";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
+import useShuffleNews from "../../Hooks/useShuffleNews";
 
 const NewsDetails = () => {
   const [newsAndEvents, isLoading] = useNewsAndEvents();
+  const [shuffleNews] = useShuffleNews();
+
   const { id } = useParams();
   const NewsEvents = newsAndEvents.find((news) => news._id === id);
   console.log(NewsEvents);
@@ -45,7 +48,7 @@ const NewsDetails = () => {
             </div>
             <div className="col-span-1 bg-blue-gray-50 p-5">
                 {
-                    newsAndEvents.slice(0, 5).map((related) => <div key={related.id} className="border bg-white p-2 mb-3">
+                    shuffleNews.slice(0, 5).map((related) => <div key={related.id} className="border bg-white p-2 mb-3">
                     <div className="relative h-44 overflow-hidden ">
                       <img
                         src={related.imageUrl}

@@ -1,14 +1,29 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useNewsAndEvents from "../../Hooks/useNewsAndEvents";
 import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const NewsEvent = () => {
-  const [newsEvent, isLoading] = useNewsAndEvents()
-
+  const [newsEvent, isLoading] = useNewsAndEvents();
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  // Function to handle category selection
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  // Sort news events by date in descending order
+  const sortedNewsEvents = newsEvent.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // Filter news events based on the selected category
+  const filteredNewsEvents = selectedCategory === "All"
+    ? sortedNewsEvents
+    : sortedNewsEvents.filter(news => news.Category === selectedCategory);
+
   return (
     <div className="min-h-screen container mx-auto bg-slate-50 flex items-center justify-center p-6">
       <div>
@@ -17,8 +32,22 @@ const NewsEvent = () => {
             News & Events
           </h1>
         </div>
+
+        {/* Category Buttons */}
+        <div className="flex justify-center my-5">
+          {["All", "News", "Events"].map((category) => (
+            <button
+              key={category}
+              className={`px-4 py-2 mx-2 ${selectedCategory === category ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+              onClick={() => handleCategoryChange(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-4 gap-5 my-10">
-          {newsEvent.map((news) => (
+          {filteredNewsEvents.map((news) => (
             <div key={news.id} className="border p-2">
               <div className="relative h-44 overflow-hidden">
                 <img

@@ -13,6 +13,7 @@ import ManageProducts from "../Pages/AdminDashboard/ManageProducts/ManageProduct
 import AddProduct from "../Pages/AdminDashboard/AddProduct/AddProduct";
 import ProductDetails from "../Pages/Products/ProductDetails";
 import NewsDetails from "../Pages/NewsEvent/NewsDetails";
+import AddNews from "../Pages/AdminDashboard/AddNews/AddNews";
 
 const router = createBrowserRouter([
     {
@@ -72,7 +73,11 @@ const router = createBrowserRouter([
         {
           path: 'addProduct',
           element: <AddProduct/>
-        }
+        },
+        {
+          path: 'addNews',
+          element: <AddNews/>
+        },
       ]
     },
   ]);
