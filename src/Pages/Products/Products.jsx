@@ -15,7 +15,7 @@ const Products = () => {
     const savedPage = localStorage.getItem("currentPage");
     return savedPage ? Number(savedPage) : 1;
   });
-  const productsPerPage = 6;
+  const productsPerPage = 8;
 
   // Save current page to localStorage whenever it changes
   useEffect(() => {
@@ -50,7 +50,7 @@ const Products = () => {
         <p className="text-primary text-center mt-2 text-xl uppercase mb-16">
           We truly care about our customer
         </p>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-4 gap-10">
           {currentProducts.map((product) => (
             <Card
               key={product.id}

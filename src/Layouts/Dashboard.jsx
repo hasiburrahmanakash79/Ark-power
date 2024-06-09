@@ -1,195 +1,196 @@
-
-import { useEffect, useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import { FaUser, FaHome } from "react-icons/fa";
 import {
-  FaUser,
-  FaHome,
-  FaComment,
-} from 'react-icons/fa'
-import { FaFileMedical, FaFileInvoice } from 'react-icons/fa6'
-import { MdHomeWork } from 'react-icons/md'
-import { IconContext } from 'react-icons'
-import arrow from '../assets/control.png'
+  FaFileMedical,
+  FaFileInvoice,
+  FaBook,
+  FaBookMedical,
+} from "react-icons/fa6";
+import { MdHomeWork } from "react-icons/md";
+import { IconContext } from "react-icons";
+import arrow from "../assets/control.png";
 
 const Dashboard = () => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(true);
 
-  const isAdmin = true
+  const isAdmin = true;
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setOpen(false)
+        setOpen(false);
       } else {
-        setOpen(true)
+        setOpen(true);
       }
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const iconMappings = {
     RoleHome: MdHomeWork,
     Users: FaUser,
     Home: FaHome,
-    News: FaComment,
+    News: FaBookMedical,
+    News_manage: FaBook,
     Product_add: FaFileMedical,
     Product_manage: FaFileInvoice,
-  }
+  };
 
   const Menus = [
     {
-      title: 'Admin Home',
-      path: '/dashboard/adminHome',
+      title: "Admin Home",
+      path: "/dashboard/adminHome",
       icon: iconMappings.RoleHome,
-      role: 'admin',
-      gap: true
+      role: "admin",
+      gap: true,
     },
     {
-      title: 'Manage Admin',
-      path: '/dashboard/manageAdmin',
+      title: "Manage Admin",
+      path: "/dashboard/manageAdmin",
       icon: iconMappings.Users,
-      role: 'admin',
+      role: "admin",
     },
     {
-      title: 'Manage Product',
-      path: '/dashboard/manageProducts',
-      icon: iconMappings.Product_manage,
-      role: 'admin'
-    },
-    {
-      title: 'Add Product',
-      path: '/dashboard/addProduct',
+      title: "Add Product",
+      path: "/dashboard/addProduct",
       icon: iconMappings.Product_add,
-      role: 'admin'
+      role: "admin",
     },
     {
-      title: 'Add News',
-      path: '/dashboard/addNews',
+      title: "Manage Product",
+      path: "/dashboard/manageProducts",
+      icon: iconMappings.Product_manage,
+      role: "admin",
+    },
+    {
+      title: "Add News",
+      path: "/dashboard/addNews",
       icon: iconMappings.News,
-      role: 'admin'
+      role: "admin",
     },
     {
-      title: 'Home ',
-      path: '/',
+      title: "Manage News",
+      path: "/dashboard/manageNews",
+      icon: iconMappings.News_manage,
+      role: "admin",
+    },
+    {
+      title: "Home ",
+      path: "/",
       icon: iconMappings.Home,
-      role: 'general',
-      gap: true
-    }
-  ]
+      role: "general",
+      gap: true,
+    },
+  ];
 
-  const adminMenus = Menus.filter(menu => menu.role === 'admin')
-  const userMenus = Menus.filter(menu => menu.role === 'user')
-  const generalMenus = Menus.filter(menu => menu.role === 'general')
+  const adminMenus = Menus.filter((menu) => menu.role === "admin");
+  const userMenus = Menus.filter((menu) => menu.role === "user");
+  const generalMenus = Menus.filter((menu) => menu.role === "general");
 
   return (
-    <div className='flex'>
+    <div className="flex">
       {/* Dashboard Sidebar content */}
       <div
         className={` ${
-          open ? 'w-56 p-4' : 'w-14 text-center'
+          open ? "w-56 p-4" : "w-14 text-center"
         }   h-screen fixed left-0 top-0 bottom-0 bg-black text-white z-50 pt-8  duration-500 transition-all`}
       >
         <img
           src={arrow}
           className={`absolute cursor-pointer -right-3 top-9 w-7  
-			 border-2 rounded-full  ${!open && 'rotate-180'}`}
+			 border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         />
         <ul
           className={` ${
-            open ? '' : 'flex flex-col items-center justify-center'
+            open ? "" : "flex flex-col items-center justify-center"
           }`}
         >
           {isAdmin
             ? adminMenus.map((Menu, index) => (
-              <Link to={Menu.path}   key={index} className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-white hover:text-black text-sm items-center gap-x-4 ${
-                Menu.gap ? 'mt-9' : 'mt-2'
-              } ${index === 0 && ' hover:bg-white'}`}>
-                <li
-             
-             className='flex items-center gap-x-4'
+                <Link
+                  to={Menu.path}
+                  key={index}
+                  className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-white hover:text-black text-sm items-center gap-x-4 ${
+                    Menu.gap ? "mt-9" : "mt-2"
+                  } ${index === 0 && " hover:bg-white"}`}
                 >
-                  
-                    <IconContext.Provider value={{ className: 'react-icon' }}>
+                  <li className="flex items-center gap-x-4">
+                    <IconContext.Provider value={{ className: "react-icon" }}>
                       <Menu.icon />
                     </IconContext.Provider>
                     <span
                       className={`${
-                        !open && 'hidden'
+                        !open && "hidden"
                       } origin-left duration-200`}
                     >
                       {Menu.title}
                     </span>
-                  
-                </li>
+                  </li>
                 </Link>
               ))
-            : 
-            // User menus
+            : // User menus
               userMenus.map((Menu, index) => (
-                <Link to={Menu.path} key={index} className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-primary text-sm items-center gap-x-4 ${
-                  Menu.gap ? 'mt-9' : 'mt-2'
-                } ${index === 0 && ' hover:bg-white'}`}>
-                <li
-                  
-                  className='flex items-center gap-x-4'
+                <Link
+                  to={Menu.path}
+                  key={index}
+                  className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-primary text-sm items-center gap-x-4 ${
+                    Menu.gap ? "mt-9" : "mt-2"
+                  } ${index === 0 && " hover:bg-white"}`}
                 >
-                  
-                    <IconContext.Provider value={{ className: 'react-icon' }}>
+                  <li className="flex items-center gap-x-4">
+                    <IconContext.Provider value={{ className: "react-icon" }}>
                       <Menu.icon />
                     </IconContext.Provider>
                     <span
                       className={`${
-                        !open && 'hidden'
+                        !open && "hidden"
                       } origin-left duration-200`}
                     >
                       {Menu.title}
                     </span>
-                  
-                </li>
+                  </li>
                 </Link>
               ))}
           {generalMenus.map((Menu, index) => (
-            <Link  to={Menu.path}  key={index} className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-white  hover:text-black  text-sm items-center gap-x-4 ${
-              Menu.gap ? 'mt-9' : 'mt-2'
-            } ${index === 0 && ' hover:bg-primary'}`}>
-            <li
-             
-              className='flex items-center gap-x-4'
+            <Link
+              to={Menu.path}
+              key={index}
+              className={`flex rounded-md p-2 cursor-pointer hover: hover:bg-white  hover:text-black  text-sm items-center gap-x-4 ${
+                Menu.gap ? "mt-9" : "mt-2"
+              } ${index === 0 && " hover:bg-primary"}`}
             >
-              
-                <IconContext.Provider value={{ className: 'react-icon' }}>
+              <li className="flex items-center gap-x-4">
+                <IconContext.Provider value={{ className: "react-icon" }}>
                   <Menu.icon />
                 </IconContext.Provider>
                 <span
-                  className={`${!open && 'hidden'} origin-left duration-200`}
+                  className={`${!open && "hidden"} origin-left duration-200`}
                 >
                   {Menu.title}
                 </span>
-            </li>
-              </Link>
+              </li>
+            </Link>
           ))}
         </ul>
-
       </div>
       {/* Dashboard main content */}
       <div
         className={` ${
-          open ? 'pl-60 pr-4' : 'pl-16 pr-2'
+          open ? "pl-60 pr-4" : "pl-16 pr-2"
         }  flex justify-center items-center duration-500 transition-all h-[100vh] mx-auto${
-          isAdmin
-            ? ''
-            :''
+          isAdmin ? "" : ""
         }`}
       >
         <Outlet></Outlet>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

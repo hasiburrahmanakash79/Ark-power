@@ -2,45 +2,15 @@ import React from "react";
 import Affiliations from "../Affiliations/Affiliations";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import useNewsAndEvents from "../../../Hooks/useNewsAndEvents";
+import LoadingSpinner from "../../../Hooks/Loading/LoadingSpinner";
 
 const ManagementAndNews = () => {
-  const news = [
-    {
-      id: 1,
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum unde illo error?",
-    },
-    {
-      id: 2,
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum unde illo error?",
-    },
-    {
-      id: 3,
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum unde illo error?",
-    },
-    {
-      id: 4,
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum unde illo error?",
-    },
-    {
-      id: 5,
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum unde illo error?",
-    },
-    {
-      id: 6,
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum unde illo error?",
-    },
-    {
-      id: 7,
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum unde illo error?",
-    },
-  ];
+  const [isLoading, newsAndEvents] = useNewsAndEvents()
+  console.log(newsAndEvents);
+  if(isLoading){
+    <LoadingSpinner/>
+  }
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
       <div>
@@ -50,8 +20,8 @@ const ManagementAndNews = () => {
               News and event
             </h1>
             <div className="scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent overflow-y-auto h-[40vh]  rounded-lg space-y-4">
-              {news.map((singleNews) => (
-                <Link to={singleNews.id} key={singleNews.id}>
+              {newsAndEvents.map((singleNews) => (
+                <Link to={singleNews._id} key={singleNews._id}>
                   <div>
                     <div className="flex items-center justify-between gap-5 border-b hover:text-[#00ADF2] ">
                       <h1 className="text-xl font-bold py-3">
