@@ -1,11 +1,16 @@
 import React from "react";
 import useProducts from "../../../Hooks/useProducts";
 import { Card, Typography } from "@material-tailwind/react";
+import AdminSpinner from "../../../Hooks/Loading/AdminSpinner";
 
 const ManageProducts = () => {
-  const [products] = useProducts();
+  const [products, isLoading] = useProducts();
   const TABLE_HEAD = [" ", "Name", "Price", "Description", "Action"];
   console.log(products);
+
+  if(isLoading){
+    return <AdminSpinner/>
+  }
 
   return (
     <Card className="h-full w-full">
