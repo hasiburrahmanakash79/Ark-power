@@ -6,10 +6,10 @@ import useNewsAndEvents from "../../../Hooks/useNewsAndEvents";
 import LoadingSpinner from "../../../Hooks/Loading/LoadingSpinner";
 
 const ManagementAndNews = () => {
-  const [isLoading, newsAndEvents] = useNewsAndEvents()
-  console.log(newsAndEvents);
-  if(isLoading){
-    <LoadingSpinner/>
+  const [newsEvent, isLoading] = useNewsAndEvents();
+  console.log(newsEvent);
+  if (isLoading && newsEvent) {
+    <LoadingSpinner />;
   }
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
@@ -20,8 +20,8 @@ const ManagementAndNews = () => {
               News and event
             </h1>
             <div className="scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent overflow-y-auto h-[40vh]  rounded-lg space-y-4">
-              {newsAndEvents.map((singleNews) => (
-                <Link to={singleNews._id} key={singleNews._id}>
+              {newsEvent.map((singleNews) => (
+                <Link to={`/newsDetails/${singleNews._id}`} key={singleNews._id}>
                   <div>
                     <div className="flex items-center justify-between gap-5 border-b hover:text-[#00ADF2] ">
                       <h1 className="text-xl font-bold py-3">
