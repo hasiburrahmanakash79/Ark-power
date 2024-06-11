@@ -15,6 +15,7 @@ import ProductDetails from "../Pages/Products/ProductDetails";
 import NewsDetails from "../Pages/NewsEvent/NewsDetails";
 import AddNews from "../Pages/AdminDashboard/AddNews/AddNews";
 import ManageNewsAndEvents from "../Pages/AdminDashboard/ManageNewsAndEvents/ManageNewsAndEvents";
+import Services from "../Pages/Services/Services";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         {
           path: '/ProductDetails/:id',
           element: <ProductDetails/>
+        },
+        {
+          path: '/service',
+          element: <Services/>
         },
         {
           path: '/news-event',
