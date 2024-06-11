@@ -10,7 +10,7 @@ const Services = () => {
       <p className="text-primary text-center mt-2 text-xl uppercase mb-16">
         We truly care about our customer
       </p>
-      <h1>
+      <h1 className="text-base">
         Our suite of major products includes a diverse range of essential
         equipment designed to support various critical functions in industrial,
         commercial, and residential settings. Our Uninterruptible Power Supplies
@@ -20,14 +20,12 @@ const Services = () => {
         plays a crucial role in maintaining voltage stability, protecting
         equipment from power surges and fluctuations that can lead to damage.
         <br />
-        <br />
         Our Security System Equipment provides comprehensive solutions for
         surveillance and monitoring, including cameras, alarm systems, and
         access control, essential for maintaining safety and security in various
         environments. Rectifiers are integral to converting AC to DC power,
         vital in many electronic devices and systems that require stable DC
         supply.
-        <br />
         <br />
         We also offer robust Data Centre Solutions that include server racks,
         cooling systems, power management, and network infrastructure, all
@@ -36,7 +34,6 @@ const Services = () => {
         ensure that batteries are effectively charged and maintained, powering a
         wide array of devices from automotive to industrial applications.
         <br />
-        <br />
         Our Instant Power Supply (IPS) Inverters, available in modular and tower
         formats, provide essential backup power during outages, converting DC
         from batteries into AC power to keep critical systems operational.
@@ -44,14 +41,12 @@ const Services = () => {
         facilitating the safe and efficient delivery of electricity across
         different parts of a network.
         <br />
-        <br />
         Switchgear, both HT (High Tension) and LT (Low Tension), is crucial for
         controlling, protecting, and isolating electrical systems in various
         voltage categories, ensuring the safety and reliability of power
         distribution. Our Solar Systems harness solar energy to generate
         electricity, providing an eco-friendly alternative to traditional power
         sources and reducing reliance on non-renewable energy.
-        <br />
         <br />
         The PFI (Power Factor Improvement) Plants enhance the efficiency of
         electrical systems by improving the power factor, thus reducing energy
