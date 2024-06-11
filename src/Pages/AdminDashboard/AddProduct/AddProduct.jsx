@@ -91,6 +91,24 @@ const AddProduct = () => {
           {errors.productDetails && <p className="text-red-500 text-xs mt-1">Product details are required.</p>}
         </div>
 
+        {['image1', 'image2', 'image3'].map((field, index) => (
+          <div key={field} className="mb-6 w-full">
+            <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor={field}>Product Image {index + 1}</label>
+            <div className="flex items-center">
+              <label className={`flex cursor-pointer items-center px-4 py-2 text-gray-700 border-gray-300 rounded-lg tracking-wide uppercase border-2 w-full ${fileNames[field] ? 'bg-slate-200' : ''}`}>
+                <span className="leading-normal">{fileNames[field] || 'Select a file'}</span>
+                <input
+                  type="file"
+                  id={field}
+                  {...register(field, { required: true })}
+                  className="hidden"
+                  onChange={(event) => handleFileChange(event, field)}
+                />
+              </label>
+            </div>
+            {errors[field] && <p className="text-red-500 text-xs mt-1">Product image is required.</p>}
+          </div>
+        ))}
 
         <div className="mb-6 w-full">
           <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="pdfLink">PDF Link</label>
