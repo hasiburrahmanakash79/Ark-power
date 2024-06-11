@@ -17,12 +17,15 @@ const NewsEvent = () => {
   };
 
   // Sort news events by date in descending order
-  const sortedNewsEvents = newsEvent.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedNewsEvents = newsEvent.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
 
   // Filter news events based on the selected category
-  const filteredNewsEvents = selectedCategory === "All"
-    ? sortedNewsEvents
-    : sortedNewsEvents.filter(news => news.Category === selectedCategory);
+  const filteredNewsEvents =
+    selectedCategory === "All"
+      ? sortedNewsEvents
+      : sortedNewsEvents.filter((news) => news.Category === selectedCategory);
 
   return (
     <div className="min-h-screen container mx-auto bg-slate-50 flex items-center justify-center p-6">
@@ -38,7 +41,11 @@ const NewsEvent = () => {
           {["All", "News", "Events"].map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 mx-2 ${selectedCategory === category ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+              className={`px-4 py-2 mx-2 ${
+                selectedCategory === category
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200"
+              }`}
               onClick={() => handleCategoryChange(category)}
             >
               {category}
@@ -62,15 +69,13 @@ const NewsEvent = () => {
               </div>
               <h1 className="text-2xl font-bold mb-3">{news.title}</h1>
               <div>
-                <span>
-                  {news.details.slice(0, 100)}.....{" "}
-                  <Link
-                    to={`/newsDetails/${news._id}`}
-                    className="text-blue-700 hover:underline"
-                  >
-                    Read Details
-                  </Link>
-                </span>
+                {news.details.slice(0, 100)}.....{" "}
+                <Link
+                  to={`/newsDetails/${news._id}`}
+                  className="text-blue-700 hover:underline"
+                >
+                  Read Details
+                </Link>
               </div>
             </div>
           ))}

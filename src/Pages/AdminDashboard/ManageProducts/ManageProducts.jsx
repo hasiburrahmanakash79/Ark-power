@@ -1,7 +1,7 @@
 import React from "react";
 import useProducts from "../../../Hooks/useProducts";
 import { Card, Typography } from "@material-tailwind/react";
-import AdminSpinner from "../../../Hooks/Loading/AdminSpinner";
+import LoadingSpinner from "../../../Hooks/Loading/LoadingSpinner";
 
 const ManageProducts = () => {
   const [products, isLoading] = useProducts();
@@ -9,7 +9,7 @@ const ManageProducts = () => {
   console.log(products);
 
   if(isLoading){
-    return <AdminSpinner/>
+    return <LoadingSpinner/>
   }
 
   return (

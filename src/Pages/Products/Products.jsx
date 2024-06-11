@@ -10,6 +10,7 @@ import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const Products = () => {
   const [products, isLoading] = useProducts()
+  console.log(products);
   
   const [currentPage, setCurrentPage] = useState(() => {
     const savedPage = localStorage.getItem("currentPage");
@@ -53,7 +54,7 @@ const Products = () => {
         <div className="grid grid-cols-4 gap-10">
           {currentProducts.map((product) => (
             <Card
-              key={product.id}
+              key={product?.id}
               className="overflow-hidden hover:shadow-xl"
             >
               <CardHeader
@@ -64,8 +65,8 @@ const Products = () => {
               >
                 <div className="relative h-44 overflow-hidden">
                   <img
-                    src={product.imageUrl}
-                    alt={product.name}
+                    src={product?.imageUrl}
+                    alt={product?.name}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   />
                 </div>
@@ -76,14 +77,14 @@ const Products = () => {
                     to="/"
                     className="md:text-xl text-black font-semibold text-sm"
                   >
-                    {product.name}
+                    {product?.name}
                   </Link>
                 </div>
                 <div>
                   <span>
-                    {product.description.slice(0, 100)}.....{" "}
-                    <Link to={`/ProductDetails/${product._id}`} className="text-blue-700 hover:underline">
-                      Read more
+                    {product?.description.slice(0,100)}...
+                    <Link to={`/ProductDetails/${product?._id}`} className="text-blue-700 hover:underline">
+                    Read more
                     </Link>
                   </span>
                 </div>

@@ -1,7 +1,6 @@
-import React from 'react';
-import AdminSpinner from '../../../Hooks/Loading/AdminSpinner';
 import useNewsAndEvents from '../../../Hooks/useNewsAndEvents';
 import { Card, Typography } from '@material-tailwind/react';
+import LoadingSpinner from '../../../Hooks/Loading/LoadingSpinner';
 
 const ManageNewsAndEvents = () => {
     const [newsAndEvents, isLoading] = useNewsAndEvents();
@@ -9,7 +8,7 @@ const ManageNewsAndEvents = () => {
     console.log(newsAndEvents);
   
     if(isLoading){
-      return <AdminSpinner/>
+      return <LoadingSpinner/>
     }
   
     return (

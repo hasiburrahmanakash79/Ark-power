@@ -183,7 +183,7 @@ const Dashboard = () => {
       <div
         className={` ${
           open ? "pl-60 pr-4" : "pl-16 pr-2"
-        }  flex justify-center items-center duration-500 transition-all h-[100vh] mx-auto${
+        } duration-500 transition-all h-[100vh] mx-auto${
           isAdmin ? "" : ""
         }`}
       >

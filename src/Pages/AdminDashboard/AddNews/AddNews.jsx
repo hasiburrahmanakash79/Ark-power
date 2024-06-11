@@ -1,3 +1,4 @@
+// import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -9,60 +10,60 @@ const AddNews = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    setValue
+    setValue,
   } = useForm();
 
   const getCurrentDate = () => {
     const today = new Date();
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
 
   useEffect(() => {
     // Set the default date to today's date
-    setValue('date', getCurrentDate());
+    setValue("date", getCurrentDate());
   }, [setValue]);
 
   const img_hosting_token = import.meta.env.VITE_img_hosting_key;
-  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const onSubmit = async (data) => {
     const formData = new FormData();
-    formData.append('image', data.imageUrl[0]);
+    formData.append("image", data.imageUrl[0]);
     fetch(img_hosting_url, {
-      method: 'POST',
-      body: formData
+      method: "POST",
+      body: formData,
     })
-    .then((res) => res.json())
-    .then((imageResponse) => {
-      console.log(imageResponse);
-      if(imageResponse.success){
+      .then((res) => res.json())
+      .then((imageResponse) => {
+        console.log(imageResponse);
         if (imageResponse.success) {
-          const imageUrl = imageResponse.data.display_url;
-          const { details, date, Category, title} = data;
-          const addNews = {
-            Category,
-            title,
-            date,
-            details,
-            imageUrl
-          };
-          axios.post("http://localhost:3000/news", addNews).then((data) => {
-            if (data.data.insertedId) {
-              reset()
-              Swal.fire({
-                showConfirmButton: false,
-                timer: 1500,
-                title: "News added Successful",
-                icon: "success",
-              });
-            }
-          });
+          if (imageResponse.success) {
+            const imageUrl = imageResponse.data.display_url;
+            const { details, date, Category, title } = data;
+            const addNews = {
+              Category,
+              title,
+              date,
+              details,
+              imageUrl,
+            };
+            axios.post("http://localhost:3000/news", addNews).then((data) => {
+              if (data.data.insertedId) {
+                reset();
+                Swal.fire({
+                  showConfirmButton: false,
+                  timer: 1500,
+                  title: "News added Successful",
+                  icon: "success",
+                });
+              }
+            });
+          }
         }
-      }
-    })
+      });
     // try {
     //   const response = await fetch("http://localhost:3000/news", {
     //     method: "POST",
@@ -94,13 +95,26 @@ const AddNews = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-96">
+    <div className="w-full">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md"
       >
         <h2 className="text-2xl font-bold mb-6 text-center">Add News</h2>
-
+        <div className="mb-4">
+          <label className="block text-gray-700">Title</label>
+          <input
+            type="text"
+            {...register("title", { required: true })}
+            placeholder="Title"
+            className={`w-full p-2 mt-1 border rounded ${
+              errors.title ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.title && (
+            <p className="text-red-500 text-sm mt-1">Title is required</p>
+          )}
+        </div>
         <div className="mb-4">
           <label className="block text-gray-700">Category</label>
           <select
@@ -131,22 +145,6 @@ const AddNews = () => {
             <p className="text-red-500 text-sm mt-1">Date is required</p>
           )}
         </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700">Title</label>
-          <input
-            type="text"
-            {...register("title", { required: true })}
-            placeholder="Title"
-            className={`w-full p-2 mt-1 border rounded ${
-              errors.title ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {errors.title && (
-            <p className="text-red-500 text-sm mt-1">Title is required</p>
-          )}
-        </div>
-
         <div className="mb-4">
           <label className="block text-gray-700">Image</label>
           <input
@@ -161,6 +159,7 @@ const AddNews = () => {
             <p className="text-red-500 text-sm mt-1">Image URL is required</p>
           )}
         </div>
+        
 
         <div className="mb-4">
           <label className="block text-gray-700">Details</label>
@@ -188,3 +187,29 @@ const AddNews = () => {
 };
 
 export default AddNews;
+
+{
+  /* <Editor
+            apiKey="yiugd3xtqtw63wiq4wpkyw9qx30b0gil37a9voubxh4evezq"
+            {...register("details", { required: true })}
+            initialValue=""
+            init={{
+              height: 500,
+              menubar: false,
+              plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table paste code help wordcount"
+              ],
+              toolbar:
+                "undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help",
+              setup: (editor) => {
+                editor.on('Change', () => {
+                  setValue("details", editor.getContent());
+                });
+              },
+            }}
+          /> */
+}
