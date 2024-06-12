@@ -187,29 +187,3 @@ const AddNews = () => {
 };
 
 export default AddNews;
-
-{
-  /* <Editor
-            apiKey="yiugd3xtqtw63wiq4wpkyw9qx30b0gil37a9voubxh4evezq"
-            {...register("details", { required: true })}
-            initialValue=""
-            init={{
-              height: 500,
-              menubar: false,
-              plugins: [
-                "advlist autolink lists link image charmap print preview anchor",
-                "searchreplace visualblocks code fullscreen",
-                "insertdatetime media table paste code help wordcount"
-              ],
-              toolbar:
-                "undo redo | formatselect | bold italic backcolor | \
-                alignleft aligncenter alignright alignjustify | \
-                bullist numlist outdent indent | removeformat | help",
-              setup: (editor) => {
-                editor.on('Change', () => {
-                  setValue("details", editor.getContent());
-                });
-              },
-            }}
-          /> */
-}

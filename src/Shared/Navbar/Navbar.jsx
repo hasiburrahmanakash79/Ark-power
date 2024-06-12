@@ -10,6 +10,7 @@ const Navbar = () => {
     { name: "News & Event", link: "/news-event" },
     { name: "About us", dropdown: true },
     { name: "Contact", link: "/contact" },
+    { name: "Career", link: "/career" },
   ];
 
   const dropdownLinks = [

@@ -16,6 +16,8 @@ import NewsDetails from "../Pages/NewsEvent/NewsDetails";
 import AddNews from "../Pages/AdminDashboard/AddNews/AddNews";
 import ManageNewsAndEvents from "../Pages/AdminDashboard/ManageNewsAndEvents/ManageNewsAndEvents";
 import Services from "../Pages/Services/Services";
+import AddCareer from "../Pages/AdminDashboard/AddCareer/AddCareer";
+import Career from "../Pages/Career/Career";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +68,10 @@ const router = createBrowserRouter([
           path: '/contact',
           element: <Contact/>
         },
+        {
+          path: '/career',
+          element: <Career/>
+        },
       ]
     },
     {
@@ -87,6 +93,10 @@ const router = createBrowserRouter([
         {
           path: 'manageNews',
           element: <ManageNewsAndEvents/>
+        },
+        {
+          path: 'addCareer',
+          element: <AddCareer/>
         },
       ]
     },

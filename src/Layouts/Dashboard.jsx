@@ -80,6 +80,12 @@ const Dashboard = () => {
       role: "admin",
     },
     {
+      title: "Add Career",
+      path: "/dashboard/addCareer",
+      icon: iconMappings.News_manage,
+      role: "admin",
+    },
+    {
       title: "Home ",
       path: "/",
       icon: iconMappings.Home,
