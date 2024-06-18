@@ -91,6 +91,12 @@ const Contact = () => {
                 info@arkpowerltd.com.bd
                 </p>
               </div>
+              <div className="">
+                <h1 className="text-xl font-bold text-primary ">E-mail:</h1>
+                <p>
+                info@arkpowerltd.com.bd
+                </p>
+              </div>
             </div>
           </div>
         </div>
