@@ -15,9 +15,7 @@ const Navbar = () => {
 
   const dropdownLinks = [
     { name: "What we do", link: "/what-do" },
-    { name: "Our Policy", link: "/policy" },
-    { name: "Board of Directors", link: "/directors" },
-    { name: "Management", link: "/management" },
+    { name: "Our Policy", link: "/policy" }
   ];
 
   const [open, setOpen] = useState(false);
