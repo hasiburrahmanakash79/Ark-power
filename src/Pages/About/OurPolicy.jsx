@@ -1,10 +1,10 @@
 const OurPolicy = () => {
   return (
-    <div className="mx-auto container mt-28 mb-10">
+    <div className="mx-auto container mt-28 mb-10 p-5">
       <h1 className="text-4xl uppercase font-bold mb-5 text-primary">
         Our Policy
       </h1>
-      <div className="mt-5 grid grid-cols-2 gap-10">
+      <div className="mt-5 grid md:grid-cols-2 gap-10">
         <div>
           <h1 className="text-primary   text-2xl  border-b border-[#00ADF2] mb-3">
             QUALITY POLICY
@@ -74,7 +74,7 @@ const OurPolicy = () => {
           </ul>
         </div>
       </div>
-      <div className="mt-5 grid grid-cols-2 gap-10">
+      <div className="mt-5 grid md:grid-cols-2 gap-10">
         <div>
           <h1 className="text-primary   text-2xl  border-b border-[#00ADF2] mb-3">
             ENVIRONMENTAL POLICY

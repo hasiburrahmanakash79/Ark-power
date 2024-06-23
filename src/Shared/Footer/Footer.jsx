@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 grid-cols-1 py-10 px-5 md:gap-5">
           <div>
             <img
-              src="https://www.arkpowerltd.com.bd/assets/images/arkpower/logo.jpg"
+              src="https://i.ibb.co/GvRpCT5/ark-power-white.png"
               alt=""
             />
             <p className="text-[10px] mt-3">

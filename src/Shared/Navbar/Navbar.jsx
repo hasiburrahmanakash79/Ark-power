@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* logo section */}
         <Link to='/' className="font-bold text-2xl cursor-pointer flex items-center gap-1">
           <img
-            src="https://www.arkpowerltd.com.bd/assets/images/arkpower/logo.jpg"
+            src="https://i.ibb.co/8gL2MK6/ARK-power-black.png"
             alt="Logo"
             className="md:w-72 w-48"
           />
@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
         {/* link items */}
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:bg-white bg-slate-50 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white bg-slate-50 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
             open ? "top-16" : "top-[-490px]"
           }`}
         >

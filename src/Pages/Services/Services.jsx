@@ -10,7 +10,7 @@ const Services = () => {
       <p className="text-primary text-center mt-2 text-xl uppercase mb-16">
         We truly care about our customer
       </p>
-      <h1 className="text-base">
+      <h1 className="text-balance">
         Our suite of major products includes a diverse range of essential
         equipment designed to support various critical functions in industrial,
         commercial, and residential settings. Our Uninterruptible Power Supplies

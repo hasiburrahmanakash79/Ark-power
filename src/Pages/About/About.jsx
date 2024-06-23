@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div className="grid grid-cols-2 p-5 gap-12 container mx-auto mt-28 mb-10">
+    <div className="grid md:grid-cols-2 p-5 gap-12 container mx-auto mt-28 mb-10">
       <div>
         <h1 className="text-4xl uppercase font-bold mb-5 text-primary">
           Ark Power Limited

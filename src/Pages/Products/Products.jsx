@@ -51,7 +51,7 @@ const Products = () => {
         <p className="text-primary text-center mt-2 text-xl uppercase mb-16">
           We truly care about our customer
         </p>
-        <div className="grid grid-cols-4 gap-10">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3  gap-10">
           {currentProducts.map((product) => (
             <Card
               key={product?.id}
