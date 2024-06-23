@@ -53,7 +53,7 @@ const NewsEvent = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-4 gap-5 my-10">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2  gap-5 my-10">
           {filteredNewsEvents.map((news) => (
             <div key={news._id} className="border p-2">
               <div className="relative h-44 overflow-hidden">

@@ -19,16 +19,16 @@ const ContactForm = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-2xl bg-white rounded-3xl shadow-lg p-8"
+        className="w-full md:max-w-2xl bg-white rounded-3xl shadow-lg p-8"
       >
         <h2 className="text-3xl font-bold mb-6 text-primary text-center">
           Contact Us
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div className="grid md:grid-cols-2 gap-4 mb-4">
           <div>
             <label
               className="block text-gray-700 text-sm font-medium mb-1"

@@ -16,24 +16,24 @@ const ProductDetails = () => {
   return (
     <div className="min-h-screen container mx-auto">
       <div className="mt-24 ">
-        <h1 className="text-primary text-center mb-12 text-5xl uppercase">
+        <h1 className="text-primary text-center mb-12 md:text-5xl text-3xl uppercase">
           {productDetail?.name}
         </h1>
-        <div className="grid grid-cols-5 gap-16 ">
-          <div className="col-span-2">
+        <div className="grid md:grid-cols-5 gap-16 ">
+          <div className="md:col-span-2">
             <img
               src={productDetail?.imageUrl}
               alt={`Product Image`}
               className="object-cover rounded-lg"
             />
           </div>
-          <div className="col-span-3">
+          <div className="md:col-span-3">
             <p className="text-gray-600">{productDetail?.description}</p>
             <div className="pt-10">
             <h4 className="text-xl font-bold text-gray-700 mb-2">PDF Link</h4>
             <a
-              
-              className="text-blue-500 hover:underline"
+              href={productDetail?.pdfUrl}
+              className="text-blue-500 hover:underline cursor-pointer"
               target="_blank"
               rel="noopener noreferrer"
             >

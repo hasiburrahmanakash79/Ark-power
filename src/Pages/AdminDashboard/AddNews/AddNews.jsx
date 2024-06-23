@@ -64,34 +64,6 @@ const AddNews = () => {
           }
         }
       });
-    // try {
-    //   const response = await fetch("http://localhost:3000/news", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-
-    //   if (response.ok === true) {
-    //     const result = await response.json();
-    //     console.log(result);
-    //     reset();
-    //     Swal.fire({
-    //       showConfirmButton: false,
-    //       timer: 1500,
-    //       title: "Class added Successful",
-    //       icon: "success",
-    //     });
-    //   } else {
-    //     const errorText = await response.text();
-    //     console.error("Error adding news:", errorText);
-    //     alert("Failed to add news");
-    //   }
-    // } catch (error) {
-    //   console.error("Error adding news:", error);
-    //   alert("Failed to add news");
-    // }
   };
 
   return (

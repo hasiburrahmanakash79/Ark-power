@@ -82,7 +82,7 @@ const Products = () => {
                 </div>
                 <div>
                   <span>
-                    {product?.description.slice(0,100)}...
+                    {product?.description?.slice(0,100)}...
                     <Link to={`/ProductDetails/${product?._id}`} className="text-blue-700 hover:underline">
                     Read more
                     </Link>

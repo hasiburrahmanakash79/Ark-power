@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
             <ul className="space-y-2 pr-5">
               <li>
-              <p>
+              <p className="md:text-start text-center">
                   Subscribe to Our Newsletter to get Important News & Offers
                 </p>
               </li>

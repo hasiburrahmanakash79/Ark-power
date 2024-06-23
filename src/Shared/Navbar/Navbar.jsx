@@ -41,14 +41,14 @@ const Navbar = () => {
         {/* Menu icon */}
         <div
           onClick={() => setOpen(!open)}
-          className="absolute right-8 top-5 cursor-pointer md:hidden w-7 h-7"
+          className="absolute right-8 top-2 cursor-pointer md:hidden w-7 h-7"
         >
           {open ? <XMarkIcon /> : <Bars3BottomRightIcon />}
         </div>
         {/* link items */}
         <ul
           className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white bg-slate-50 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-16" : "top-[-490px]"
+            open ? "top-10" : "top-[-490px]"
           }`}
         >
           {Links.map((link) => (

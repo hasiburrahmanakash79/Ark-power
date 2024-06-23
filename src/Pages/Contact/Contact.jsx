@@ -10,14 +10,14 @@ const Contact = () => {
           </h2>
         </div>
       </div>
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto py-10 px-5">
         <div>
           <h1 className="text-4xl uppercase font-bold mb-5 text-primary">
             Our Contact Address
           </h1>
-          <div className="grid grid-cols-3 gap-10">
-            <div className="col-span-2 ">
-              <div className="grid grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-3 gap-10">
+            <div className="md:col-span-2 ">
+              <div className="grid md:grid-cols-2 gap-5">
                 <div className="bg-slate-50 p-5 shadow-lg">
                   <h1 className="text-xl font-bold text-primary mb-3">
                     Corporate Branch:
@@ -41,7 +41,7 @@ const Contact = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-5 mt-5">
+              <div className="grid md:grid-cols-3 gap-5 mt-5">
                 <div className="bg-slate-50 p-5 shadow-lg">
                   <h1 className="text-xl font-bold text-primary mb-3">
                     Chattogram Office:
@@ -82,22 +82,20 @@ const Contact = () => {
               <div className="">
                 <h1 className="text-xl font-bold text-primary ">Factory:</h1>
                 <p>
-                Hortokitola, Kaliakoir <br /> Gazipur.
+                  Hortokitola, Kaliakoir <br /> Gazipur.
                 </p>
               </div>
               <div className="">
                 <h1 className="text-xl font-bold text-primary ">E-mail:</h1>
-                <p>
-                info@arkpowerltd.com.bd
-                </p>
+                <p>info@arkpowerltd.com.bd</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <div>
-        <ContactForm/>
-    </div>
+      <div>
+        <ContactForm />
+      </div>
     </div>
   );
 };
