@@ -4,7 +4,7 @@ const ProductsAndServices = () => {
   const productsIcon = [
     {
       image: 'https://www.nicepng.com/png/full/105-1055410_surveillance-camera-svg-png-icon-free-download-cctv.png',
-      title: 'Security System Equipments',
+      title: 'Security System',
       sub_title: ''
     },
     {
@@ -39,7 +39,7 @@ const ProductsAndServices = () => {
     },
     {
       image: 'https://cdn5.vectorstock.com/i/1000x1000/35/29/power-voltage-regulator-icon-simple-vector-41053529.jpg',
-      title: 'Automatic Voltage Regulator',
+      title: 'Voltage Regulator',
       sub_title: ''
     },
   ]
@@ -49,7 +49,7 @@ const ProductsAndServices = () => {
         <h1 className="text-primary text-4xl text-center mb-10">
           Products and Services
         </h1>
-        <div className="grid grid-cols-4 gap-10 justify-center items-center text-center">
+        <div className="grid md:grid-cols-4 grid-cols-2 md:gap-10 gap-2 justify-center items-center text-center">
           {
             productsIcon.map((product, index) => <div key={index} className="flex flex-col items-center p-4">
             <div className="w-16 h-16 mb-5 overflow-hidden">

@@ -18,7 +18,7 @@ const ManagementAndNews = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
       <div>
-        <div className="grid grid-cols-2 gap-20">
+        <div className="md:grid grid-cols-2 gap-20">
           <div>
             <h1 className="text-2xl font-bold uppercase mb-10">
               News and event
@@ -63,7 +63,7 @@ const ManagementAndNews = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="md:block hidden">
           <Affiliations />
         </div>
       </div>

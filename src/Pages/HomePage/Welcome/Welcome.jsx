@@ -28,7 +28,7 @@ const Welcome = () => {
   }, [currentIndex, interval]); // Re-run effect when currentIndex or interval changes
 
   return (
-    <div className='grid grid-cols-2 mt-16 gap-20'>
+    <div className='md:grid grid-cols-2 mt-16 gap-20'>
         <div className="relative w-full md:h-[400px] h-[330px] overflow-hidden">
       {images.map((image, index) => (
         <div
@@ -41,7 +41,7 @@ const Welcome = () => {
         </div>
       ))}
     </div>
-        <div className='space-y-5'>
+        <div className='space-y-5 md:text-start text-center md:my-0 my-7 p-5'>
             <h1 className='text-primary text-xl md:text-4xl'>WELCOME TO <br /> ARK POWER LIMITED</h1>
             <h2 className='text-primary'>WE SUPPORT ALL YOUR NEEDS!</h2>
             <p className='leading-6'>Ark Power is a leading integrated Power, Electronic & communication technology company that develops, manufactures, markets and sells the related equipments. The Company is dedicated to improving power protection & generation all the sectors throughout the Bangladesh. Ark is focused on improving timely delivery, enhancing the quality and customers satisfaction. Located at a prime business location at Banani, Dhaka, the Capital of Bangladesh.</p>
