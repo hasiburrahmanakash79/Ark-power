@@ -1,6 +1,6 @@
 const OurPolicy = () => {
   return (
-    <div className="mx-auto container mt-28 mb-10 p-5">
+    <div className="mx-auto container mt-24 mb-10 p-5">
       <h1 className="text-4xl uppercase font-bold mb-5 text-primary">
         Our Policy
       </h1>

@@ -14,8 +14,8 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="min-h-screen container mx-auto">
-      <div className="mt-24 ">
+    <div className="min-h-screen container mx-auto p-5">
+      <div className="md:mt-24 mt-14">
         <h1 className="text-primary text-center mb-12 md:text-5xl text-3xl uppercase">
           {productDetail?.name}
         </h1>

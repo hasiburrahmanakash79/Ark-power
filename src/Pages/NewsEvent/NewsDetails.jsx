@@ -17,14 +17,14 @@ const NewsDetails = () => {
   }
 
   return (
-    <div className="mt-32 container mx-auto">
-        <div className="mt-24 mb-10">
+    <div className="mt-24 container mx-auto p-5">
+        <div className="mb-10">
           <h1 className="text-primary text-center text-5xl uppercase">
             {NewsEvents.Category}
           </h1>
         </div>
-        <div className="grid grid-cols-4 gap-10">
-            <div className="col-span-3">
+        <div className="grid md:grid-cols-4 gap-10">
+            <div className="md:col-span-3">
             <div key={NewsEvents.id} className="">
               <div className="relative overflow-hidden">
                 <img
@@ -37,7 +37,7 @@ const NewsDetails = () => {
                 <p className="font-bold uppercase">{NewsEvents.Category}</p>
                 <p>{NewsEvents.date}</p>
               </div>
-              <h1 className="text-2xl font-bold mb-3">{NewsEvents.title}</h1>
+              <h1 className="md:text-5xl text-2xl font-semibold mb-3">{NewsEvents.title}</h1>
               <div>
                   
                   {NewsEvents.details}
@@ -45,7 +45,8 @@ const NewsDetails = () => {
             </div>
 
             </div>
-            <div className="col-span-1 bg-blue-gray-50 p-5">
+            <div className="md:col-span-1 bg-blue-gray-50 p-5">
+              <h1 className="text-2xl pb-4 font-semibold">Related News</h1>
                 {
                     shuffleNews.slice(0, 5).map((related) => <div key={related.id} className="border bg-white p-2 mb-3">
                     <div className="relative h-44 overflow-hidden ">

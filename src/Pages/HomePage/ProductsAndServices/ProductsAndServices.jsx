@@ -46,7 +46,7 @@ const ProductsAndServices = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
       <div>
-        <h1 className="text-primary text-4xl text-center mb-10">
+        <h1 className="text-primary md:text-4xl text-2xl text-center mb-10">
           Products and Services
         </h1>
         <div className="grid md:grid-cols-4 grid-cols-2 md:gap-10 gap-2 justify-center items-center text-center">

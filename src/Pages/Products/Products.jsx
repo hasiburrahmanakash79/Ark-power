@@ -43,12 +43,12 @@ const Products = () => {
   };
 
   return (
-    <div className="min-h-screen container mx-auto bg-slate-50 flex items-center justify-center p-6">
-      <div className="mt-24 ">
-        <h1 className="text-primary text-center text-5xl uppercase">
+    <div className="min-h-screen container mx-auto bg-slate-50 flex items-center justify-center p-5">
+      <div className="md:mt-24 mt-14">
+        <h1 className="text-primary text-center md:text-5xl text-3xl uppercase">
           Our Products
         </h1>
-        <p className="text-primary text-center mt-2 text-xl uppercase mb-16">
+        <p className="text-primary text-center md:mt-2 text-xl md:uppercase mb-10">
           We truly care about our customer
         </p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3  gap-10">

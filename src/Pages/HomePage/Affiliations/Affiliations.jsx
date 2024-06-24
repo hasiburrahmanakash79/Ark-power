@@ -72,7 +72,7 @@ const Affiliations = () => {
 
   return (
     <div className="container mx-auto py-8 mt-12 relative">
-      <h1 className="text-primary text-4xl text-center mb-10">
+      <h1 className="text-primary md:text-4xl text-2xl text-center mb-10">
         Foreign Affiliations
       </h1>
       <Slider {...settings}>

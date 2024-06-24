@@ -11,7 +11,6 @@ const Home = () => {
       <div className="mx-auto container my-10">
         <Welcome />
         <ProductsAndServices />
-        {/* <MostValuable/> */}
         <ManagementAndNews />
       </div>
     </div>
