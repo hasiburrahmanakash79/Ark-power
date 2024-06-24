@@ -39,7 +39,7 @@ const ProductsAndServices = () => {
     },
     {
       image: 'https://cdn5.vectorstock.com/i/1000x1000/35/29/power-voltage-regulator-icon-simple-vector-41053529.jpg',
-      title: 'Voltage Regulator',
+      title: 'Automatic Voltage Regulator',
       sub_title: ''
     },
   ]
@@ -59,7 +59,7 @@ const ProductsAndServices = () => {
                 alt={product.title}
               />
             </div>
-            <h1 className="text-2xl font-bold text-center">{product.title}</h1>
+            <h1 className="md:text-2xl text-xl md:font-bold text-center">{product.title}</h1>
             <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, quis.</p>
           </div>
             )          

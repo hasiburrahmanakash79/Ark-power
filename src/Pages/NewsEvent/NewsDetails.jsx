@@ -17,13 +17,13 @@ const NewsDetails = () => {
   }
 
   return (
-    <div className="mt-24 container mx-auto p-5">
+    <div className="md:mt-24 mt-14 container mx-auto p-5">
         <div className="mb-10">
-          <h1 className="text-primary text-center text-5xl uppercase">
+          <h1 className="text-primary text-center md:text-5xl text-3xl uppercase">
             {NewsEvents.Category}
           </h1>
         </div>
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-4 gap-14">
             <div className="md:col-span-3">
             <div key={NewsEvents.id} className="">
               <div className="relative overflow-hidden">
