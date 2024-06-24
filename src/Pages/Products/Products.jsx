@@ -9,7 +9,7 @@ import useProducts from "../../Hooks/useProducts";
 import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const Products = () => {
-  const [products, isLoading] = useProducts()
+  const { products, isLoading } = useProducts();
   console.log(products);
   
   const [currentPage, setCurrentPage] = useState(() => {

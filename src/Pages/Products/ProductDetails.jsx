@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const ProductDetails = () => {
-  const [products, isLoading] = useProducts();
+  const {products, isLoading} = useProducts();
   const { id } = useParams();
   const productDetail = products.find((product) => product._id === id);
   console.log(productDetail);
