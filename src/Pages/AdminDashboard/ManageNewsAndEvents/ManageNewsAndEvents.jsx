@@ -3,7 +3,7 @@ import { Card, Typography } from '@material-tailwind/react';
 import LoadingSpinner from '../../../Hooks/Loading/LoadingSpinner';
 
 const ManageNewsAndEvents = () => {
-    const [newsAndEvents, isLoading] = useNewsAndEvents();
+    const {newsAndEvents, isLoading} = useNewsAndEvents();
     const TABLE_HEAD = [" ", "Name", "Date", "Category", "Action"];
     console.log(newsAndEvents);
   

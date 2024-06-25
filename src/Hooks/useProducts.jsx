@@ -1,3 +1,17 @@
+
+
+import { useQuery } from "react-query";
+
+const useProducts = () => {
+  const { data: products = [],isLoading, refetch } = useQuery(["Products"], async () => {
+    const res = await fetch("http://localhost:3000/products");
+    return res.json();
+  });
+  return { products, isLoading, refetch };
+};
+
+export default useProducts;
+
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 
@@ -24,15 +38,3 @@
 
 // export default useProducts;
 
-
-import { useQuery } from "react-query";
-
-const useProducts = () => {
-  const { data: products = [],isLoading, refetch } = useQuery(["Products"], async () => {
-    const res = await fetch("http://localhost:3000/products");
-    return res.json();
-  });
-  return { products, isLoading, refetch };
-};
-
-export default useProducts;

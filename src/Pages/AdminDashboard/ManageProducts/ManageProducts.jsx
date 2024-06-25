@@ -46,7 +46,9 @@ const ManageProducts = () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(editedProduct)
+        
       });
+      console.log(response);
       if (response.ok) {
         const updatedProduct = await response.json();
         setProducts((prevProducts) =>
@@ -183,7 +185,7 @@ const ManageProducts = () => {
         onRequestClose={closeModal}
         contentLabel="Edit Product"
         ariaHideApp={false}
-        className="modal"
+        className="modal w-1/2 mx-auto"
       >
         <h2 className="text-xl mb-4">Edit Product</h2>
         <form>

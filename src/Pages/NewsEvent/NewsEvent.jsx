@@ -4,7 +4,8 @@ import useNewsAndEvents from "../../Hooks/useNewsAndEvents";
 import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const NewsEvent = () => {
-  const [newsEvent, isLoading] = useNewsAndEvents();
+  const {newsAndEvents, isLoading} = useNewsAndEvents();
+  console.log(newsAndEvents);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   if (isLoading) {
@@ -17,7 +18,7 @@ const NewsEvent = () => {
   };
 
   // Sort news events by date in descending order
-  const sortedNewsEvents = newsEvent.sort(
+  const sortedNewsEvents = newsAndEvents.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 

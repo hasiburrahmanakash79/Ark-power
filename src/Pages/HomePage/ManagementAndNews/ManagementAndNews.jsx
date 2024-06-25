@@ -6,13 +6,13 @@ import useNewsAndEvents from "../../../Hooks/useNewsAndEvents";
 import LoadingSpinner from "../../../Hooks/Loading/LoadingSpinner";
 
 const ManagementAndNews = () => {
-  const [newsEvent, isLoading] = useNewsAndEvents();
-  console.log(newsEvent);
-  const sortedNewsEvents = newsEvent.sort(
+  const {newsAndEvents, isLoading} = useNewsAndEvents();
+  console.log(newsAndEvents);
+  const sortedNewsEvents = newsAndEvents?.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
-  if (isLoading && newsEvent) {
+  if (isLoading && newsAndEvents) {
     <LoadingSpinner />;
   }
   return (
@@ -24,7 +24,7 @@ const ManagementAndNews = () => {
               News and event
             </h1>
             <div className="scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-slate-300 scrollbar-w-2 scrollbar-track-transparent overflow-y-auto h-[40vh] border rounded-lg space-y-4 pr-3">
-              {sortedNewsEvents.map((singleNews) => (
+              {sortedNewsEvents?.map((singleNews) => (
                 <Link to={`/newsDetails/${singleNews._id}`} key={singleNews._id}>
                   <div className="">
                     <div className="flex items-center justify-between gap-5 border-b hover:text-[#00ADF2] ">

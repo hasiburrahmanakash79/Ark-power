@@ -5,7 +5,7 @@ import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 import useShuffleNews from "../../Hooks/useShuffleNews";
 
 const NewsDetails = () => {
-  const [newsAndEvents, isLoading] = useNewsAndEvents();
+  const {newsAndEvents, isLoading} = useNewsAndEvents();
   const [shuffleNews] = useShuffleNews();
 
   const { id } = useParams();
