@@ -55,7 +55,7 @@ const Products = () => {
           {currentProducts.map((product) => (
             <Card
               key={product?.id}
-              className="overflow-hidden hover:shadow-xl"
+              className="overflow-hidden p-1 border hover:shadow-xl"
             >
               <CardHeader
                 floated={false}
@@ -63,7 +63,7 @@ const Products = () => {
                 color="transparent"
                 className="m-0 rounded-none"
               >
-                <div className="relative h-44 overflow-hidden">
+                <div className="relative h-44 rounded-lg overflow-hidden">
                   <img
                     src={product?.imageUrl}
                     alt={product?.name}

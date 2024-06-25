@@ -5,7 +5,6 @@ import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const NewsEvent = () => {
   const {newsAndEvents, isLoading} = useNewsAndEvents();
-  console.log(newsAndEvents);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   if (isLoading) {
@@ -68,8 +67,13 @@ const NewsEvent = () => {
                 <p className="font-bold uppercase">{news.Category}</p>
                 <p>{news.date}</p>
               </div>
-              <h1 className="text-2xl font-bold mb-3">{news.title}</h1>
-              <div>
+              <Link
+                  to={`/newsDetails/${news._id}`}
+                  className="hover:underline text-2xl text-gray-700 font-bold"
+                >
+                  {news.title}
+                </Link>
+              <div className="mt-2">
                 {news.details.slice(0, 100)}.....{" "}
                 <Link
                   to={`/newsDetails/${news._id}`}

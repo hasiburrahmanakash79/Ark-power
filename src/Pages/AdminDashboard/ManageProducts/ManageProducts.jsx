@@ -87,7 +87,6 @@ const ManageProducts = () => {
             return res.json();
           })
           .then((data) => {
-            // Handle successful response
             if (data.deletedCount > 0) {
               refetch();
               Swal.fire("Deleted!", "The product has been deleted.", "success");

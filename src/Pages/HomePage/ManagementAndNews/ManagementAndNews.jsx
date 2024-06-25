@@ -16,7 +16,7 @@ const ManagementAndNews = () => {
     <LoadingSpinner />;
   }
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+    <div className="min-h-[70vh] bg-slate-50 flex items-center justify-center p-5 mt-10" >
       <div>
         <div className="grid md:grid-cols-2 gap-20">
           <div>

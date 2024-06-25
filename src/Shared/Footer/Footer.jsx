@@ -12,12 +12,12 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-black/70 text-white">
+    <div className="bg-black/15 text-black/70">
       <div>
         <div className="grid md:grid-cols-4 grid-cols-1 py-10 px-5 md:gap-5">
           <div>
             <img
-              src="https://i.ibb.co/GvRpCT5/ark-power-white.png"
+              src="https://www.arkpowerltd.com.bd/assets/images/arkpower/logo.jpg"
               alt=""
             />
             <p className="text-[10px] mt-3">

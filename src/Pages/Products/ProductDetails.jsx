@@ -15,9 +15,6 @@ const ProductDetails = () => {
   return (
     <div className="min-h-screen container mx-auto p-5">
       <div className="md:mt-24 mt-14">
-        <h1 className="text-primary text-center mb-12 md:text-5xl text-3xl uppercase">
-          {productDetail?.name}
-        </h1>
         <div className="grid md:grid-cols-5 gap-16 ">
           <div className="md:col-span-2">
             <img
@@ -27,6 +24,9 @@ const ProductDetails = () => {
             />
           </div>
           <div className="md:col-span-3">
+          <h1 className="text-primary mb-5 md:text-5xl text-3xl uppercase">
+          {productDetail?.name}
+        </h1>
             <p className="text-gray-600">{productDetail?.description}</p>
             <div className="pt-10">
               <h4 className="text-xl font-bold text-gray-700 mb-2">PDF Link</h4>
