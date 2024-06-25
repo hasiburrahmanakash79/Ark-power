@@ -18,6 +18,7 @@ import ManageNewsAndEvents from "../Pages/AdminDashboard/ManageNewsAndEvents/Man
 import Services from "../Pages/Services/Services";
 import AddCareer from "../Pages/AdminDashboard/AddCareer/AddCareer";
 import Career from "../Pages/Career/Career";
+import AdminHome from "../Pages/AdminDashboard/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       path: '/dashboard',
       element: <Dashboard/>,
       children: [
+        {
+          path: 'adminHome',
+          element: <AdminHome/>
+        },
         {
           path: 'manageProducts',
           element: <ManageProducts/>
