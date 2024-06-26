@@ -25,13 +25,16 @@ const Career = () => {
       </div>
 
       <div className="container mx-auto p-5">
+        <div>
+          <h1 className="text-3xl text-primary text-center mb-10 font-semibold">Career Opportunity and Vacancy Announcement</h1>
+        </div>
         <div className="grid md:grid-cols-2 gap-10">
           <div>
             <h1 className="text-xl font-bold">Job Opportunity</h1>
             {jobs.length > 0 ? (
               jobs.map((careers, index) => (
                 <div key={careers._id} className="pt-5 border-b ">
-                  <Link className="hover:text-blue-400">{index + 1}. {careers.title}</Link>
+                  <Link to={`/careerDetails/${careers?._id}`} className="hover:text-blue-400">{index + 1}. {careers.title}</Link>
                 </div>
               ))
             ) : (
@@ -41,9 +44,9 @@ const Career = () => {
           <div>
             <h1 className="text-xl font-bold">Internship Opportunity</h1>
             {internship.length > 0 ? (
-              internship.map((careers) => (
-                <div key={careers._id}>
-                  <h1>{careers.title}</h1>
+              internship.map((careers, index) => (
+                <div key={careers._id} className="pt-5 border-b ">
+                  <Link to={`/careerDetails/${careers?._id}`} className="hover:text-blue-400">{index + 1}. {careers.title}</Link>
                 </div>
               ))
             ) : (
@@ -57,11 +60,3 @@ const Career = () => {
 };
 
 export default Career;
-
-{
-  /* <div>
-  <div
-    dangerouslySetInnerHTML={{ __html: isLoading ? "Loading..." : htmlContent }}
-  />
-</div>; */
-}
