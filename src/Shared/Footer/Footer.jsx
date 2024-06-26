@@ -122,11 +122,11 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-black p-4 text-sm">
-          <p className="text-center">© All Rights Reserved, ARK POWER LTD.</p>
+          <p className="text-center text-white">© All Rights Reserved, ARK POWER LTD.</p>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

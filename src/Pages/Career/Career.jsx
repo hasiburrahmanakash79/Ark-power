@@ -1,54 +1,19 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
+import useCareer from "../../Hooks/useCareer";
 
 const Career = () => {
+  const {careerContent, isLoading} = useCareer()
 
-  const [htmlContent, setHtmlContent] = useState('<p><strong>Responsibilities</strong>: The incumbent will be responsible for the following:</p><ul type="disc"><li>Assist in the financial and commercial evaluation of projects and opportunities, including project financing, valuations, investments, M&amp;A transactions, etc.</li><li>Responsible for building, maintaining, and running robust financial models for the purposes of valuation, assessing financial and commercial viability, due diligence, and financing.</li><li>Conduct and deliver high quality analysis and data including through running scenarios and sensitivity analysis from FM.</li><li>Assist in the preparation of proposals and bids, working closely with internal cross-functional teams, external financiers, and regulators.</li><li>Provide assistant in executing and closings of transactions, including transaction structuring, negotiations of final documentation, etc.</li>');
-  const [isLoading, setIsLoading] = useState(true); // Initialize loading state
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
-  // useEffect(() => {
-  //   setIsLoading(true); // Set loading to true before starting the data fetch
-  //   axios.get("http://localhost:3000/career")
-  //     .then((response) => {
-  //       setHtmlContent(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data with Axios", error);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false); 
-  //     });
-  // }, []);
-
-  console.log(htmlContent);
-  // const [htmlContent, setHtmlContent] = useState("");
-  const [plainText, setPlainText] = useState("");
-
-  // useEffect(() => {
-  //   const fetchCareers = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:3000/career");
-  //       setHtmlContent(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching careers:", error);
-  //       alert("Failed to fetch careers");
-  //     }
-  //   };
-
-  //   fetchCareers();
-  // }, []);
-
-  const stripHtml = (html) => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = html;
-    return tempDiv.textContent || tempDiv.innerText || "";
-  };
-
-  const handleExtractText = () => {
-    const text = stripHtml(htmlContent);
-    setPlainText(text);
-  };
-
+  const jobs = careerContent.filter((item) => item.category === "Job");
+  const internship = careerContent.filter(
+    (item) => item.category === "Internship"
+  );
+  console.log(jobs, internship);
   return (
     <div>
       <div className="bg-[url('https://neevfund.com/wp-content/uploads/2023/03/career-banner.jpg')] bg-cover">
@@ -59,31 +24,33 @@ const Career = () => {
         </div>
       </div>
 
-      <div className="container mx-auto bg-red-400 p-5 pt-32">
-        <div>
-          <div
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              marginBottom: "10px",
-            }}
-            dangerouslySetInnerHTML={{ __html: htmlContent }}
-          />
-          <button onClick={handleExtractText}>Extract Text</button>
-        </div>
-        {plainText && (
+      <div className="container mx-auto p-5">
+        <div className="grid md:grid-cols-2 gap-10">
           <div>
-            <div
-              style={{
-                border: "1px solid #ccc",
-                padding: "10px",
-                marginTop: "10px",
-              }}
-            >
-              {plainText}
-            </div>
+            <h1 className="text-xl font-bold">Job Opportunity</h1>
+            {jobs.length > 0 ? (
+              jobs.map((careers, index) => (
+                <div key={careers._id} className="pt-5 border-b ">
+                  <Link className="hover:text-blue-400">{index + 1}. {careers.title}</Link>
+                </div>
+              ))
+            ) : (
+              <p>No Job Available right now.</p>
+            )}
           </div>
-        )}
+          <div>
+            <h1 className="text-xl font-bold">Internship Opportunity</h1>
+            {internship.length > 0 ? (
+              internship.map((careers) => (
+                <div key={careers._id}>
+                  <h1>{careers.title}</h1>
+                </div>
+              ))
+            ) : (
+              <p>No internship available right now.</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -91,47 +58,10 @@ const Career = () => {
 
 export default Career;
 
-// const [htmlContent, setHtmlContent] = useState(
-//   '<p>asdbdhljasd&nbsp;</p>\n<p>askdnbkjnkjasd</p>\n<p>asjnbdjknkas</p>\n<p>asdnkjnjknas</p>\n<p>sadnkkjas</p>\n<p>&nbsp;</p>'
-// );
-// const [plainText, setPlainText] = useState("");
-
-// const stripHtml = (html) => {
-//   const tempDiv = document.createElement("div");
-//   tempDiv.innerHTML = html;
-//   return tempDiv.textContent || tempDiv.innerText || "";
-// };
-
-// const handleExtractText = () => {
-//   const text = stripHtml(htmlContent);
-//   setPlainText(text);
-// };
-
-// return (
-//   <div className="container mx-auto bg-red-400 p-5 pt-32">
-//     <div>
-//       <div
-//         style={{
-//           border: "1px solid #ccc",
-//           padding: "10px",
-//           marginBottom: "10px",
-//         }}
-//         dangerouslySetInnerHTML={{ __html: htmlContent }}
-//       />
-//       <button onClick={handleExtractText}>Extract Text</button>
-//     </div>
-//     {plainText && (
-//       <div>
-//         <div
-//           style={{
-//             border: "1px solid #ccc",
-//             padding: "10px",
-//             marginTop: "10px",
-//           }}
-//         >
-//           {plainText}
-//         </div>
-//       </div>
-//     )}
-//   </div>
-// );
+{
+  /* <div>
+  <div
+    dangerouslySetInnerHTML={{ __html: isLoading ? "Loading..." : htmlContent }}
+  />
+</div>; */
+}

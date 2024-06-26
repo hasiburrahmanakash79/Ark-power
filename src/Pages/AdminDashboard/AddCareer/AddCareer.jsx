@@ -92,8 +92,8 @@ const AddCareer = () => {
             }`}
           >
             <option disabled>Select one</option>
-            <option value="News">Job</option>
-            <option value="Events">Internship</option>
+            <option value="Job">Job</option>
+            <option value="Internship">Internship</option>
           </select>
           {errors.Category && (
             <p className="text-red-500 text-sm mt-1">Category is required</p>
