@@ -19,7 +19,7 @@ const CareerDetails = () => {
           <p className="text-3xl font-semibold uppercase mb-5">
             {careerDetail.category}
           </p>
-          <Link to='/career' className="btn btn-primary">Back to Career Page</Link>
+          <Link to='/career' className="p-3 border-2 uppercase font-semibold rounded border-black hover:bg-black hover:text-white">Back to Career Page</Link>
         </div>
         <div className="col-span-3">
           <h1 className="text-3xl font-semibold mb-5">{careerDetail.title}</h1>
