@@ -20,6 +20,7 @@ import AddCareer from "../Pages/AdminDashboard/AddCareer/AddCareer";
 import Career from "../Pages/Career/Career";
 import AdminHome from "../Pages/AdminDashboard/AdminHome/AdminHome";
 import CareerDetails from "../Pages/Career/CareerDetails";
+import ManageCareer from "../Pages/AdminDashboard/ManageCareer/ManageCareer";
 
 const router = createBrowserRouter([
     {
@@ -107,6 +108,10 @@ const router = createBrowserRouter([
         {
           path: 'addCareer',
           element: <AddCareer/>
+        },
+        {
+          path: 'manageCareer',
+          element: <ManageCareer/>
         },
       ]
     },

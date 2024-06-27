@@ -6,6 +6,8 @@ import {
   FaFileInvoice,
   FaBook,
   FaBookMedical,
+  FaClipboardList,
+  FaClipboardCheck
 } from "react-icons/fa6";
 import { MdHomeWork } from "react-icons/md";
 import { IconContext } from "react-icons";
@@ -37,6 +39,8 @@ const Dashboard = () => {
     Home: FaHome,
     News: FaBookMedical,
     News_manage: FaBook,
+    Career: FaClipboardList,
+    Career_manage: FaClipboardCheck,
     Product_add: FaFileMedical,
     Product_manage: FaFileInvoice,
   };
@@ -82,7 +86,13 @@ const Dashboard = () => {
     {
       title: "Add Career",
       path: "/dashboard/addCareer",
-      icon: iconMappings.News_manage,
+      icon: iconMappings.Career,
+      role: "admin",
+    },
+    {
+      title: "Manage Career",
+      path: "/dashboard/manageCareer",
+      icon: iconMappings.Career_manage,
       role: "admin",
     },
     {
