@@ -38,14 +38,14 @@ const ManageCareer = () => {
             // Handle successful response
             if (data.deletedCount > 0) {
               refetch();
-              Swal.fire("Deleted!", "The news has been deleted.", "success");
+              Swal.fire("Deleted!", "The Career has been deleted.", "success");
             } else {
-              Swal.fire("Error", "Failed to delete the product.", "error");
+              Swal.fire("Error", "Failed to delete the Career.", "error");
             }
           })
           .catch((error) => {
             console.error("Error:", error);
-            Swal.fire("Error", "An error occurred while deleting the news.", "error");
+            Swal.fire("Error", "An error occurred while deleting the Career.", "error");
           });
       }
     });
