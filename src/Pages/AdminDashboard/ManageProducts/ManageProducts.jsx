@@ -38,27 +38,41 @@ const ManageProducts = () => {
     setEditedProduct({ ...editedProduct, [name]: value });
   };
 
-  const handleSave = async () => {
+  const handleSave = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const price = form.price.value;
+    const imageUrl = form.imageUrl.value;
+    const description = form.description.value;
+    const update = {
+      name,
+      price,
+      imageUrl,
+      description
+    };
+    console.log(update);
+
     try {
       const response = await fetch(`http://localhost:3000/products/${selectedProduct._id}`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(editedProduct)
-        
+        body: JSON.stringify(update)
       });
-      console.log(response);
+
       if (response.ok) {
         const updatedProduct = await response.json();
-        setProducts((prevProducts) =>
-          prevProducts.map((product) =>
-            product._id === updatedProduct._id ? updatedProduct : product
-          )
-        );
+        if(updatedProduct){
+          refetch(); // Refresh the product list after update
+        Swal.fire("Updated!", "The product has been Updated.", "success");
         closeModal();
+        }
       } else {
         console.error("Failed to update product");
+        const errorText = await response.text();
+        console.error("Error response:", errorText);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -101,8 +115,6 @@ const ManageProducts = () => {
       }
     });
   };
-  
-  
 
   return (
     <Card className="h-full w-full">
@@ -171,7 +183,7 @@ const ManageProducts = () => {
                 </td>
                 <td className="p-2 flex gap-5 md:p-4 text-black">
                   <button className="btn bg-orange-400 p-2" onClick={() => openModal(product)}>Edit</button>
-                  <button className="btn bg-red-400 p-2" onClick={() => handleDelete(product._id)}>Delete</button>
+                  <button className="btn-warning" onClick={() => handleDelete(product._id)}>Delete</button>
                 </td>
               </tr>
             ))}
@@ -184,10 +196,10 @@ const ManageProducts = () => {
         onRequestClose={closeModal}
         contentLabel="Edit Product"
         ariaHideApp={false}
-        className="modal w-1/2 mx-auto"
+        className="modal w-1/2 mx-auto md:mt-32 mt-16 bg-blue-200 border rounded-lg p-10 backdrop-blur-lg"
       >
-        <h2 className="text-xl mb-4">Edit Product</h2>
-        <form>
+        <h2 className="text-xl mb-4 text-center font-semibold">Edit Product</h2>
+        <form onSubmit={handleSave}>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Image URL
@@ -232,23 +244,22 @@ const ManageProducts = () => {
               name="description"
               value={editedProduct.description}
               onChange={handleInputChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border h-32 border-gray-300 rounded-md"
             ></textarea>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-5">
             <button
               type="button"
-              className="btn bg-gray-500 text-white p-2 mr-2"
+              className="btn-warning"
               onClick={closeModal}
             >
               Cancel
             </button>
             <button
-              type="button"
-              className="btn bg-blue-500 text-white p-2"
-              onClick={handleSave}
+              type="submit"
+              className="btn-Secondary"
             >
-              Save
+              Save Changes
             </button>
           </div>
         </form>
@@ -258,4 +269,3 @@ const ManageProducts = () => {
 };
 
 export default ManageProducts;
-   
