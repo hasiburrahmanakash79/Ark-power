@@ -52,7 +52,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="w-96">
+    <div className="">
       <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl shadow-lg p-8">
         <h2 className="text-4xl font-bold mb-8 text-blue-600 text-center">Product Input</h2>
         <div className="mb-6">
@@ -61,7 +61,7 @@ const AddProduct = () => {
             type="text"
             id="productName"
             {...register('name', { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${errors.productName ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            className={`px-4 py-2 md:w-96 rounded-lg border-2 ${errors.productName ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
           />
           {errors.productName && <p className="text-red-500 text-xs mt-1">Product name is required.</p>}
         </div>

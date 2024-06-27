@@ -182,7 +182,7 @@ const ManageProducts = () => {
                   </Typography>
                 </td>
                 <td className="p-2 flex gap-5 md:p-4 text-black">
-                  <button className="btn bg-orange-400 p-2" onClick={() => openModal(product)}>Edit</button>
+                  <button className="btn-error" onClick={() => openModal(product)}>Edit</button>
                   <button className="btn-warning" onClick={() => handleDelete(product._id)}>Delete</button>
                 </td>
               </tr>
@@ -196,7 +196,7 @@ const ManageProducts = () => {
         onRequestClose={closeModal}
         contentLabel="Edit Product"
         ariaHideApp={false}
-        className="modal w-1/2 mx-auto md:mt-32 mt-16 bg-blue-200 border rounded-lg p-10 backdrop-blur-lg"
+        className="modal w-1/2 mx-auto md:mt-32 mt-16 bg-blue-50 border rounded-lg p-10 shadow-2xl"
       >
         <h2 className="text-xl mb-4 text-center font-semibold">Edit Product</h2>
         <form onSubmit={handleSave}>

@@ -44,7 +44,7 @@
 
   .btn-warning {
     background-color: #ed0404;
-    color: #000000;
+    color: #fbfbfb;
     padding: 10px 15px;
     border-radius: 5px;
     font-size: 16px;
@@ -53,7 +53,23 @@
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   }
   .btn-warning:hover {
-    background-color: #9e0202;
+    background-color: #d10101;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .btn-error {
+    background-color: #c17005;
+    color: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  .btn-error:hover {
+    background-color: #ac6304;
     color: white;
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
