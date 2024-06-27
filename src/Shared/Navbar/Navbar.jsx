@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* logo section */}
         <Link to='/' className="font-bold text-2xl cursor-pointer flex items-center gap-1">
           <img
-            src="https://www.arkpowerltd.com.bd/assets/images/arkpower/logo.jpg"
+            src="https://i.ibb.co/61nBkFS/ARK-power-ltd-main.png"
             alt="Logo"
             className="md:w-72 w-48"
           />

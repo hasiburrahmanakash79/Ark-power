@@ -15,7 +15,7 @@ const CareerDetails = () => {
   return (
     <div className="container mx-auto p-5 md:mt-24 mt-14">
       <div className="grid md:grid-cols-4 gap-10">
-        <div className="md:col-span-1">
+        <div className="md:col-span-2 lg:col-span-1">
           <p className="text-3xl font-semibold uppercase mb-5">
             {careerDetail.category}
           </p>
