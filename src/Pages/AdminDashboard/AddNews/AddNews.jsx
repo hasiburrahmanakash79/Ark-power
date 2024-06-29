@@ -79,7 +79,7 @@ const AddNews = () => {
             type="text"
             {...register("title", { required: true })}
             placeholder="Title"
-            className={`w-full p-2 mt-1 border rounded ${
+            className={`w-96 p-2 mt-1 border rounded ${
               errors.title ? "border-red-500" : "border-gray-300"
             }`}
           />

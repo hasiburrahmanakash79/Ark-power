@@ -98,7 +98,7 @@ const ManageCareer = () => {
                   </Typography>
                 </td>
                 <td className="p-2 flex gap-5 md:p-4 text-black">
-                  <button className="btn bg-red-400 p-2" onClick={() => handleDelete(_id)}>Delete</button>
+                  <button className="btn-warning" onClick={() => handleDelete(_id)}>Delete</button>
                 </td>
               </tr>
             ))}
