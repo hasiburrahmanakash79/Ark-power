@@ -10,8 +10,8 @@ const HeroContentOne = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium libero fugiat magnam. Natus fugit deserunt dignissimos blanditiis id tempore praesentium veritatis? Ad, rerum. Veniam, iusto illo dolorum recusandae sint dolorem?
         </p>
         <div>
-          <Link to='/'>
-            <button className="btn-primary mt-5 md:mb-0 mb-10">Explore</button>
+          <Link to='/about-us'>
+            <button className="btn-primary mt-5 md:mb-0 mb-10">About Us</button>
           </Link>
         </div>
       </div>

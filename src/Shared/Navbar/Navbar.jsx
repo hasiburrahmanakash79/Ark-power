@@ -8,7 +8,7 @@ const Navbar = () => {
     { name: "Service", link: "/service" },
     { name: "Products", link: "/products" },
     { name: "News & Event", link: "/news-event" },
-    { name: "About us", dropdown: true },
+    { name: "About us", link:"/about-us", dropdown: true },
     { name: "Contact", link: "/contact" },
     { name: "Career", link: "/career" },
   ];

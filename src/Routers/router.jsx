@@ -1,12 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
-import About from "../Pages/About/About";
 import Home from "../Pages/HomePage/Home";
 import NewsEvent from "../Pages/NewsEvent/NewsEvent";
 import Contact from "../Pages/Contact/Contact";
 import OurPolicy from "../Pages/About/OurPolicy";
-import Directors from "../Pages/About/Directors";
-import Management from "../Pages/About/Management";
 import Products from "../Pages/Products/Products";
 import Dashboard from "../Layouts/Dashboard";
 import ManageProducts from "../Pages/AdminDashboard/ManageProducts/ManageProducts";
@@ -21,6 +18,8 @@ import Career from "../Pages/Career/Career";
 import AdminHome from "../Pages/AdminDashboard/AdminHome/AdminHome";
 import CareerDetails from "../Pages/Career/CareerDetails";
 import ManageCareer from "../Pages/AdminDashboard/ManageCareer/ManageCareer";
+import MissionAndVision from "../Pages/About/MissionAndVision";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
     {
@@ -33,19 +32,11 @@ const router = createBrowserRouter([
         },
         {
           path: '/what-do',
-          element: <About/>,
+          element: <MissionAndVision/>,
         },
         {
           path: '/policy',
           element: <OurPolicy/>
-        },
-        {
-          path: '/directors',
-          element: <Directors/>
-        },
-        {
-          path: '/management',
-          element: <Management/>
         },
         {
           path: '/products',
@@ -58,6 +49,10 @@ const router = createBrowserRouter([
         {
           path: '/service',
           element: <Services/>
+        },
+        {
+          path: '/about-us',
+          element: <About/>
         },
         {
           path: '/news-event',
