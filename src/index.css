@@ -11,7 +11,7 @@
     color: black;
     padding: 10px 20px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -27,9 +27,9 @@
   .btn-Secondary {
     background-color: #00ab2d;
     color: #ffffff;
-    padding: 10px 15px;
+    padding: 3px 7px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -45,9 +45,9 @@
   .btn-warning {
     background-color: #ed0404;
     color: #fbfbfb;
-    padding: 10px 15px;
+    padding: 3px 7px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -61,9 +61,9 @@
   .btn-error {
     background-color: #c17005;
     color: #f9f9f9;
-    padding: 10px 15px;
+    padding: 3px 7px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;

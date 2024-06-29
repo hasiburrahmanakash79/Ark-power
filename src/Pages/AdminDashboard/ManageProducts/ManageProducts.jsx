@@ -52,10 +52,9 @@ const ManageProducts = () => {
       description
     };
     console.log(update);
-
     try {
       const response = await fetch(`http://localhost:3000/products/${selectedProduct._id}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -65,7 +64,7 @@ const ManageProducts = () => {
       if (response.ok) {
         const updatedProduct = await response.json();
         if(updatedProduct){
-          refetch(); // Refresh the product list after update
+          refetch();
         Swal.fire("Updated!", "The product has been Updated.", "success");
         closeModal();
         }
@@ -146,7 +145,7 @@ const ManageProducts = () => {
               <tr key={index} className="even:bg-blue-gray-50/50">
                 <td className="p-2 md:p-4">
                   <div className="avatar">
-                    <div className="w-20 rounded">
+                    <div className="w-10 h-10 rounded">
                       <img
                         src={product.imageUrl}
                         alt="Product"
