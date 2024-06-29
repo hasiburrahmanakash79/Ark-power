@@ -239,7 +239,7 @@ const ManageNewsAndEvents = () => {
             </label>
             <input
               type="text"
-              name="name"
+              name="title"
               value={editedNews.title}
               onChange={handleInputChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -251,7 +251,7 @@ const ManageNewsAndEvents = () => {
             </label>
             <input
               type="text"
-              name="price"
+              name="date"
               value={editedNews.date}
               onChange={handleInputChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -262,7 +262,7 @@ const ManageNewsAndEvents = () => {
               Description
             </label>
             <textarea
-              name="description"
+              name="details"
               value={editedNews.details}
               onChange={handleInputChange}
               className="mt-1 p-2 block w-full border h-32 border-gray-300 rounded-md"
