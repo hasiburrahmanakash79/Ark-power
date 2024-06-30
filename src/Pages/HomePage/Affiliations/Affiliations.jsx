@@ -77,8 +77,8 @@ const Affiliations = () => {
       </h1>
       <Slider {...settings}>
         {image.map((img, index) => (
-          <a href={img?.path} key={index} className="px-7">
-            <img src={img.image} alt="" className="h-12" />
+          <a href={img?.path} key={index} className="px-7 pb-10">
+            <img src={img.image} alt="" className="h-12 " />
           </a>
         ))}
       </Slider>
