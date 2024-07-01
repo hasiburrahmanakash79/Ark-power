@@ -20,17 +20,16 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data);
     signUpUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
-      navigate(from, { replace: true });
       console.log(loggedUser);
 
-      updateUserInfo(data.name, data.photo)
+      updateUserInfo(data.name)
         .then(() => {
           const userInfo = {
             displayName: data.name,
             email: data.email,
-            photoURL: data.photo,
             role: 'user'
           };
           fetch("http://localhost:3000/users", {
@@ -48,7 +47,7 @@ const SignUp = () => {
                 Swal.fire({
                   showConfirmButton: false,
                   timer: 2000,
-                  title: "Login Successful",
+                  title: "Sign up Successful",
                   icon: "success",
                 });
               }
@@ -97,7 +96,7 @@ const SignUp = () => {
           <label className="block text-gray-700">Password</label>
           <input
             type="password"
-            {...register("Password", { required: true })}
+            {...register("password", { required: true })}
             placeholder="Password"
             className={`w-96 p-2 mt-1 border rounded ${
               errors.title ? "border-red-500" : "border-gray-300"
@@ -112,7 +111,7 @@ const SignUp = () => {
           type="submit"
           className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
         >
-          login
+          Sign Up
         </button>
 
         <div className="mt-5 text-center">

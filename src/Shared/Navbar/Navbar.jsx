@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Bars3BottomRightIcon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const Links = [
     { name: "Home", link: "/" },
     { name: "Service", link: "/service" },
@@ -25,6 +29,19 @@ const Navbar = () => {
   const handleLinkClick = () => {
     setOpen(false); // Close the main menu
     setDropdownOpen(false); // Close the dropdown menu
+  };
+
+  const handleLogout = () => {
+    logOut()
+      .then(
+        Swal.fire({
+          icon: "success",
+          title: "Log Out Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      )
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -108,6 +125,10 @@ const Navbar = () => {
               )}
             </li>
           ))}
+          {
+            user ? <button className="ml-8"  onClick={handleLogout}>Log out</button> : <></>
+          }
+          
         </ul>
       </div>
     </div>

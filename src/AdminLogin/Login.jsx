@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const { logInUser } = useContext(AuthContext);
+  const { logInUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,11 +16,26 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = (data) => {
+    console.log("Form data:", data);
+
+    logInUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 2000,
+          title: "Login Successful",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -47,7 +63,7 @@ const Login = () => {
           <label className="block text-gray-700">Password</label>
           <input
             type="password"
-            {...register("Password", { required: true })}
+            {...register("password", { required: true })}
             placeholder="Password"
             className={`w-96 p-2 mt-1 border rounded ${
               errors.title ? "border-red-500" : "border-gray-300"
@@ -62,11 +78,16 @@ const Login = () => {
           type="submit"
           className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
         >
-          login
+          Login
         </button>
 
         <div className="mt-5 text-center">
-            <span>Don't have an account <Link className="text-blue-400" to='/sign-up'>Sign up</Link></span>
+          <span>
+            Don't have an account{" "}
+            <Link className="text-blue-400" to="/sign-up">
+              Sign up
+            </Link>
+          </span>
         </div>
       </form>
     </div>
