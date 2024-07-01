@@ -8,7 +8,7 @@ import { useState } from "react";
 const ManageNewsAndEvents = () => {
   const { newsAndEvents, refetch, isLoading } = useNewsAndEvents();
   const TABLE_HEAD = [" ", "Name", "Date", "Category", "Action"];
-  console.log(newsAndEvents);
+  // console.log(newsAndEvents);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedNews, setSelectedNews] = useState(null);
   const [editedNews, setEditedNews] = useState({

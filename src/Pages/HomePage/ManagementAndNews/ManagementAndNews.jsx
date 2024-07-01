@@ -14,7 +14,7 @@ import {
 
 const ManagementAndNews = () => {
   const { newsAndEvents, isLoading } = useNewsAndEvents();
-  console.log(newsAndEvents);
+  // console.log(newsAndEvents);
   const sortedNewsEvents = newsAndEvents?.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );

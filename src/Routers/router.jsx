@@ -91,7 +91,7 @@ const router = createBrowserRouter([
       element: <Dashboard/>,
       children: [
         {
-          path: 'adminHome',
+          path: '',
           element: <AdminHome/>
         },
         {

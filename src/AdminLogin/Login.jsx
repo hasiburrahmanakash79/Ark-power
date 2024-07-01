@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const {
     register,
@@ -23,8 +23,21 @@ const Login = () => {
 
     logInUser(data.email, data.password)
       .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
+        const user = result.user;
+        const loggedUser ={
+            email: user.email
+        };
+        fetch("http://localhost:3000/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(loggedUser),
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log("jwt response",data);
+          })
         navigate(from, { replace: true });
         Swal.fire({
           showConfirmButton: false,
