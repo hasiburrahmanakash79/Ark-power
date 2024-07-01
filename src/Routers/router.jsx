@@ -22,6 +22,7 @@ import MissionAndVision from "../Pages/About/MissionAndVision";
 import About from "../Pages/About/About";
 import Login from "../AdminLogin/Login";
 import SignUp from "../AdminLogin/SignUp";
+import ManageAdmin from "../Pages/AdminDashboard/ManageAdmin/ManageAdmin";
 
 const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
         {
           path: '',
           element: <AdminHome/>
+        },
+        {
+          path: 'manageAdmin',
+          element: <ManageAdmin/>
         },
         {
           path: 'manageProducts',
