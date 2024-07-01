@@ -1,17 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { RouterProvider } from 'react-router-dom'
-import router from './Routers/router.jsx'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./Routers/router.jsx";
+import { QueryClient, QueryClientProvider } from "react-query";
+import AuthProvider from "./Provider/AuthProvider.jsx";
 
 const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-    <RouterProvider router={router} />
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+  <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </AuthProvider>
   </React.StrictMode>
-  </QueryClientProvider>,
-  
-)
+);

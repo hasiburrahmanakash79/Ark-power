@@ -20,8 +20,18 @@ import CareerDetails from "../Pages/Career/CareerDetails";
 import ManageCareer from "../Pages/AdminDashboard/ManageCareer/ManageCareer";
 import MissionAndVision from "../Pages/About/MissionAndVision";
 import About from "../Pages/About/About";
+import Login from "../AdminLogin/Login";
+import SignUp from "../AdminLogin/SignUp";
 
 const router = createBrowserRouter([
+  {
+    path: '/login',
+    element: <Login/>
+  },
+  {
+    path: '/sign-up',
+    element: <SignUp/>
+  },
     {
       path: "/",
       element: <Main/>,

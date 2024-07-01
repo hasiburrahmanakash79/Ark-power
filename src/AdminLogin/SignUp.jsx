@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const Login = () => {
-    const { logInUser } = useContext(AuthContext);
+const SignUp = () => {
+  const { signUpUser, updateUserInfo } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,7 +20,42 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    signUpUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      navigate(from, { replace: true });
+      console.log(loggedUser);
+
+      updateUserInfo(data.name, data.photo)
+        .then(() => {
+          const userInfo = {
+            displayName: data.name,
+            email: data.email,
+            photoURL: data.photo,
+            role: 'user'
+          };
+          fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                navigate(from, { replace: true });
+                Swal.fire({
+                  showConfirmButton: false,
+                  timer: 2000,
+                  title: "Login Successful",
+                  icon: "success",
+                });
+              }
+            });
+        })
+        .catch((error) => console.log(error.message));
+    });
   };
 
   return (
@@ -66,11 +102,11 @@ const Login = () => {
         </button>
 
         <div>
-            <span>Don't have an account <Link className="text-blue-400" to='/sign-up'>sing up</Link></span>
+            <span>Already have an account <Link>Login</Link></span>
         </div>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
