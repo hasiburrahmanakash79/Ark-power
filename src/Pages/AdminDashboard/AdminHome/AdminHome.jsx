@@ -2,11 +2,11 @@ import React from "react";
 
 const AdminHome = () => {
   return (
-    <div>
+    <div className="p-10">
       <div className="">
         <div className="">
           <img
-            src="https://www.arkpowerltd.com.bd/assets/images/arkpower/logo.jpg"
+            src="https://i.ibb.co/61nBkFS/ARK-power-ltd-main.png"
             alt=""
           />
         </div>

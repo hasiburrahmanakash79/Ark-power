@@ -48,7 +48,7 @@ const Dashboard = () => {
   const Menus = [
     {
       title: "Admin Home",
-      path: "/dashboard/adminHome",
+      path: "/dashboard",
       icon: iconMappings.RoleHome,
       role: "admin",
       gap: true,
