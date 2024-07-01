@@ -64,7 +64,21 @@ const SignUp = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-8 border rounded-lg shadow-lg w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Log In</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Registration</h2>
+        <div className="mb-4">
+          <label className="block text-gray-700">Username</label>
+          <input
+            type="text"
+            {...register("name", { required: true })}
+            placeholder="User name"
+            className={`w-96 p-2 mt-1 border rounded ${
+              errors.title ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.title && (
+            <p className="text-red-500 text-sm mt-1">email name is required</p>
+          )}
+        </div>
         <div className="mb-4">
           <label className="block text-gray-700">Email</label>
           <input
@@ -101,8 +115,8 @@ const SignUp = () => {
           login
         </button>
 
-        <div>
-            <span>Already have an account <Link>Login</Link></span>
+        <div className="mt-5 text-center">
+            <span>Already have an account <Link className="text-blue-500" to='/login'>Login</Link></span>
         </div>
       </form>
     </div>
