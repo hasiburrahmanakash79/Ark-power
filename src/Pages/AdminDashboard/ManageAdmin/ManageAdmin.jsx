@@ -13,26 +13,94 @@ const MAnageAdmin = () => {
     return <LoadingSpinner />;
   }
 
-  const handleAdmin = (id) => {
-    fetch(`http://localhost:3000/users/${id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        refetch();
-        if (data.modifiedCount) {
-          Swal.fire({
-            showConfirmButton: false,
-            timer: 1500,
-            title: `${users.displayName} is admin now`,
-            icon: "success",
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to remove this user!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/users/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "User has been deleted.",
+                "success"
+              );
+            }
           });
-        }
-      });
+      }
+    });
+  };
+
+  const handleAdmin = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to change this role!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, change it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/users/${id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            if (data.modifiedCount) {
+              Swal.fire({
+                showConfirmButton: false,
+                timer: 1500,
+                title: "This user is admin now",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
   };
 
   const handleSuspend = (id) => {
     console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to change this role!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, change it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/suspend/${id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            if (data.modifiedCount) {
+              Swal.fire({
+                showConfirmButton: false,
+                timer: 1500,
+                title: "This user is Suspended",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -81,14 +149,14 @@ const MAnageAdmin = () => {
               <td className="p-2 md:p-4">
                 <Typography
                   variant="small"
-                  color="blue-gray"
+                  color={role === "suspend" ? "red" : "blue-gray"}
                   className="font-normal text-xs md:text-base uppercase"
                 >
                   {role}
                 </Typography>
               </td>
               <td className="p-2 flex gap-5 md:p-4 text-black">
-                {role === "user" ? (
+                {role === "suspend" ? null : role === "user" ? (
                   <button
                     onClick={() => handleAdmin(_id)}
                     className="btn-Secondary"
@@ -103,7 +171,8 @@ const MAnageAdmin = () => {
                     Suspend
                   </button>
                 )}
-                <button className="btn-warning">Delete</button>
+
+                <button onClick={() => handleDelete(_id)} className="btn-warning">Delete</button>
               </td>
             </tr>
           ))}
