@@ -199,7 +199,7 @@ const Dashboard = () => {
       <div
         className={` ${
           open ? "pl-60 pr-4" : "pl-16 pr-2"
-        } duration-500 transition-all h-[100vh] mx-auto${
+        } duration-500 transition-all h-[100vh] mx-auto p-10${
           isAdmin ? "" : ""
         }`}
       >

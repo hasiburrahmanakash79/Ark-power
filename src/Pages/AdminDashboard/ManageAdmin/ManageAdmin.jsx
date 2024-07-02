@@ -1,11 +1,78 @@
-import React from 'react';
+import React from "react";
+import useUsers from "../../../Hooks/useUsers";
+import LoadingSpinner from "../../../Hooks/Loading/LoadingSpinner";
+import { Typography } from "@material-tailwind/react";
 
 const MAnageAdmin = () => {
-    return (
-        <div>
-            <h1>Manage admin</h1>
-        </div>
-    );
+  const { users, isLoading, refetch } = useUsers();
+
+  const TABLE_HEAD = [" ", "User Name", "Email", "Role", "Action"];
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full table-auto text-left">
+        <thead className="">
+          <tr>
+            {TABLE_HEAD.map((head) => (
+              <th
+                key={head}
+                className="border-b border-blue-gray-100 bg-blue-gray-50 p-2 md:p-4"
+              >
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal leading-none opacity-70 text-xs md:text-base"
+                >
+                  {head}
+                </Typography>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(({ _id, displayName, email, role }, index) => (
+            <tr key={index} className="even:bg-blue-gray-50/50">
+              <td className="p-2 md:p-4">{index + 1}</td>
+              <td className="p-2 md:p-4">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal text-xs md:text-base"
+                >
+                  {displayName}
+                </Typography>
+              </td>
+              <td className="p-2 md:p-4">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal text-xs md:text-base"
+                >
+                  {email}
+                </Typography>
+              </td>
+              <td className="p-2 md:p-4">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal text-xs md:text-base uppercase"
+                >
+                  {role}
+                </Typography>
+              </td>
+              <td className="p-2 flex gap-5 md:p-4 text-black">
+                <button className="btn-Secondary">Make Admin</button>
+                <button className="btn-warning">Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default MAnageAdmin;
