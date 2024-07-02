@@ -2,6 +2,7 @@ import React from "react";
 import useUsers from "../../../Hooks/useUsers";
 import LoadingSpinner from "../../../Hooks/Loading/LoadingSpinner";
 import { Typography } from "@material-tailwind/react";
+import Swal from "sweetalert2";
 
 const MAnageAdmin = () => {
   const { users, isLoading, refetch } = useUsers();
@@ -11,6 +12,29 @@ const MAnageAdmin = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  const handleAdmin = (id) => {
+    fetch(`http://localhost:3000/users/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        refetch();
+        if (data.modifiedCount) {
+          Swal.fire({
+            showConfirmButton: false,
+            timer: 1500,
+            title: `${users.displayName} is admin now`,
+            icon: "success",
+          });
+        }
+      });
+  };
+
+  const handleSuspend = (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full table-auto text-left">
@@ -64,7 +88,21 @@ const MAnageAdmin = () => {
                 </Typography>
               </td>
               <td className="p-2 flex gap-5 md:p-4 text-black">
-                <button className="btn-Secondary">Make Admin</button>
+                {role === "user" ? (
+                  <button
+                    onClick={() => handleAdmin(_id)}
+                    className="btn-Secondary"
+                  >
+                    Make Admin
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleSuspend(_id)}
+                    className="btn-error"
+                  >
+                    Suspend
+                  </button>
+                )}
                 <button className="btn-warning">Delete</button>
               </td>
             </tr>
