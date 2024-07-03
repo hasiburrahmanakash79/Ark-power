@@ -1,4 +1,6 @@
+import { Card, CardBody, CardHeader } from "@material-tailwind/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -10,25 +12,83 @@ const Services = () => {
         <p className="text-primary text-center md:mt-2 text-xl md:uppercase mb-10">
           We truly care about our customer
         </p>
-        <h1 className="text-balance">
-          Our suite of major products includes a diverse range of essential
-          equipment designed to support various critical functions in
-          industrial, commercial, and residential settings. Our Uninterruptible
-          Power Supplies (UPS), available in modular and tower configurations,
-          offer reliable backup power solutions, ensuring continuity and safety
-          for sensitive electronic devices and systems. The Automatic Voltage
-          Regulator (AVR) plays a crucial role in maintaining voltage stability,
-          protecting equipment from power surges and fluctuations that can lead
-          to damage.
-          <br />
-          Our Security System Equipment provides comprehensive solutions for
-          surveillance and monitoring, including cameras, alarm systems, and
-          access control, essential for maintaining safety and security in
-          various environments. Rectifiers are integral to converting AC to DC
-          power, vital in many electronic devices and systems that require
-          stable DC supply.
-          <br />
-          We also offer robust Data Centre Solutions that include server racks,
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
+          <div className="md:border-r-2 p-5">
+            <h1 className="font-bold mb-3 text-xl">Our Services</h1>
+            <p className="text-balance">
+              Our suite of major products includes a diverse range of essential
+              equipment designed to support various critical functions in
+              industrial, commercial, and residential settings. Our
+              Uninterruptible Power Supplies (UPS), available in modular and
+              tower configurations, offer reliable backup power solutions,
+              ensuring continuity and safety for sensitive electronic devices
+              and systems. The Automatic Voltage Regulator (AVR) plays a crucial
+              role in maintaining voltage stability, protecting equipment from
+              power surges and fluctuations that can lead to damage.
+              <br />
+              Our Security System Equipment provides comprehensive solutions for
+              surveillance and monitoring, including cameras, alarm systems, and
+              access control, essential for maintaining safety and security in
+              various environments. Rectifiers are integral to converting AC to
+              DC power, vital in many electronic devices and systems that
+              require stable DC supply.
+            </p>
+          </div>
+          <div className="md:border-r-2 p-5">
+          <h1 className="font-bold mb-3 text-xl">Our post Services</h1>
+            <ul className="list-disc">
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
+            </ul>
+          </div>
+          <div className="p-5">
+          <h1 className="font-bold mb-3 text-xl">Feature Product</h1>
+            <div className="">
+            <Card
+              className="overflow-hidden p-3 border hover:shadow-xl"
+            >
+              <CardHeader
+                floated={false}
+                shadow={false}
+                color="transparent"
+                className="m-0 rounded-none"
+              >
+                <div className="relative h-44 rounded-lg overflow-hidden">
+                  <img
+                    src="https://static.vecteezy.com/system/resources/thumbnails/023/033/609/small_2x/wonderful-mushroom-wallpaper-fantasy-wallpaper-4k-mushroom-light-fantasy-mushroom-jungle-generative-ai-photo.jpeg"
+                    alt="product name"
+                    className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
+              </CardHeader>
+              <CardBody>
+                <div className="text-center">
+                  <Link
+                    to="/"
+                    className="md:text-lg text-black font-semibold text-sm"
+                  >
+                    product?.name
+                  </Link>
+                </div>
+              </CardBody>
+            </Card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Services;
+
+{
+  /*       We also offer robust Data Centre Solutions that include server racks,
           cooling systems, power management, and network infrastructure, all
           designed to ensure efficient and reliable operation of data centers,
           which are the backbone of modern digital services. Battery Chargers
@@ -61,12 +121,6 @@ const Services = () => {
           infrastructure, crucial for connectivity and information exchange in
           today’s digital world. Each of these products is designed to meet the
           high standards of quality and reliability required in their respective
-          applications, contributing to the efficiency, safety, and
-          sustainability of electrical and electronic systems worldwide.
-        </h1>
-      </div>
-    </div>
-  );
-};
-
-export default Services;
+          applications, contributing to the efficiency, safety, and 
+          sustainability of electrical and electronic systems worldwide. */
+}
