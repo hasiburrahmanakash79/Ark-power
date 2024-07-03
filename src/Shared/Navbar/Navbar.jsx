@@ -1,25 +1,32 @@
 import { useContext, useState } from "react";
-import { Bars3BottomRightIcon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
+import {
+  Bars3BottomRightIcon,
+  XMarkIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from "@heroicons/react/24/solid";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { isAdmin } = useAdmin();
 
   const Links = [
     { name: "Home", link: "/" },
     { name: "Service", link: "/service" },
     { name: "Products", link: "/products" },
     { name: "News & Event", link: "/news-event" },
-    { name: "About us", link:"/about-us", dropdown: true },
+    { name: "About us", link: "/about-us", dropdown: true },
     { name: "Contact", link: "/contact" },
     { name: "Career", link: "/career" },
   ];
 
   const dropdownLinks = [
     { name: "What we do", link: "/what-do" },
-    { name: "Our Policy", link: "/policy" }
+    { name: "Our Policy", link: "/policy" },
   ];
 
   const [open, setOpen] = useState(false);
@@ -48,7 +55,10 @@ const Navbar = () => {
     <div className="shadow-md w-full fixed top-0 z-50 bg-white left-0">
       <div className="md:flex items-center justify-between  container mx-auto p-3">
         {/* logo section */}
-        <Link to='/' className="font-bold text-2xl cursor-pointer flex items-center gap-1">
+        <Link
+          to="/"
+          className="font-bold text-2xl cursor-pointer flex items-center gap-1"
+        >
           <img
             src="https://i.ibb.co/61nBkFS/ARK-power-ltd-main.png"
             alt="Logo"
@@ -86,12 +96,12 @@ const Navbar = () => {
                 >
                   {link.name}
                 </Link>
-                {link.dropdown && (
-                  dropdownOpen ? 
-                  <ChevronUpIcon className="w-3 h-3 ml-1 text-gray-800" />
-                  : 
-                  <ChevronDownIcon className="w-3 h-3 ml-1 text-gray-800" />
-                )}
+                {link.dropdown &&
+                  (dropdownOpen ? (
+                    <ChevronUpIcon className="w-3 h-3 ml-1 text-gray-800" />
+                  ) : (
+                    <ChevronDownIcon className="w-3 h-3 ml-1 text-gray-800" />
+                  ))}
               </div>
               {link.dropdown && dropdownOpen && (
                 <ul className="absolute bg-white shadow-md rounded-md md:block hidden md:group-hover:block md:w-40">
@@ -125,10 +135,23 @@ const Navbar = () => {
               )}
             </li>
           ))}
-          {
-            user ? <button className="ml-8"  onClick={handleLogout}>Log out</button> : <></>
-          }
-          
+
+          {user ? (
+            <li>
+              <button className="ml-8" onClick={handleLogout}>
+                Log out
+              </button>
+              {isAdmin && (
+                <Link className="ml-8" to="/dashboard">
+                  Dashboard
+                </Link>
+              )}
+            </li>
+          ) : (
+            <>
+              {/* You can add your login/signup buttons or other content here */}
+            </>
+          )}
         </ul>
       </div>
     </div>
