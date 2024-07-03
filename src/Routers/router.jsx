@@ -23,107 +23,112 @@ import About from "../Pages/About/About";
 import Login from "../AdminLogin/Login";
 import SignUp from "../AdminLogin/SignUp";
 import ManageAdmin from "../Pages/AdminDashboard/ManageAdmin/ManageAdmin";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
-    path: '/login',
-    element: <Login/>
+    path: "/login",
+    element: <Login />,
   },
   {
-    path: '/sign-up',
-    element: <SignUp/>
+    path: "/sign-up",
+    element: <SignUp />,
   },
-    {
-      path: "/",
-      element: <Main/>,
-      children:[
-        {
-          path: '/',
-          element: <Home/>
-        },
-        {
-          path: '/what-do',
-          element: <MissionAndVision/>,
-        },
-        {
-          path: '/policy',
-          element: <OurPolicy/>
-        },
-        {
-          path: '/products',
-          element: <Products/>
-        },
-        {
-          path: '/ProductDetails/:id',
-          element: <ProductDetails/>
-        },
-        {
-          path: '/service',
-          element: <Services/>
-        },
-        {
-          path: '/about-us',
-          element: <About/>
-        },
-        {
-          path: '/news-event',
-          element: <NewsEvent/>
-        },
-        {
-          path: '/newsDetails/:id',
-          element: <NewsDetails/>
-        },
-        {
-          path: '/contact',
-          element: <Contact/>
-        },
-        {
-          path: '/career',
-          element: <Career/>
-        },
-        {
-          path: '/careerDetails/:id',
-          element: <CareerDetails/>
-        },
-      ]
-    },
-    {
-      path: '/dashboard',
-      element: <Dashboard/>,
-      children: [
-        {
-          path: '',
-          element: <AdminHome/>
-        },
-        {
-          path: 'manageAdmin',
-          element: <ManageAdmin/>
-        },
-        {
-          path: 'manageProducts',
-          element: <ManageProducts/>
-        },
-        {
-          path: 'addProduct',
-          element: <AddProduct/>
-        },
-        {
-          path: 'addNews',
-          element: <AddNews/>
-        },
-        {
-          path: 'manageNews',
-          element: <ManageNewsAndEvents/>
-        },
-        {
-          path: 'addCareer',
-          element: <AddCareer/>
-        },
-        {
-          path: 'manageCareer',
-          element: <ManageCareer/>
-        },
-      ]
-    },
-  ]);
-  export default router;
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/what-do",
+        element: <MissionAndVision />,
+      },
+      {
+        path: "/policy",
+        element: <OurPolicy />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
+      },
+      {
+        path: "/ProductDetails/:id",
+        element: <ProductDetails />,
+      },
+      {
+        path: "/service",
+        element: <Services />,
+      },
+      {
+        path: "/about-us",
+        element: <About />,
+      },
+      {
+        path: "/news-event",
+        element: <NewsEvent />,
+      },
+      {
+        path: "/newsDetails/:id",
+        element: <NewsDetails />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/career",
+        element: <Career />,
+      },
+      {
+        path: "/careerDetails/:id",
+        element: <CareerDetails />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <AdminRoute>
+        <Dashboard />
+      </AdminRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: <AdminHome />,
+      },
+      {
+        path: "manageAdmin",
+        element: <ManageAdmin />,
+      },
+      {
+        path: "manageProducts",
+        element: <ManageProducts />,
+      },
+      {
+        path: "addProduct",
+        element: <AddProduct />,
+      },
+      {
+        path: "addNews",
+        element: <AddNews />,
+      },
+      {
+        path: "manageNews",
+        element: <ManageNewsAndEvents />,
+      },
+      {
+        path: "addCareer",
+        element: <AddCareer />,
+      },
+      {
+        path: "manageCareer",
+        element: <ManageCareer />,
+      },
+    ],
+  },
+]);
+export default router;
