@@ -12,11 +12,12 @@ import {
 import { MdHomeWork } from "react-icons/md";
 import { IconContext } from "react-icons";
 import arrow from "../assets/control.png";
+import useAdmin from "../Hooks/useAdmin";
+import LoadingSpinner from "../Hooks/Loading/LoadingSpinner";
 
 const Dashboard = () => {
-  const [open, setOpen] = useState(true);
-
-  const isAdmin = true;
+  const [open, setOpen] = useState(true)
+  const {isAdmin, isAdminLoading} = useAdmin();
 
   useEffect(() => {
     const handleResize = () => {
@@ -107,6 +108,10 @@ const Dashboard = () => {
   const adminMenus = Menus.filter((menu) => menu.role === "admin");
   const userMenus = Menus.filter((menu) => menu.role === "user");
   const generalMenus = Menus.filter((menu) => menu.role === "general");
+
+  if (isAdminLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="flex">
