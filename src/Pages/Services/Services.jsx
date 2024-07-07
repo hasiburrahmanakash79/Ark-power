@@ -25,20 +25,11 @@ const Services = () => {
               and systems. The Automatic Voltage Regulator (AVR) plays a crucial
               role in maintaining voltage stability, protecting equipment from
               power surges and fluctuations that can lead to damage.
-              <br />
-              Our Security System Equipment provides comprehensive solutions for
-              surveillance and monitoring, including cameras, alarm systems, and
-              access control, essential for maintaining safety and security in
-              various environments. Rectifiers are integral to converting AC to
-              DC power, vital in many electronic devices and systems that
-              require stable DC supply.
             </p>
           </div>
           <div className="md:border-r-2 p-5">
           <h1 className="font-bold mb-3 text-xl">Our post Services</h1>
             <ul className="list-disc">
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
               <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
               <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
               <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
