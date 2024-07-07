@@ -16,20 +16,17 @@ const Footer = () => {
       <div>
         <div className="grid md:grid-cols-4 grid-cols-1 py-10 px-5 md:gap-5">
           <div>
-            <img
-              src="https://i.ibb.co/61nBkFS/ARK-power-ltd-main.png"
-              alt=""
-            />
-            <p className="text-[10px] mt-3">
-              Ark Power is a leading integrated Power, Electronic &
-              communication technology company that develops, manufactures,
-              markets and sells the related equipments. The Company is dedicated
-              to improving power protection & generation all the sectors
-              throughout the Bangladesh. Ark is focused on improving timely
-              delivery, enhancing the quality and customers satisfaction.
-              Located at a prime business location at Banani, Dhaka, the Capital
-              of Bangladesh.
-            </p>
+            <img src="https://i.ibb.co/61nBkFS/ARK-power-ltd-main.png" alt="" />
+            <div className="text-center  my-4">
+              <p>Follow us: </p>
+              <div className="flex justify-center items-center gap-3 mt-2">
+                <FaFacebook className="text-xl" />
+                <FaTelegram className="text-xl" />
+                <FaTwitter className="text-xl" />
+                <FaInstagram className="text-xl" />
+                <FaYoutube className="text-xl" />
+              </div>
+            </div>
           </div>
           <div className="grid grid-cols-2 md:my-0 my-5 col-span-2">
             <div className="md:ps-10">
@@ -94,17 +91,10 @@ const Footer = () => {
             <h1 className="text-xl font-bold uppercase opacity-80 pb-3">
               KEEP IN TOUCH
             </h1>
-            <div className="flex items-center gap-3 mb-2">
-            <p>Follow us: </p>
-            <FaFacebook className="text-xl" />
-            <FaTelegram className="text-xl" />
-            <FaTwitter className="text-xl" />
-            <FaInstagram className="text-xl" />
-            <FaYoutube className="text-xl" />
-          </div>
+
             <ul className="space-y-2 pr-5">
               <li>
-              <p className="md:text-start text-center">
+                <p className="md:text-start text-center">
                   Subscribe to Our Newsletter to get Important News & Offers
                 </p>
               </li>
@@ -115,18 +105,20 @@ const Footer = () => {
                     placeholder="Enter Your Email"
                     className="p-2"
                   />
-                  <button className="bg-[#00ADF2] p-2">SEND</button>
+                  <button className="bg-[#209fd1] p-2">Subscribe</button>
                 </div>
               </li>
             </ul>
           </div>
         </div>
         <div className="bg-black p-4 text-sm">
-          <p className="text-center text-white">© All Rights Reserved, ARK POWER LTD.</p>
+          <p className="text-center text-white">
+            © All Rights Reserved, ARK POWER LTD.
+          </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Footer;
