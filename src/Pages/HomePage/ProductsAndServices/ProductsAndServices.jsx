@@ -3,7 +3,7 @@ import React from "react";
 const ProductsAndServices = () => {
   const productsIcon = [
     {
-      image: 'https://www.nicepng.com/png/full/105-1055410_surveillance-camera-svg-png-icon-free-download-cctv.png',
+      image: 'https://cdn-icons-png.freepik.com/512/5388/5388782.png',
       title: 'Security System',
       sub_title: ''
     },
