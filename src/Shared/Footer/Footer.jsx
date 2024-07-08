@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useForm } from "react-hook-form";
 import {
   FaEnvelope,
   FaFacebook,
@@ -9,8 +11,25 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Footer = () => {
+
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (subscriber) => {
+    axios.post("http://localhost:3000/subscriber", subscriber).then((data) => {
+      if (data.data.insertedId) {
+        reset();
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 1500,
+          title: "Subscribe Successfully",
+          icon: "success",
+        });
+      }
+    });
+  };
+
   return (
     <div className="bg-black/15 text-black/70">
       <div>
@@ -99,14 +118,21 @@ const Footer = () => {
                 </p>
               </li>
               <li>
-                <div className="mt-3 md:block flex items-center justify-center">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="mt-3 md:block flex items-center justify-center"
+                >
                   <input
-                    type="text"
+                    type="email"
+                    id="subscriber"
+                    {...register("subscriber", { required: true })}
                     placeholder="Enter Your Email"
                     className="p-2"
                   />
-                  <button className="bg-[#209fd1] p-2">Subscribe</button>
-                </div>
+                  <button type="submit" className="bg-[#209fd1] p-2">
+                    Subscribe
+                  </button>
+                </form>
               </li>
             </ul>
           </div>

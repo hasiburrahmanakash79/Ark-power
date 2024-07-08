@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const HeroContentOne = () => {
   return (
-    <div className="md:grid grid-cols-2 h-screen items-center gap-10 container pt-14 mx-auto">
+    <div className="md:grid grid-cols-2 md:h-screen items-center gap-10 container pt-14 mx-auto">
       <div className="text-center md:text-left md:text-white p-5">
         <p>Welcome to </p>
         <h1 className="my-3 md:text-5xl text-3xl md:font-bold font-semibold uppercase">
