@@ -17,8 +17,6 @@ const ManageProducts = () => {
   });
 
   const TABLE_HEAD = [" ", "Name", "Price", "Description", "Action"];
-  console.log(products);
-
   if (isLoading) {
     return <LoadingSpinner />;
   }

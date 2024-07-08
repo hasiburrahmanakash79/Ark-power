@@ -10,7 +10,6 @@ import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
 
 const Products = () => {
   const { products, isLoading } = useProducts();
-  console.log(products);
   
   const [currentPage, setCurrentPage] = useState(() => {
     const savedPage = localStorage.getItem("currentPage");
@@ -54,7 +53,7 @@ const Products = () => {
         <div className="grid lg:grid-cols-4 md:grid-cols-3  gap-10">
           {currentProducts.map((product) => (
             <Card
-              key={product?.id}
+              key={product?._id}
               className="overflow-hidden p-1 border hover:shadow-xl"
             >
               <CardHeader

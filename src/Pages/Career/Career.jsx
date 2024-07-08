@@ -13,7 +13,6 @@ const Career = () => {
   const internship = careerContent.filter(
     (item) => item.category === "Internship"
   );
-  console.log(jobs, internship);
   return (
     <div>
       <div className="bg-[url('https://neevfund.com/wp-content/uploads/2023/03/career-banner.jpg')] bg-cover">
