@@ -19,8 +19,6 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Form data:", data);
-
     logInUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -48,6 +46,11 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Maybe your email and Password incorrect",
+        });
       });
   };
 

@@ -20,7 +20,6 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     signUpUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
