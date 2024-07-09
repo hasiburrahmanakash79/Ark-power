@@ -6,10 +6,8 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const { logInUser } = useContext(AuthContext);
-
   const navigate = useNavigate();
   const location = useLocation();
-
   const from = location.state?.from?.pathname || "/";
 
   const {
@@ -17,7 +15,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  
   const onSubmit = (data) => {
     logInUser(data.email, data.password)
       .then((result) => {

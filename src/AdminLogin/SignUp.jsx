@@ -52,7 +52,14 @@ const SignUp = () => {
               }
             });
         })
-        .catch((error) => console.log(error.message));
+        .catch((error) => {
+          console.log(error);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "This user already exist",
+          });
+        });
     });
   };
 
