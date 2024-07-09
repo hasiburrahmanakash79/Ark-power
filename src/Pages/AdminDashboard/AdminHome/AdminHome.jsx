@@ -67,10 +67,9 @@ const AdminHome = () => {
         <div className="grid grid-cols-4 items-center gap-5 mt-14">
           <div className="bg-white border p-5 space-y-4 shadow-lg">
             <FaUps className=" text-2xl" />
-            <h1 className="text-xl font-semibold">Product</h1>
             <div className="flex justify-between">
-              <p className="text-xs">Total products</p>
-              <p className="text-green-500 text-xs text-end">
+              <p className="text-xl font-semibold">Products</p>
+              <p className="text-green-500 text-xl text-end">
                 {products.length}
               </p>
             </div>
@@ -83,10 +82,9 @@ const AdminHome = () => {
           </div>
           <div className="bg-white border p-5 space-y-4 shadow-lg">
             <FaUsers className=" text-2xl" />
-            <h1 className="text-xl font-semibold">Users</h1>
             <div className="flex justify-between">
-              <p className="text-xs">Total User</p>
-              <p className="text-green-500 text-xs text-end">{users.length}</p>
+              <p className="text-xl font-semibold">User</p>
+              <p className="text-green-500 text-xl text-end">{users.length}</p>
             </div>
             <button
               className="text-primary hover:underline"
@@ -97,10 +95,9 @@ const AdminHome = () => {
           </div>
           <div className="bg-white border p-5 space-y-4 shadow-lg">
             <FaLeanpub className=" text-2xl" />
-            <h1 className="text-xl font-semibold">News</h1>
             <div className="flex justify-between">
-              <p className="text-xs">Total News</p>
-              <p className="text-green-500 text-xs text-end">
+              <p className="text-xl font-semibold">News & Events</p>
+              <p className="text-green-500 text-xl text-end">
                 {newsAndEvents.length}
               </p>
             </div>
@@ -113,10 +110,9 @@ const AdminHome = () => {
           </div>
           <div className="bg-white border p-5 space-y-4 shadow-lg">
             <FaHandshake className=" text-2xl" />
-            <h1 className="text-xl font-semibold">Subscriber</h1>
             <div className="flex justify-between">
-              <p className="text-xs">Total Subscriber</p>
-              <p className="text-green-500 text-xs text-end">
+              <p className="text-xl font-semibold">Subscriber</p>
+              <p className="text-green-500 text-xl text-end">
                 {subscribers.length}
               </p>
             </div>
