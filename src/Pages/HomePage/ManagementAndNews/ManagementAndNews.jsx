@@ -29,7 +29,9 @@ const ManagementAndNews = () => {
       value: "md",
       name: "Managing Director",
       image: "https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1769",
-      desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis id eum quos, odit, aut fugit ad recusandae possimus voluptas aperiam consectetur. Ipsam magnam qui totam a debitis quasi recusandae repudiandae.`,
+      desc: `It really matters and then like it really doesn't matter.
+      What matters is the people who are sparked by it. And the people 
+      who are like offended by it, it doesn't matter.`,
     },
     {
       label: "Chief Executive Officer (CEO)",
