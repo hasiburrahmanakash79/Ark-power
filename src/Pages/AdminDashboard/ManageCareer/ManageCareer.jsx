@@ -24,7 +24,7 @@ const ManageCareer = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/career/${id}`, {
+        fetch(`https://ark-power-server.vercel.app/career/${id}`, {
           method: "DELETE",
         })
           .then((res) => {

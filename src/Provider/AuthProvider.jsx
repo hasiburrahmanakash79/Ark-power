@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        axios.post("http://localhost:3000/jwt", { email: currentUser.email })
+        axios.post("https://ark-power-server.vercel.app/jwt", { email: currentUser.email })
           .then((data) => {
             const token = data.data.token;
             localStorage.setItem("access-token", token);

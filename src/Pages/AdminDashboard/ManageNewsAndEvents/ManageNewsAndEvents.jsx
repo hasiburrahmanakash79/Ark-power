@@ -53,7 +53,7 @@ const ManageNewsAndEvents = () => {
     console.log(update);
     try {
       const response = await fetch(
-        `http://localhost:3000/news/${selectedNews._id}`,
+        `https://ark-power-server.vercel.app/news/${selectedNews._id}`,
         {
           method: "PUT",
           headers: {
@@ -92,7 +92,7 @@ const ManageNewsAndEvents = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/news/${id}`, {
+        fetch(`https://ark-power-server.vercel.app/news/${id}`, {
           method: "DELETE",
         })
           .then((res) => {

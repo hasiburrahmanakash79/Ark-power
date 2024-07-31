@@ -23,7 +23,7 @@ const Login = () => {
         const loggedUser ={
             email: user.email
         };
-        fetch("http://localhost:3000/jwt", {
+        fetch("https://ark-power-server.vercel.app/jwt", {
             method: "POST",
             headers: {
               "content-type": "application/json",

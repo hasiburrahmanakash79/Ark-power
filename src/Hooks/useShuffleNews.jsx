@@ -16,7 +16,7 @@ const useShuffleNews = () => {
 
   useEffect(() => {
     setIsLoading(true); // Set loading to true before starting the data fetch
-    axios.get("http://localhost:3000/news")
+    axios.get("https://ark-power-server.vercel.app/news")
       .then((response) => {
         const shuffledData = shuffleArray(response.data);
         setShuffleNews(shuffledData);

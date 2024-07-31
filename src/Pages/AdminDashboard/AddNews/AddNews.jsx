@@ -50,7 +50,7 @@ const AddNews = () => {
               details,
               imageUrl,
             };
-            axios.post("http://localhost:3000/news", addNews).then((data) => {
+            axios.post("https://ark-power-server.vercel.app/news", addNews).then((data) => {
               if (data.data.insertedId) {
                 reset();
                 Swal.fire({

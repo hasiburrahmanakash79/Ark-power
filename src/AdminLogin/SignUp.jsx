@@ -31,7 +31,7 @@ const SignUp = () => {
             email: data.email,
             role: 'user'
           };
-          fetch("http://localhost:3000/users", {
+          fetch("https://ark-power-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

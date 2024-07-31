@@ -15,7 +15,7 @@ const AdminHome = () => {
 
   const downloadSubscriberData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/subscriberDownload", {
+      const response = await axios.get("https://ark-power-server.vercel.app/subscriberDownload", {
         responseType: "blob",
       });
       const blob = new Blob([response.data], { type: "text/csv" });
@@ -26,7 +26,7 @@ const AdminHome = () => {
   };
   const downloadNewsData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/newsDownload", {
+      const response = await axios.get("https://ark-power-server.vercel.app/newsDownload", {
         responseType: "blob",
       });
       const blob = new Blob([response.data], { type: "text/csv" });
@@ -37,7 +37,7 @@ const AdminHome = () => {
   };
   const downloadProductData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/productsDownload", {
+      const response = await axios.get("https://ark-power-server.vercel.app/productsDownload", {
         responseType: "blob",
       });
       const blob = new Blob([response.data], { type: "text/csv" });
@@ -48,7 +48,7 @@ const AdminHome = () => {
   };
   const downloadUserData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/usersDownload", {
+      const response = await axios.get("https://ark-power-server.vercel.app/usersDownload", {
         responseType: "blob",
       });
       const blob = new Blob([response.data], { type: "text/csv" });

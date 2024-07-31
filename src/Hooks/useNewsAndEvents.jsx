@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 
 const useNewsAndEvents = () => {
   const { data: newsAndEvents = [],isLoading, refetch } = useQuery(["newsAndEvents"], async () => {
-    const res = await fetch("http://localhost:3000/news");
+    const res = await fetch("https://ark-power-server.vercel.app/news");
     return res.json();
   });
   return { newsAndEvents, isLoading, refetch };
@@ -19,7 +19,7 @@ export default useNewsAndEvents;
 
 //   useEffect(() => {
 //     setIsLoading(true);
-//     axios.get("http://localhost:3000/news")
+//     axios.get("https://ark-power-server.vercel.app/news")
 //       .then((response) => {
 //         setNewsAndEvents(response.data);
 //       })

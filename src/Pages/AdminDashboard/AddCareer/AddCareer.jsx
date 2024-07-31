@@ -18,7 +18,7 @@ const AddCareer = () => {
     const addCareer = { details, email, title, category, seat };
   
     try {
-      const response = await axios.post("http://localhost:3000/career", addCareer);
+      const response = await axios.post("https://ark-power-server.vercel.app/career", addCareer);
       if (response.data.insertedId) {
         reset();
         Swal.fire({

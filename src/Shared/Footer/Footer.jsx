@@ -17,7 +17,7 @@ const Footer = () => {
 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (subscriber) => {
-    axios.post("http://localhost:3000/subscriber", subscriber).then((data) => {
+    axios.post("https://ark-power-server.vercel.app/subscriber", subscriber).then((data) => {
       if (data.data.insertedId) {
         reset();
         Swal.fire({

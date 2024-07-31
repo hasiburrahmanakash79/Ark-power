@@ -24,7 +24,7 @@ const MAnageAdmin = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/users/${id}`, {
+        fetch(`https://ark-power-server.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -53,7 +53,7 @@ const MAnageAdmin = () => {
       confirmButtonText: "Yes, change it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/users/${id}`, {
+        fetch(`https://ark-power-server.vercel.app/users/${id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())
@@ -84,7 +84,7 @@ const MAnageAdmin = () => {
       confirmButtonText: "Yes, change it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/suspend/${id}`, {
+        fetch(`https://ark-power-server.vercel.app/suspend/${id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())

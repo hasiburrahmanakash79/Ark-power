@@ -35,7 +35,7 @@ const AddProduct = () => {
               imageUrl,
               pdfUrl
             };
-            axios.post("http://localhost:3000/products", addProduct).then((data) => {
+            axios.post("https://ark-power-server.vercel.app/products", addProduct).then((data) => {
               if (data.data.insertedId) {
                 reset();
                 Swal.fire({

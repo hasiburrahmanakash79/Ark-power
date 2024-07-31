@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 
 const useProducts = () => {
   const { data: products = [],isLoading, refetch } = useQuery(["Products"], async () => {
-    const res = await fetch("http://localhost:3000/products");
+    const res = await fetch("https://ark-power-server.vercel.app/products");
     return res.json();
   });
   return { products, isLoading, refetch };
@@ -21,7 +21,7 @@ export default useProducts;
 
 //   useEffect(() => {
 //     setIsLoading(true); // Set loading to true before starting the data fetch
-//     axios.get("http://localhost:3000/products")
+//     axios.get("https://ark-power-server.vercel.app/products")
 //       .then((response) => {
 //         setProducts(response.data);
 //       })
