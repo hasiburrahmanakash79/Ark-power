@@ -7,7 +7,9 @@ import {
   FaBook,
   FaBookMedical,
   FaClipboardList,
-  FaClipboardCheck
+  FaClipboardCheck,
+  FaScrewdriverWrench
+
 } from "react-icons/fa6";
 import { MdHomeWork } from "react-icons/md";
 import { IconContext } from "react-icons";
@@ -224,6 +226,7 @@ const Dashboard = () => {
   const [productsOpen, setProductsOpen] = useState(false);
   const [newsOpen, setNewsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
+  const [appearanceOpen, setAppearanceOpen] = useState(false); // State for appearance submenu
   const { isAdmin, isAdminLoading } = useAdmin();
 
   useEffect(() => {
@@ -251,10 +254,10 @@ const Dashboard = () => {
     Career_manage: FaClipboardCheck,
     Product_add: FaFileMedical,
     Product_manage: FaFileInvoice,
+    settings: FaScrewdriverWrench
   };
 
   const Menus = [
-    
     {
       title: "Admin Home",
       path: "/dashboard",
@@ -318,10 +321,24 @@ const Dashboard = () => {
         },
       ],
     },
+    {
+      title: "Appearance",
+      icon: iconMappings.settings,
+      role: "admin",
+      submenu: [
+        {
+          title: "Banner Content",
+          path: "/dashboard/bannerContent",
+        },
+        {
+          title: "Footer Content",
+          path: "/dashboard/footerContent",
+        },
+      ],
+    },
   ];
 
   const adminMenus = Menus.filter((menu) => menu.role === "admin");
-  const generalMenus = Menus.filter((menu) => menu.role === "general");
 
   if (isAdminLoading) {
     return <LoadingSpinner />;
@@ -331,20 +348,17 @@ const Dashboard = () => {
     <div className="flex">
       {/* Dashboard Sidebar content */}
       <div
-        className={` ${
-          open ? "w-56 p-4" : "w-14 text-center"
-        } h-screen fixed left-0 top-0 bottom-0 bg-black text-white z-50 pt-8 duration-500 transition-all`}
+        className={` ${open ? "w-56 p-4" : "w-14 text-center"} h-screen fixed left-0 top-0 bottom-0 bg-black text-white z-50 pt-8 duration-500 transition-all`}
       >
         <img
           src={arrow}
-          className={`absolute cursor-pointer -right-3 top-9 w-7 border-2 rounded-full ${
-            !open && "rotate-180"
-          }`}
+          className={`absolute cursor-pointer -right-3 top-9 w-7 border-2 rounded-full ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         />
         <ul className={`${open ? "" : "flex flex-col items-center justify-center"}`}>
           <Link to='/' className="border-b-2 flex items-center gap-3 pb-2 ps-2">
-          <FaHome/> ARK POWER LTD.</Link>
+            <FaHome/> ARK POWER LTD.
+          </Link>
           {isAdmin &&
             adminMenus.map((menu, index) => (
               <div key={index}>
@@ -354,11 +368,13 @@ const Dashboard = () => {
                       if (menu.title === "Products") setProductsOpen(true);
                       if (menu.title === "News") setNewsOpen(true);
                       if (menu.title === "Career") setCareerOpen(true);
+                      if (menu.title === "Appearance") setAppearanceOpen(true); // Handle appearance
                     }}
                     onMouseLeave={() => {
                       if (menu.title === "Products") setProductsOpen(false);
                       if (menu.title === "News") setNewsOpen(false);
                       if (menu.title === "Career") setCareerOpen(false);
+                      if (menu.title === "Appearance") setAppearanceOpen(false); // Handle appearance
                     }}
                     className="relative"
                   >
@@ -374,12 +390,13 @@ const Dashboard = () => {
                     {/* Dropdown menu */}
                     {(productsOpen && menu.title === "Products") ||
                     (newsOpen && menu.title === "News") ||
-                    (careerOpen && menu.title === "Career") ? (
+                    (careerOpen && menu.title === "Career") ||
+                    (appearanceOpen && menu.title === "Appearance") ? (
                       <ul className="absolute left-full top-0 w-44 bg-gray-800 text-white p-2 shadow-lg rounded-lg">
                         {menu.submenu.map((sub, subIndex) => (
                           <Link to={sub.path} key={subIndex} className="flex items-center p-2 hover:bg-white hover:text-black">
                             <IconContext.Provider value={{ className: "react-icon" }}>
-                              <sub.icon />
+                              {sub.icon && <sub.icon />}
                             </IconContext.Provider>
                             <span className="ml-2">{sub.title}</span>
                           </Link>
@@ -402,21 +419,6 @@ const Dashboard = () => {
                 )}
               </div>
             ))}
-
-          {generalMenus.map((menu, index) => (
-            <Link
-              to={menu.path}
-              key={index}
-              className={`flex rounded-md p-2 cursor-pointer hover:bg-white hover:text-black text-sm items-center gap-x-4 ${
-                menu.gap ? "mt-9" : "mt-2"
-              }`}
-            >
-              <IconContext.Provider value={{ className: "react-icon" }}>
-                <menu.icon />
-              </IconContext.Provider>
-              <span className={`${!open && "hidden"} origin-left duration-200`}>{menu.title}</span>
-            </Link>
-          ))}
         </ul>
       </div>
 
@@ -429,3 +431,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

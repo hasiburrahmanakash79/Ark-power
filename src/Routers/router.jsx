@@ -24,6 +24,9 @@ import Login from "../AdminLogin/Login";
 import SignUp from "../AdminLogin/SignUp";
 import ManageAdmin from "../Pages/AdminDashboard/ManageAdmin/ManageAdmin";
 import AdminRoute from "./AdminRoute";
+import Appearance from "../Pages/AdminDashboard/Appearance/Appearance";
+import BannerContent from "../Pages/AdminDashboard/Appearance/BannerContent/BannerContent";
+import EditFooter from "../Pages/AdminDashboard/Appearance/FooterContent/EditFooter";
 
 const router = createBrowserRouter([
   {
@@ -127,6 +130,18 @@ const router = createBrowserRouter([
       {
         path: "manageCareer",
         element: <ManageCareer />,
+      },
+      {
+        path: "appearance",
+        element: <Appearance />,
+      },
+      {
+        path: "bannerContent",
+        element: <BannerContent />,
+      },
+      {
+        path: "footerContent",
+        element: <EditFooter />,
       },
     ],
   },
