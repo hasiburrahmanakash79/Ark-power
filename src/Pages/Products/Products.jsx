@@ -63,29 +63,30 @@ const Products = () => {
                 className="m-0 rounded-none"
               >
                 <div className="relative h-44 rounded-lg overflow-hidden">
+                  <Link to={`/ProductDetails/${product?._id}`}>
+                  
                   <img
                     src={product?.imageUrl}
                     alt={product?.name}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   />
+                  </Link>
                 </div>
               </CardHeader>
               <CardBody>
                 <div className="py-3">
                   <Link
-                    to="/"
+                    to={`/ProductDetails/${product?._id}`}
                     className="md:text-xl text-black font-semibold text-sm"
                   >
                     {product?.name}
                   </Link>
                 </div>
                 <div>
-                  <span>
-                    {product?.description?.slice(0,100)}...
-                    <Link to={`/ProductDetails/${product?._id}`} className="text-blue-700 hover:underline">
+                <Link to={`/ProductDetails/${product?._id}`}>{product?.description?.slice(0,100)}...<span  className="text-blue-700 hover:underline">
                     Read more
-                    </Link>
-                  </span>
+                    </span></Link>
+                    
                 </div>
               </CardBody>
             </Card>

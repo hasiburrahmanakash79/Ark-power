@@ -36,14 +36,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 grid-cols-1 py-10 px-5 md:gap-5">
           <div>
             <img src="https://i.ibb.co/61nBkFS/ARK-power-ltd-main.png" alt="" />
-            <div className="text-center  my-4">
+            <div className="text-center my-4">
               <p>Follow us: </p>
               <div className="flex justify-center items-center gap-3 mt-2">
-                <FaFacebook className="text-xl" />
-                <FaTelegram className="text-xl" />
-                <FaTwitter className="text-xl" />
-                <FaInstagram className="text-xl" />
-                <FaYoutube className="text-xl" />
+                <a href="#" target="_blank"><FaFacebook className="text-xl" /></a>
+                <a href="#" target="_blank"><FaTelegram className="text-xl" /></a>
+                <a href="#" target="_blank"><FaTwitter className="text-xl" /></a>
+                <a href="#" target="_blank"><FaInstagram className="text-xl" /></a>
+                <a href="#" target="_blank"><FaYoutube className="text-xl" /></a>
               </div>
             </div>
           </div>
