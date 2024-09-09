@@ -83,11 +83,8 @@ const Footer = () => {
               </h1>
               <ul className="space-y-2">
                 <li>
-                  <Link className="flex items-center gap-3">
+                  <Link className="flex items-center uppercase gap-3">
                     <FaLocationDot className="text-3xl" />
-                    {/* <p>
-                    12B ATATURK TOWER, 22 KEMAL ATATURK AVENUE, BANANI, DHAKA-1213
-                    </p> */}
                     <p>{footerContent[0]?.address}</p>
                   </Link>
                 </li>
