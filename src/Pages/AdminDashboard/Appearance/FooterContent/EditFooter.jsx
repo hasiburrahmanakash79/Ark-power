@@ -1,215 +1,155 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
+import useFooter from "../../../../Hooks/useFooter";
+import LoadingSpinner from "../../../../Hooks/Loading/LoadingSpinner";
 
 const EditFooter = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { footerContent, isLoading, refetch } = useFooter();
+  const [updatedFooterContent, setUpdatedFooterContent] = useState(footerContent || []);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  // Handle input changes
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedContent = [...updatedFooterContent];
+    updatedContent[index] = {
+      ...updatedContent[index],
+      [name]: value,
+    };
+    setUpdatedFooterContent(updatedContent);
   };
+
+  // Handle Save
+  const handleSave = async (event) => {
+    event.preventDefault();
+
+    const update = {
+      address: updatedFooterContent[0]?.address,
+      salesContact: updatedFooterContent[0]?.salesContact,
+      supportContact: updatedFooterContent[0]?.supportContact,
+      email: updatedFooterContent[0]?.email,
+      facebookUrl: updatedFooterContent[0]?.facebookUrl,
+      instagramUrl: updatedFooterContent[0]?.instagramUrl,
+      telegramUrl: updatedFooterContent[0]?.telegramUrl,
+      twitterUrl: updatedFooterContent[0]?.twitterUrl,
+      youtubeUrl: updatedFooterContent[0]?.youtubeUrl,
+    };
+
+    try {
+      Swal.fire({
+        title: "Updating...",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
+      const response = await fetch(`http://localhost:3000/footer/${updatedFooterContent[0]?._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(update),
+      });
+
+      if (response.ok) {
+        refetch();
+        Swal.fire("Updated!", "The footer information has been updated.", "success");
+      } else {
+        const errorText = await response.text();
+        Swal.fire("Error", `Failed to update footer: ${errorText}`, "error");
+      }
+    } catch (error) {
+      Swal.fire("Error", "Something went wrong. Please try again later.", "error");
+    }
+  };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="rounded-3xl shadow-lg p-8"
+    <form onSubmit={handleSave} className="rounded-3xl shadow-lg p-8">
+      <h2 className="text-4xl font-bold mb-8 text-blue-600 text-center">
+        Update Footer Information
+      </h2>
+
+      {/* Address Field */}
+      <div className="mb-6">
+        <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="address">
+          Office Address
+        </label>
+        <textarea
+          name="address"
+          value={updatedFooterContent[0]?.address || ''}
+          onChange={(e) => handleInputChange(e, 0)}
+          className="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          rows="3"
+        />
+      </div>
+
+      {/* Contact Fields */}
+      <div className="mb-6">
+        <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="salesContact">
+          Hot Line
+        </label>
+        <input
+          type="text"
+          name="salesContact"
+          value={updatedFooterContent[0]?.salesContact || ''}
+          onChange={(e) => handleInputChange(e, 0)}
+          className="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-6">
+        <input
+          type="text"
+          name="supportContact"
+          value={updatedFooterContent[0]?.supportContact || ''}
+          onChange={(e) => handleInputChange(e, 0)}
+          className="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      {/* Email Field */}
+      <div className="mb-6">
+        <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="email">
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          value={updatedFooterContent[0]?.email || ''}
+          onChange={(e) => handleInputChange(e, 0)}
+          className="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      {/* Social Media Fields */}
+      {['facebook', 'youtube', 'instagram', 'twitter', 'telegram'].map((platform) => (
+        <div className="mb-6" key={platform}>
+          <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor={platform}>
+            {`${platform.charAt(0).toUpperCase() + platform.slice(1)} URL`}
+          </label>
+          <input
+            type="url"
+            name={`${platform}Url`}
+            value={updatedFooterContent[0]?.[`${platform}Url`] || ''}
+            onChange={(e) => handleInputChange(e, 0)}
+            className="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      ))}
+
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 w-full"
       >
-        <h2 className="text-4xl font-bold mb-8 text-blue-600 text-center">
-          Update Footer Information
-        </h2>
-
-        {/* Address Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="address"
-          >
-            Address
-          </label>
-          <textarea
-            id="address"
-            {...register("address", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.address ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            rows="3"
-          ></textarea>
-          {errors.address && (
-            <p className="text-red-500 text-xs mt-1">Address is required.</p>
-          )}
-        </div>
-
-        {/* Contact Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="contact"
-          >
-            Contact
-          </label>
-          <input
-            type="text"
-            id="contact"
-            {...register("contact", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.contact ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
-          {errors.contact && (
-            <p className="text-red-500 text-xs mt-1">
-              Contact number is required.
-            </p>
-          )}
-        </div>
-
-        {/* Email Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            {...register("email", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs mt-1">Email is required.</p>
-          )}
-        </div>
-
-        {/* Facebook URL Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="facebook"
-          >
-            Facebook URL
-          </label>
-          <input
-            type="url"
-            id="facebook"
-            {...register("facebookUrl", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.facebookUrl ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
-          {errors.facebookUrl && (
-            <p className="text-red-500 text-xs mt-1">
-              Facebook URL is required.
-            </p>
-          )}
-        </div>
-
-        {/* YouTube URL Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="youtube"
-          >
-            YouTube URL
-          </label>
-          <input
-            type="url"
-            id="youtube"
-            {...register("youtubeUrl", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.youtubeUrl ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
-          {errors.youtubeUrl && (
-            <p className="text-red-500 text-xs mt-1">
-              YouTube URL is required.
-            </p>
-          )}
-        </div>
-
-        {/* Instagram URL Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="instagram"
-          >
-            Instagram URL
-          </label>
-          <input
-            type="url"
-            id="instagram"
-            {...register("instagramUrl", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.instagramUrl ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
-          {errors.instagramUrl && (
-            <p className="text-red-500 text-xs mt-1">
-              Instagram URL is required.
-            </p>
-          )}
-        </div>
-
-        {/* Twitter URL Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="twitter"
-          >
-            Twitter URL
-          </label>
-          <input
-            type="url"
-            id="twitter"
-            {...register("twitterUrl", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.twitterUrl ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
-          {errors.twitterUrl && (
-            <p className="text-red-500 text-xs mt-1">
-              Twitter URL is required.
-            </p>
-          )}
-        </div>
-
-        {/* Telegram URL Field */}
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-medium mb-1"
-            htmlFor="telegram"
-          >
-            Telegram URL
-          </label>
-          <input
-            type="url"
-            id="telegram"
-            {...register("telegramUrl", { required: true })}
-            className={`w-full px-4 py-2 rounded-lg border-2 ${
-              errors.telegramUrl ? "border-red-500" : "border-gray-300"
-            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
-          {errors.telegramUrl && (
-            <p className="text-red-500 text-xs mt-1">
-              Telegram URL is required.
-            </p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 w-full"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+        Submit
+      </button>
+    </form>
   );
 };
 
 export default EditFooter;
+
