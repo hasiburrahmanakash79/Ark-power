@@ -1,74 +1,302 @@
-import React, { useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { useState, useEffect } from "react";
+import { Card, CardBody, CardHeader } from "@material-tailwind/react";
+import Swal from "sweetalert2"; // Ensure you import SweetAlert2
+
+const img_hosting_token = import.meta.env.VITE_img_hosting_key;
+const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
 const BannerContent = () => {
-    const [imageFile, setImageFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState('');
+  const [images, setImages] = useState([]); // Store array of images
+  const [showFileInput, setShowFileInput] = useState(''); // Track which card's file input is visible
+  const [uploading, setUploading] = useState(false); // Track uploading state
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
+  // Fetch images from MongoDB API
+  useEffect(() => {
+    fetch("http://localhost:3000/hero-images")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && Array.isArray(data)) {
+          setImages(data); // Assuming data is an array of image objects
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching the images:", error);
+      });
+  }, []);
+
+  // Handle image selection
+  const handleImageChange = (e, index) => {
+    const file = e.target.files[0];
     if (file) {
-      setImageFile(file);
-      setPreviewUrl(URL.createObjectURL(file));
+      const imageUrl = URL.createObjectURL(file); // Create a preview URL
+      const updatedImages = [...images];
+      updatedImages[index].file = file; // Store selected file in the corresponding card's data
+      updatedImages[index].preview = imageUrl; // Set the preview URL for the selected image
+      setImages(updatedImages); // Update the state
     }
   };
 
-  const handleUpdate = async (event) => {
-    event.preventDefault();
+  // Handle image upload and update MongoDB
+  // const handleUpdateImage = async (index, id) => {
+  //   const imageFile = images[index].file;
+  //   if (!imageFile) return;
 
-    if (!imageFile) {
-      Swal.fire('Error', 'Please select an image file', 'error');
-      return;
-    }
+  //   setUploading(true);
 
-    const formData = new FormData();
-    formData.append('file', imageFile);
+  //   // Show loading spinner while uploading
+  //   Swal.fire({
+  //     title: "Uploading...",
+  //     allowOutsideClick: false,
+  //     showConfirmButton: false,
+  //     didOpen: () => {
+  //       Swal.showLoading();
+  //     },
+  //   });
 
+  //   // Upload image to imgbb
+  //   const formData = new FormData();
+  //   formData.append("image", imageFile);
+    
+  //   fetch(img_hosting_url, {
+  //     method: "POST",
+  //     body: formData,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((imageResponse) => {
+  //       if (imageResponse.success) {
+  //         const imageUrl = imageResponse.data.display_url;
+
+  //         // Show loading spinner while updating MongoDB
+  //         Swal.fire({
+  //           title: "Updating...",
+  //           allowOutsideClick: false,
+  //           showConfirmButton: false,
+  //           didOpen: () => {
+  //             Swal.showLoading();
+  //           },
+  //         });
+
+  //         // Update image in MongoDB
+  //         fetch(`http://localhost:3000/hero-images/${id}`, {
+  //           method: "PUT",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({ url: imageUrl }),
+  //         })
+  //           .then((res) => res.json())
+  //           .then((data) => {
+  //             if (data.success) {
+  //               // Update local state to reflect the new image
+  //               const updatedImages = [...images];
+  //               updatedImages[index].image = imageUrl;
+  //               setImages(updatedImages);
+  //               setShowFileInput(null); // Hide file input after update
+  //               Swal.fire("Updated!", "The image has been updated.", "success");
+  //             }
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error updating the image in MongoDB:", error);
+  //             Swal.fire("Error", "Failed to update image. Please try again.", "error");
+  //           });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error uploading the image:", error);
+  //       Swal.fire("Error", "Failed to upload image. Please try again.", "error");
+  //     })
+  //     .finally(() => {
+  //       setUploading(false);
+  //     });
+  // };
+
+  // const handleUpdateImage = async (index, id) => {
+  //   const imageFile = images[index].file;
+  //   if (!imageFile) return;
+  
+  //   setUploading(true);
+  
+  //   Swal.fire({
+  //     title: "Uploading...",
+  //     allowOutsideClick: false,
+  //     showConfirmButton: false,
+  //     didOpen: () => {
+  //       Swal.showLoading();
+  //     },
+  //   });
+  
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("image", imageFile);
+  
+  //     const uploadResponse = await fetch(img_hosting_url, {
+  //       method: "POST",
+  //       body: formData,
+  //     });
+  //     const imageResponse = await uploadResponse.json();
+  
+  //     console.log('Upload Response:', imageResponse);
+  
+  //     if (imageResponse.success) {
+  //       const imageUrl = imageResponse.data.display_url;
+  
+  //       console.log('Image URL to update:', imageUrl);
+  
+  //       Swal.fire({
+  //         title: "Updating...",
+  //         allowOutsideClick: false,
+  //         showConfirmButton: false,
+  //         didOpen: () => {
+  //           Swal.showLoading();
+  //         },
+  //       });
+  
+  //       const updateResponse = await fetch(`http://localhost:3000/hero-images/${id}`, {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ url: imageUrl }),
+  //       });
+  //       const data = await updateResponse.json();
+  
+  //       console.log('Update Response:', updateResponse);
+  
+  //       if (data.matchedCount > 0 && data.modifiedCount > 0) {
+  //         const updatedImages = [...images];
+
+  //         updatedImages[index].image = imageUrl;
+  //         setImages(updatedImages);
+  //         setShowFileInput(updatedImages);
+  //         Swal.fire("Updated!", "The image has been updated.", "success");
+  //       } else {
+  //         Swal.fire("Error", `Failed to update image in database: ${data.error || 'No changes made'}`, "error");
+  //       }
+  //     } else {
+  //       Swal.fire("Error", `Failed to upload image: ${imageResponse.error || 'Unknown error'}`, "error");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     Swal.fire("Error", `An unexpected error occurred: ${error.message}`, "error");
+  //   } finally {
+  //     setUploading(false);
+  //   }
+  // };
+  
+  const handleUpdateImage = async (index, id) => {
+    const imageFile = images[index].file;
+    if (!imageFile) return;
+  
+    setUploading(true);
+  
+    Swal.fire({
+      title: "Uploading...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  
     try {
-      const response = await fetch('http://localhost:3000/hero-images', {
-        method: 'PUT',
+      const formData = new FormData();
+      formData.append("image", imageFile);
+  
+      const uploadResponse = await fetch(img_hosting_url, {
+        method: "POST",
         body: formData,
       });
-
-      if (response.ok) {
-        Swal.fire('Success', 'Image updated successfully', 'success');
+      const imageResponse = await uploadResponse.json();
+  
+      console.log('Upload Response:', imageResponse);
+  
+      if (imageResponse.success) {
+        const imageUrl = imageResponse.data.display_url;
+  
+        console.log('Image URL to update:', imageUrl);
+  
+        Swal.fire({
+          title: "Updating...",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+  
+        const updateResponse = await fetch(`http://localhost:3000/hero-images/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ image: imageUrl }), // Send image URL
+        });
+        const data = await updateResponse.json();
+  
+        console.log('Update Response:', data);
+  
+        if (data.matchedCount > 0 && data.modifiedCount > 0) {
+          const updatedImages = [...images];
+          updatedImages[index].image = imageUrl;
+          setImages(updatedImages);
+          setShowFileInput(updatedImages);
+          Swal.fire("Updated!", "The image has been updated.", "success");
+        } else {
+          Swal.fire("Error", `Failed to update image in database: ${data.error || 'No changes made'}`, "error");
+        }
       } else {
-        Swal.fire('Error', 'Failed to update image', 'error');
+        Swal.fire("Error", `Failed to upload image: ${imageResponse.error || 'Unknown error'}`, "error");
       }
     } catch (error) {
-      Swal.fire('Error', 'An error occurred while updating the image', 'error');
+      console.error("Error:", error);
+      Swal.fire("Error", `An unexpected error occurred: ${error.message}`, "error");
+    } finally {
+      setUploading(true);
     }
   };
+  
+  
 
   return (
-    <div className="p-4 max-w-md mx-auto bg-white rounded-lg shadow-md">
-      <h1 className="text-2xl font-semibold mb-4">Admin Dashboard</h1>
-      <form onSubmit={handleUpdate} className="space-y-4">
-        <div className="flex flex-col items-center">
-          {previewUrl && (
-            <img
-              src={previewUrl}
-              alt="Preview"
-              className="mb-4 w-64 h-64 object-cover border rounded-md"
-            />
-          )}
-          <input
-            type="file"
-            onChange={handleFileChange}
-            accept="image/*"
-            className="mb-4"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
-        >
-          Update Image
-        </button>
-      </form>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {images.map((image, index) => (
+        <Card key={index} className="overflow-hidden text-center text-red-500 hover:shadow-xl">
+          <CardHeader floated={false} shadow={false} color="transparent" className="m-0 rounded-none">
+            <div className="relative h-44 overflow-hidden">
+              <img
+                src={image.preview || image.image} // Show preview if available, else show the original image
+                alt={`Image ${index}`}
+                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+          </CardHeader>
+          <CardBody>
+            {!showFileInput && (
+              <button onClick={() => setShowFileInput(index)}>Change</button>
+            )}
+
+            {showFileInput === index && (
+              <div className="mt-4">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageChange(e, index)} // Pass index to identify which image to update
+                  className="mb-2"
+                />
+                <button
+                  onClick={() => handleUpdateImage(index, image._id)} // Pass index and image id to update the correct image
+                  disabled={uploading} // Disable button during upload
+                >
+                  {uploading ? "Updating..." : "Update"}
+                </button>
+              </div>
+            )}
+          </CardBody>
+        </Card>
+      ))}
     </div>
   );
 };
 
-
 export default BannerContent;
+
