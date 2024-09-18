@@ -23,7 +23,7 @@ const Career = () => {
         </div>
       </div>
 
-      <div className="container mx-auto p-5">
+      <div className="container mx-auto py-24 p-5">
         <div>
           <h1 className="text-3xl text-primary text-center mb-10 font-semibold">Career Opportunity and Vacancy Announcement</h1>
         </div>
