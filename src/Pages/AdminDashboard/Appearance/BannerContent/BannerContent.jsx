@@ -93,7 +93,7 @@ const BannerContent = () => {
           const updatedImages = [...images];
           updatedImages[index].image = imageUrl;
           setImages(updatedImages);
-          setShowFileInput(updatedImages);
+          setShowFileInput(null); // Reset the file input after successful update
           Swal.fire("Updated!", "The image has been updated.", "success");
         } else {
           Swal.fire("Error", `Failed to update image in database: ${data.error || 'No changes made'}`, "error");
@@ -105,7 +105,7 @@ const BannerContent = () => {
       console.error("Error:", error);
       Swal.fire("Error", `An unexpected error occurred: ${error.message}`, "error");
     } finally {
-      setUploading(true);
+      setUploading(false); // Reset uploading state
     }
   };
   
@@ -126,20 +126,26 @@ const BannerContent = () => {
           </CardHeader>
           <CardBody>
             {!showFileInput && (
-              <button onClick={() => setShowFileInput(index)}>Change</button>
+              <button
+                onClick={() => setShowFileInput(index)}
+                className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
+              >
+                Change
+              </button>
             )}
 
             {showFileInput === index && (
-              <div className="mt-4">
+              <div className="flex items-center justify-between gap-5">
                 <input
                   type="file"
                   accept="image/*"
                   onChange={(e) => handleImageChange(e, index)} // Pass index to identify which image to update
-                  className="mb-2"
+                  className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                 />
                 <button
                   onClick={() => handleUpdateImage(index, image._id)} // Pass index and image id to update the correct image
                   disabled={uploading} // Disable button during upload
+                  className={`bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition duration-200 ${uploading ? 'opacity-50' : ''}`}
                 >
                   {uploading ? "Updating..." : "Update"}
                 </button>
@@ -153,4 +159,3 @@ const BannerContent = () => {
 };
 
 export default BannerContent;
-
