@@ -28,7 +28,7 @@ const Services = () => {
             </p>
           </div>
           <div className="md:border-r-2 p-5">
-          <h1 className="font-bold mb-3 text-xl">Our post Services</h1>
+          <h1 className="font-bold mb-3 text-xl">After sale Services</h1>
             <ul className="list-disc">
               <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
               <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, hic. Lorem ipsum dolor sit amet.</li>
@@ -63,7 +63,7 @@ const Services = () => {
                     to="/"
                     className="md:text-lg text-black font-semibold text-sm"
                   >
-                    product?.name
+                    Product name
                   </Link>
                 </div>
               </CardBody>
