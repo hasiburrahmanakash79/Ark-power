@@ -131,7 +131,6 @@
 //             <p className="text-red-500 text-sm mt-1">Image URL is required</p>
 //           )}
 //         </div>
-        
 
 //         <div className="mb-4">
 //           <label className="block text-gray-700">Details</label>
@@ -160,12 +159,12 @@
 
 // export default AddNews;
 
-
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { HiCamera } from "react-icons/hi";
+import { FaCalendarAlt } from "react-icons/fa";
 
 const AddNews = () => {
   const {
@@ -175,7 +174,7 @@ const AddNews = () => {
     reset,
     setValue,
   } = useForm();
-  
+
   const [imagePreview, setImagePreview] = useState(null);
 
   const getCurrentDate = () => {
@@ -213,17 +212,19 @@ const AddNews = () => {
             details,
             imageUrl,
           };
-          axios.post("https://ark-power-server.vercel.app/news", addNews).then((response) => {
-            if (response.data.insertedId) {
-              reset();
-              Swal.fire({
-                showConfirmButton: false,
-                timer: 1500,
-                title: "News added Successfully",
-                icon: "success",
-              });
-            }
-          });
+          axios
+            .post("https://ark-power-server.vercel.app/news", addNews)
+            .then((response) => {
+              if (response.data.insertedId) {
+                reset();
+                Swal.fire({
+                  showConfirmButton: false,
+                  timer: 1500,
+                  title: "News added Successfully",
+                  icon: "success",
+                });
+              }
+            });
         }
       });
   };
@@ -305,21 +306,26 @@ const AddNews = () => {
               <p className="text-red-500 text-sm mt-1">Category is required</p>
             )}
           </div>
-          <div>
-            <label className="block text-gray-700">Date</label>
-            <input
-              type="date"
-              {...register("date", { required: true })}
-              className={`w-full p-2 border rounded ${
-                errors.date ? "border-red-500" : "border-gray-300"
-              }`}
-            />
+          <div className="relative">
+            <label className="block text-gray-700 text-sm font-medium mb-2">
+              Date
+            </label>
+            <div className="relative">
+              <input
+                type="date"
+                {...register("date", { required: true })}
+                className={`w-full p-3 pl-10 border rounded-lg shadow-sm transition duration-150 ease-in-out ${
+                  errors.date ? "border-red-500" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              />
+              <FaCalendarAlt className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500" />
+            </div>
             {errors.date && (
               <p className="text-red-500 text-sm mt-1">Date is required</p>
             )}
           </div>
         </div>
-        
+
         {/* Details Field */}
         <div className="col-span-1 md:col-span-2">
           <label className="block text-gray-700">Details</label>
@@ -348,4 +354,3 @@ const AddNews = () => {
 };
 
 export default AddNews;
-
