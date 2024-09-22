@@ -33,7 +33,7 @@ const Career = () => {
             {jobs.length > 0 ? (
               jobs.map((careers, index) => (
                 <div key={careers._id} className="pt-5 border-b ">
-                  <Link to={`/careerDetails/${careers?._id}`} className="hover:text-blue-400">{index + 1}. {careers.title}</Link>
+                  <Link to={`/careerDetails/${careers?._id}`} className="hover:text-blue-400 uppercase">{index + 1}. {careers.title}</Link>
                 </div>
               ))
             ) : (
@@ -45,7 +45,7 @@ const Career = () => {
             {internship.length > 0 ? (
               internship.map((careers, index) => (
                 <div key={careers._id} className="pt-5 border-b ">
-                  <Link to={`/careerDetails/${careers?._id}`} className="hover:text-blue-400">{index + 1}. {careers.title}</Link>
+                  <Link to={`/careerDetails/${careers?._id}`} className="hover:text-blue-400 uppercase">{index + 1}. {careers.title}</Link>
                 </div>
               ))
             ) : (

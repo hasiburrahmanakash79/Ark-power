@@ -237,8 +237,8 @@ const AddNews = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6 text-center">Add News</h2>
+    <div className="">
+      <h2 className="text-2xl font-bold my-10 text-center">Add News</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-8 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6"
