@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardBody, CardHeader } from "@material-tailwind/react";
-import Swal from "sweetalert2"; // Ensure you import SweetAlert2
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 
@@ -8,12 +8,12 @@ const img_hosting_token = import.meta.env.VITE_img_hosting_key;
 const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
 const BannerContent = () => {
-  const [images, setImages] = useState([]); // Store array of images
-  const [showModal, setShowModal] = useState(false); // Modal state
-  const [newImage, setNewImage] = useState(null); // Image file for new upload
-  const [imagePreview, setImagePreview] = useState(""); // Image preview URL
-  const [text, setText] = useState(""); // Text input for image description
-  const [editingImageId, setEditingImageId] = useState(null); // Store image ID when editing
+  const [images, setImages] = useState([]); 
+  const [showModal, setShowModal] = useState(false); 
+  const [newImage, setNewImage] = useState(null); 
+  const [imagePreview, setImagePreview] = useState(""); 
+  const [text, setText] = useState("");  
+  const [editingImageId, setEditingImageId] = useState(null);  
 
   // Fetch images from MongoDB API
   useEffect(() => {
@@ -21,7 +21,7 @@ const BannerContent = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data && Array.isArray(data)) {
-          setImages(data); // Assuming data is an array of image objects
+          setImages(data);
         }
       })
       .catch((error) => {
@@ -34,11 +34,10 @@ const BannerContent = () => {
     const file = e.target.files[0];
     if (file) {
       setNewImage(file);
-      setImagePreview(URL.createObjectURL(file)); // Show image preview
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
-  // Handle form submission to either upload new or update existing image
   const handleSubmit = async () => {
     if (!newImage || !text) {
       Swal.fire("Error", "Please provide an image and text.", "error");
@@ -69,7 +68,6 @@ const BannerContent = () => {
         const imageUrl = imageResponse.data.display_url;
 
         if (editingImageId) {
-          // If we are editing, update the existing image
           const updateResponse = await fetch(
             `http://localhost:3000/hero-images/${editingImageId}`,
             {
@@ -77,7 +75,7 @@ const BannerContent = () => {
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ image: imageUrl, text }), // Send image URL and text
+              body: JSON.stringify({ image: imageUrl, text }),
             }
           );
           const result = await updateResponse.json();
@@ -95,12 +93,10 @@ const BannerContent = () => {
             Swal.fire("Error", "Failed to update the image.", "error");
           }
         } else {
-          // If we are adding, insert a new image
           const newImageData = {
             image: imageUrl,
-            text, // Image description or any other data
+            text, 
           };
-
           const saveResponse = await fetch(
             "http://localhost:3000/hero-images",
             {
@@ -112,7 +108,6 @@ const BannerContent = () => {
             }
           );
           const result = await saveResponse.json();
-
           if (result.insertedId) {
             setImages([...images, newImageData]); // Update the images state with the new image
             Swal.fire("Success", "Image uploaded successfully!", "success");
@@ -120,13 +115,11 @@ const BannerContent = () => {
             Swal.fire("Error", "Failed to save image in database.", "error");
           }
         }
-
-        // Reset modal state
         setShowModal(false);
         setNewImage(null);
         setImagePreview("");
         setText("");
-        setEditingImageId(null); // Clear editing state
+        setEditingImageId(null);
       } else {
         Swal.fire(
           "Error",
@@ -150,7 +143,7 @@ const BannerContent = () => {
     setNewImage(null);
     setImagePreview("");
     setText("");
-    setEditingImageId(null); // Ensure we are not editing
+    setEditingImageId(null);
   };
 
   // Open modal for updating an existing image
@@ -176,7 +169,6 @@ const BannerContent = () => {
 
     if (confirmed.isConfirmed) {
       try {
-        // Send DELETE request to remove the image from the database
         const deleteResponse = await fetch(
           `http://localhost:3000/hero-images/${image._id}`,
           {
@@ -187,12 +179,9 @@ const BannerContent = () => {
         const result = await deleteResponse.json();
 
         if (result.deletedCount > 0) {
-          // Remove the image from the UI state
           setImages((prevImages) =>
             prevImages.filter((img) => img._id !== image._id)
           );
-
-          // Success alert
           Swal.fire("Deleted!", "Your image has been deleted.", "success");
         } else {
           Swal.fire(

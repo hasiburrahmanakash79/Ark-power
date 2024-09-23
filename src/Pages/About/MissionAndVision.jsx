@@ -74,7 +74,7 @@ const MissionAndVision = () => {
       </div>
       <div className="drop-shadow-2xl ">
         <img
-          src="https://www.arkpowerltd.com.bd/assets/images/arkpower/ISO_Ark_Power_Ltd.jpg"
+          src="https://i.ibb.co.com/Y26z7ct/ISO-Ark-Power-Ltd.jpg"
           alt=""
         />
       </div>
