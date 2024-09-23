@@ -385,7 +385,7 @@
 //     const update = { ...editedNews };
 //     try {
 //       const response = await fetch(
-//         `http://localhost:3000/news/${selectedNews._id}`,
+//         `https://ark-power-server.vercel.app/news/${selectedNews._id}`,
 //         {
 //           method: "PUT",
 //           headers: {
@@ -668,7 +668,7 @@ const ManageNewsAndEvents = () => {
     const update = { ...editedNews };
     try {
       const response = await fetch(
-        `http://localhost:3000/news/${selectedNews._id}`,
+        `https://ark-power-server.vercel.app/news/${selectedNews._id}`,
         {
           method: "PUT",
           headers: {

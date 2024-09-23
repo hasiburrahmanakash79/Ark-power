@@ -52,7 +52,7 @@ const EditFooter = () => {
       });
 
       const response = await fetch(
-        `http://localhost:3000/footer/${updatedFooterContent[0]?._id}`,
+        `https://ark-power-server.vercel.app/footer/${updatedFooterContent[0]?._id}`,
         {
           method: "PUT",
           headers: {
@@ -247,7 +247,7 @@ export default EditFooter;
 //         },
 //       });
 
-//       const response = await fetch(`http://localhost:3000/footer/${updatedFooterContent[0]?._id}`, {
+//       const response = await fetch(`https://ark-power-server.vercel.app/footer/${updatedFooterContent[0]?._id}`, {
 //         method: "PUT",
 //         headers: {
 //           "Content-Type": "application/json",

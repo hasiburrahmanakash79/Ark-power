@@ -51,7 +51,7 @@
 //     };
 //     console.log(update);
 //     try {
-//       const response = await fetch(`http://localhost:3000/products/${selectedProduct._id}`, {
+//       const response = await fetch(`https://ark-power-server.vercel.app/products/${selectedProduct._id}`, {
 //         method: 'PUT',
 //         headers: {
 //           'Content-Type': 'application/json'
@@ -326,7 +326,7 @@
 //     };
 //     console.log(update);
 //     try {
-//       const response = await fetch(`http://localhost:3000/products/${selectedProduct._id}`, {
+//       const response = await fetch(`https://ark-power-server.vercel.app/products/${selectedProduct._id}`, {
 //         method: 'PUT',
 //         headers: {
 //           'Content-Type': 'application/json'
@@ -624,7 +624,7 @@ const ManageProducts = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/products/${selectedProduct._id}`,
+        `https://ark-power-server.vercel.app/products/${selectedProduct._id}`,
         {
           method: "PUT",
           headers: {
@@ -662,7 +662,7 @@ const ManageProducts = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/products/${id}`, {
+        fetch(`https://ark-power-server.vercel.app/products/${id}`, {
           method: "DELETE",
         })
           .then((res) => {

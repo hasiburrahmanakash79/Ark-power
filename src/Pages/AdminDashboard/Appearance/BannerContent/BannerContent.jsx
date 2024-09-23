@@ -17,7 +17,7 @@ const BannerContent = () => {
 
   // Fetch images from MongoDB API
   useEffect(() => {
-    fetch("http://localhost:3000/hero-images")
+    fetch("https://ark-power-server.vercel.app/hero-images")
       .then((response) => response.json())
       .then((data) => {
         if (data && Array.isArray(data)) {
@@ -69,7 +69,7 @@ const BannerContent = () => {
 
         if (editingImageId) {
           const updateResponse = await fetch(
-            `http://localhost:3000/hero-images/${editingImageId}`,
+            `https://ark-power-server.vercel.app/hero-images/${editingImageId}`,
             {
               method: "PUT",
               headers: {
@@ -98,7 +98,7 @@ const BannerContent = () => {
             text, 
           };
           const saveResponse = await fetch(
-            "http://localhost:3000/hero-images",
+            "https://ark-power-server.vercel.app/hero-images",
             {
               method: "POST",
               headers: {
@@ -170,7 +170,7 @@ const BannerContent = () => {
     if (confirmed.isConfirmed) {
       try {
         const deleteResponse = await fetch(
-          `http://localhost:3000/hero-images/${image._id}`,
+          `https://ark-power-server.vercel.app/hero-images/${image._id}`,
           {
             method: "DELETE",
           }
@@ -314,7 +314,7 @@ export default BannerContent;
 
 //   // Fetch images from MongoDB API
 //   useEffect(() => {
-//     fetch("http://localhost:3000/hero-images")
+//     fetch("https://ark-power-server.vercel.app/hero-images")
 //       .then((response) => response.json())
 //       .then((data) => {
 //         if (data && Array.isArray(data)) {
@@ -379,7 +379,7 @@ export default BannerContent;
 //           },
 //         });
 
-//         const updateResponse = await fetch(`http://localhost:3000/hero-images/${id}`, {
+//         const updateResponse = await fetch(`https://ark-power-server.vercel.app/hero-images/${id}`, {
 //           method: "PUT",
 //           headers: {
 //             "Content-Type": "application/json",

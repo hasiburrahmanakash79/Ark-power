@@ -12,7 +12,7 @@ const Hero = () => {
 
   // Fetch images from MongoDB API
   useEffect(() => {
-    fetch("http://localhost:3000/hero-images")
+    fetch("https://ark-power-server.vercel.app/hero-images")
       .then((response) => response.json())
       .then((data) => {
         if (data && Array.isArray(data)) {
