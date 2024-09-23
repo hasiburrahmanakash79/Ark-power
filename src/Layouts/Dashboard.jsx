@@ -356,8 +356,8 @@ const Dashboard = () => {
           onClick={() => setOpen(!open)}
         />
         <ul className={`${open ? "" : "flex flex-col items-center justify-center"}`}>
-          <Link to='/' className="border-b-2 flex items-center gap-3 pb-2 ps-2">
-            <FaHome/> ARK POWER LTD.
+          <Link to='/' className="border-b-2 flex items-center gap-3 pb-2 ps-1">
+            <FaHome/> <h1 className={`${open ? "" : "hidden"}`}>ARK POWER LTD.</h1>
           </Link>
           {isAdmin &&
             adminMenus.map((menu, index) => (
