@@ -19,14 +19,14 @@ const NewsDetails = () => {
   return (
     <div className="md:mt-24 mt-14 container mx-auto p-5">
       <div className="mb-10">
-        <h1 className="text-primary text-center md:text-5xl text-3xl uppercase">
+        <h1 className="text-primary text-center font-semibold md:text-5xl text-3xl uppercase">
           {NewsEvents.Category}
         </h1>
       </div>
       <div className="grid md:grid-cols-4 gap-14">
         <div className="md:col-span-3">
           <div key={NewsEvents.id} className="">
-            <h1 className="md:text-5xl text-2xl font-semibold mb-3">
+            <h1 className="md:text-3xl text-2xl font-semibold mb-3">
               {NewsEvents.title}
             </h1>
 
