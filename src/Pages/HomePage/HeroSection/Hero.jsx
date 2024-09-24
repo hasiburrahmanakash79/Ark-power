@@ -43,7 +43,7 @@ const Hero = () => {
             <div
               className="bg-cover"
               style={{
-                backgroundImage: `url(${image.url})`, // Dynamically set background image from API data
+                backgroundImage: `url(${image.image})`, // Dynamically set background image from API data
               }}
             >
               <div className="md:min-h-screen bg-black text-white bg-opacity-50">

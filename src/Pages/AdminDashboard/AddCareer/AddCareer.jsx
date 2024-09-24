@@ -1,20 +1,23 @@
-import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const AddCareer = () => {
+  const [editorContent, setEditorContent] = useState("");
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    setValue,
   } = useForm();
 
   const onSubmit = async (data) => {
-    const { details, title, email, category, seat } = data;
+    const { title, email, category, seat } = data;
+    const details = editorContent; // Get the content from the editor
     const addCareer = { details, email, title, category, seat };
 
     try {
@@ -23,19 +26,66 @@ const AddCareer = () => {
         addCareer
       );
       if (response.data.insertedId) {
-        reset();
+        reset(); // Reset form fields
+        setEditorContent(""); // Reset editor content
         Swal.fire({
           showConfirmButton: false,
           timer: 1500,
-          title: "News added successfully",
+          title: "Career opportunity added successfully",
           icon: "success",
         });
       }
     } catch (error) {
-      console.error("Error adding news:", error);
-      alert("Failed to add news");
+      console.error("Error adding career:", error);
+      Swal.fire({
+        title: "Error",
+        text: "Failed to add career opportunity",
+        icon: "error",
+      });
     }
   };
+
+  const handleChange = (value) => {
+    setEditorContent(value);
+  };
+
+  const modules = {
+    toolbar: [
+      [{ font: [] }, { size: [] }],
+      [
+        { header: "1" },
+        { header: "2" },
+        "bold",
+        "italic",
+        "underline",
+        "strike",
+      ],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      [{ color: [] }, { background: [] }],
+      ["link", "image"],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "font",
+    "size",
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "list",
+    "bullet",
+    "align",
+    "indent",
+    "color",
+    "background",
+    "link",
+    "image",
+  ];
 
   return (
     <div>
@@ -46,103 +96,114 @@ const AddCareer = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border p-5 rounded-xl shadow-xl"
+        className="border p-8 rounded-xl shadow-lg bg-white"
       >
         <div className="grid grid-cols-2 gap-10">
+          {/* Left side inputs */}
           <div>
-            <div className="mb-4">
-              <label className="block text-gray-700">Job Title</label>
+            <div className="mb-6">
+              <label className="block text-gray-700 font-semibold mb-2">
+                Job Title
+              </label>
               <input
                 type="text"
                 {...register("title", { required: true })}
-                placeholder="Title"
-                className={`w-full p-2 mt-1 border rounded ${
+                placeholder="Enter job title"
+                className={`w-full p-3 border rounded-md ${
                   errors.title ? "border-red-500" : "border-gray-300"
-                }`}
+                } focus:outline-none focus:ring-2 focus:ring-blue-400`}
               />
               {errors.title && (
                 <p className="text-red-500 text-sm mt-1">Title is required</p>
               )}
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700">Contact Email</label>
+
+            <div className="mb-6">
+              <label className="block text-gray-700 font-semibold mb-2">
+                Contact Email
+              </label>
               <input
                 type="email"
                 {...register("email", { required: true })}
-                placeholder="Contact Email"
-                className={`w-full p-2 mt-1 border rounded ${
-                  errors.title ? "border-red-500" : "border-gray-300"
-                }`}
+                placeholder="Enter contact email"
+                className={`w-full p-3 border rounded-md ${
+                  errors.email ? "border-red-500" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-400`}
               />
-              {errors.title && (
+              {errors.email && (
                 <p className="text-red-500 text-sm mt-1">
                   Contact email is required
                 </p>
               )}
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700">Available Position</label>
+
+            <div className="mb-6">
+              <label className="block text-gray-700 font-semibold mb-2">
+                Available Position
+              </label>
               <input
                 type="number"
                 {...register("seat", { required: true })}
-                placeholder="Available Position"
-                className={`w-full p-2 mt-1 border rounded ${
-                  errors.title ? "border-red-500" : "border-gray-300"
-                }`}
+                placeholder="Number of available positions"
+                className={`w-full p-3 border rounded-md ${
+                  errors.seat ? "border-red-500" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-400`}
               />
-              {errors.title && (
+              {errors.seat && (
                 <p className="text-red-500 text-sm mt-1">
-                  Contact email is required
+                  Available positions are required
                 </p>
               )}
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700">Job Category</label>
+
+            <div className="mb-6">
+              <label className="block text-gray-700 font-semibold mb-2">
+                Job Category
+              </label>
               <select
                 {...register("category", { required: true })}
-                className={`w-full p-2 mt-1 border rounded ${
-                  errors.Category ? "border-red-500" : "border-gray-300"
-                }`}
+                className={`w-full p-3 border rounded-md ${
+                  errors.category ? "border-red-500" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-blue-400`}
               >
-                <option disabled>Select one</option>
+                <option value="" disabled>
+                  Select job category
+                </option>
                 <option value="Job">Job</option>
                 <option value="Internship">Internship</option>
               </select>
-              {errors.Category && (
+              {errors.category && (
                 <p className="text-red-500 text-sm mt-1">
-                  Category is required
+                  Job category is required
                 </p>
               )}
             </div>
           </div>
-          <Editor
-            apiKey="yiugd3xtqtw63wiq4wpkyw9qx30b0gil37a9voubxh4evezq"
-            {...register("details", { required: true })}
-            initialValue=""
-            init={{
-              height: 300,
-              menubar: false,
-              plugins: [
-                "advlist autolink lists link image charmap print preview anchor",
-                "searchreplace visualblocks code fullscreen",
-                "insertdatetime media table paste code help wordcount",
-              ],
-              toolbar:
-                "undo redo | formatselect | bold italic backcolor | \
-              alignleft aligncenter alignright alignjustify | \
-              bullist numlist outdent indent | removeformat | help",
-              setup: (editor) => {
-                editor.on("Change", () => {
-                  setValue("details", editor.getContent());
-                });
-              },
-            }}
-          />
+
+          {/* Right side editor */}
+          <div className="">
+            <label className="block text-gray-700 font-semibold mb-2">
+              Job Details
+            </label>
+            <ReactQuill
+              value={editorContent}
+              onChange={handleChange}
+              modules={modules}
+              formats={formats}
+              placeholder="Describe the job in detail..."
+              className="h-72"
+            />
+            {errors.details && (
+              <p className="text-red-500 text-sm mt-1">
+                Job details are required
+              </p>
+            )}
+          </div>
         </div>
 
         <button
           type="submit"
-          className="w-full mt-5 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+          className="w-full mt-8 bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           Add Career
         </button>
