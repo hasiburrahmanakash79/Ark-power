@@ -90,7 +90,7 @@ const AddCareer = () => {
   return (
     <div>
       <div>
-        <h1 className="text-center font-bold text-2xl my-10 text-primary">
+        <h1 className="text-center font-bold text-2xl mb-10 text-primary">
           Add Career Opportunity
         </h1>
       </div>

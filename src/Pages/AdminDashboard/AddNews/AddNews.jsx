@@ -77,18 +77,15 @@ const AddNews = () => {
 
   return (
     <div className="">
-      <h2 className="text-2xl font-bold my-10 text-center">Add News</h2>
+      <h2 className="text-2xl font-bold text-center">Add News</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-8 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         {/* Image Section */}
-        <div className="relative border-dashed border-2 border-gray-300 rounded-lg p-4 flex flex-col items-center">
-          <label className="block text-gray-700 text-sm font-medium mb-2">
-            Product Image
-          </label>
+        <div className="relative rounded-lg">
           <div className="w-full flex justify-center mb-4">
-            <div className="w-48 h-48 bg-gray-100 border border-gray-300 rounded-lg overflow-hidden flex items-center justify-center relative">
+            <div className="w-full h-48 bg-gray-100 border border-gray-300 rounded-lg overflow-hidden flex items-center justify-center relative">
               {imagePreview ? (
                 <img
                   src={imagePreview}

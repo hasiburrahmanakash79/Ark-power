@@ -59,7 +59,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-10">
+    <div className=" bg-white rounded-lg shadow-lg p-10">
       <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex flex-col items-center justify-center">
           <label className="block text-gray-700 text-lg font-semibold mb-4" htmlFor="imageUrl">
