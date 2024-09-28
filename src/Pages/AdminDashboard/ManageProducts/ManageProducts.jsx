@@ -221,7 +221,7 @@ const ManageProducts = () => {
                     color="blue-gray"
                     className="font-normal text-xs md:text-base"
                   >
-                    {product.description.slice(0, 50)}
+                    {product.description.slice(0, 110)}...
                   </Typography>
                 </td>
                 <td className="p-2 flex gap-5 md:p-4 text-black">
