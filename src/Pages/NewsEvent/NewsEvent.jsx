@@ -7,35 +7,30 @@ const NewsEvent = () => {
   const { newsAndEvents, isLoading } = useNewsAndEvents();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; // Set how many items you want per page
+  const itemsPerPage = 8;
 
   if (isLoading) {
     return <LoadingSpinner />;
   }
 
-  // Function to handle category selection
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    setCurrentPage(1); // Reset to the first page when changing the category
+    setCurrentPage(1);
   };
 
-  // Sort news events by date in descending order
   const sortedNewsEvents = newsAndEvents.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
-  // Filter news events based on the selected category
   const filteredNewsEvents =
     selectedCategory === "All"
       ? sortedNewsEvents
       : sortedNewsEvents.filter((news) => news.Category === selectedCategory);
 
-  // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredNewsEvents.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Function to change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const totalPages = Math.ceil(filteredNewsEvents.length / itemsPerPage);
@@ -49,7 +44,6 @@ const NewsEvent = () => {
           </h1>
         </div>
 
-        {/* Category Buttons */}
         <div className="flex justify-center my-5">
           {["All", "News", "Events"].map((category) => (
             <button
@@ -66,7 +60,6 @@ const NewsEvent = () => {
           ))}
         </div>
 
-        {/* News & Events Grid */}
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 my-10">
           {currentItems.map((news) => (
             <div key={news._id} className="border p-2">
@@ -100,9 +93,7 @@ const NewsEvent = () => {
           ))}
         </div>
 
-        {/* Pagination Controls */}
         <div className="flex justify-center items-center space-x-2 mt-6">
-          {/* Previous Button */}
           <button
             className={`px-4 py-2 ${
               currentPage === 1 ? "bg-gray-300" : "bg-blue-500 text-white"
@@ -113,7 +104,6 @@ const NewsEvent = () => {
             Previous
           </button>
 
-          {/* Page Numbers */}
           {Array.from({ length: totalPages }, (_, index) => index + 1).map(
             (pageNumber) => (
               <button
@@ -130,7 +120,6 @@ const NewsEvent = () => {
             )
           )}
 
-          {/* Next Button */}
           <button
             className={`px-4 py-2 ${
               currentPage === totalPages

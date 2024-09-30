@@ -17,7 +17,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-
   const signUpUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -30,7 +29,6 @@ const AuthProvider = ({ children }) => {
 
   const updateUserInfo = (name) =>
     updateProfile(auth.currentUser, { displayName: name});
-
 
   const logOut = () => {
     setLoading(true);
@@ -50,7 +48,6 @@ const AuthProvider = ({ children }) => {
       } else {
         localStorage.removeItem("access-token");
       }
-      
     });
     return () => {
       return unsubscribe();

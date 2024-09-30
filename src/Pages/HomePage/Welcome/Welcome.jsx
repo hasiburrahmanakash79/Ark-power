@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   const interval = 2500;
@@ -67,9 +68,9 @@ const Welcome = () => {
             Banani, Dhaka, the Capital of Bangladesh.
           </p>
           <div className="flex justify-center md:justify-start">
-            <button className="bg-blue-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition duration-300">
+            <Link to="/about-us" className="bg-blue-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition duration-300">
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
       </div>
