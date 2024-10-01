@@ -17,56 +17,61 @@ const Contact = () => {
       {/* Contact Info Section */}
       <div className="container mx-auto py-16 px-5">
         <div>
-          <h1 className="text-4xl uppercase font-bold mb-10 text-primary text-center">
+          <h1 className="text-5xl uppercase font-extrabold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
             Our Contact Address
           </h1>
-          <div className="grid md:grid-cols-3 gap-10">
-            
+          <div className="grid md:grid-cols-3 gap-12">
             {/* Left Section */}
-            <div className="md:col-span-2 space-y-5">
-              <div className="grid md:grid-cols-2 gap-5">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                  <h1 className="text-xl font-bold text-primary mb-3">
-                    <FaMapMarkerAlt className="inline-block mr-2" /> Corporate Branch:
+            <div className="md:col-span-2 space-y-8">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 border border-blue-200">
+                  <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                    <FaMapMarkerAlt className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                    Corporate Branch:
                   </h1>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     12B Ataturk Tower <br />
                     22 Kemal Ataturk Avenue, Banani, Dhaka-1213.
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                  <h1 className="text-xl font-bold text-primary mb-3">
-                    <FaMapMarkerAlt className="inline-block mr-2" /> Business Branch:
+                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 border border-blue-200">
+                  <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                    <FaMapMarkerAlt className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                    Business Branch:
                   </h1>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     House No #450, Road No #31 <br />
                     Mohakhali DOHS, Dhaka-1206.
                   </p>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-5">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                  <h1 className="text-xl font-bold text-primary mb-3">
-                    <FaMapMarkerAlt className="inline-block mr-2" /> Chattogram Office:
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 border border-blue-200">
+                  <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                    <FaMapMarkerAlt className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                    Chattogram Office:
                   </h1>
-                  <p className="text-gray-600 leading-relaxed">
-                    Road # 3, House # 4, Block # G, Halishahar H/E, Chattogram- 4100.
+                  <p className="text-gray-700 leading-relaxed">
+                    Road # 3, House # 4, Block # G, Halishahar H/E,
+                    Chattogram-4100.
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                  <h1 className="text-xl font-bold text-primary mb-3">
-                    <FaMapMarkerAlt className="inline-block mr-2" /> Khulna Office:
+                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 border border-blue-200">
+                  <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                    <FaMapMarkerAlt className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                    Khulna Office:
                   </h1>
-                  <p className="text-gray-600 leading-relaxed">
-                    House No # 16/E (GF), Road No # 28, Nirala R/A, Khulna-9100.
+                  <p className="text-gray-700 leading-relaxed">
+                    House No #16/E (GF), Road No #28, Nirala R/A, Khulna-9100.
                   </p>
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                  <h1 className="text-xl font-bold text-primary mb-3">
-                    <FaMapMarkerAlt className="inline-block mr-2" /> Bogura Office:
+                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 border border-blue-200">
+                  <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                    <FaMapMarkerAlt className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                    Bogura Office:
                   </h1>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     Haider Bhaban, Betgari, Bonani, Bogura.
                   </p>
                 </div>
@@ -74,26 +79,33 @@ const Contact = () => {
             </div>
 
             {/* Right Section */}
-            <div className="bg-white p-6 rounded-lg shadow-lg space-y-8 hover:shadow-xl transition duration-300">
+            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 border border-blue-200 space-y-8">
               <div className="">
-                <h1 className="text-xl font-bold text-primary">
-                  <FaPhone className="inline-block mr-2" /> Hot Line:
+                <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                  <FaPhone className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                  Hot Line:
                 </h1>
-                <p className="text-gray-600">Sales – 01678090037 <br /> Support – 01678090036.</p>
+                <p className="text-gray-700 leading-relaxed">
+                  Sales – 01678090037 <br /> Support – 01678090036
+                </p>
               </div>
               <div className="">
-                <h1 className="text-xl font-bold text-primary">
-                  <FaMapMarkerAlt className="inline-block mr-2" /> Factory:
+                <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                  <FaMapMarkerAlt className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                  Factory:
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-gray-700 leading-relaxed">
                   Hortokitola, Kaliakoir, Gazipur.
                 </p>
               </div>
               <div className="">
-                <h1 className="text-xl font-bold text-primary">
-                  <FaEnvelope className="inline-block mr-2" /> E-mail:
+                <h1 className="text-2xl font-bold text-blue-600 mb-4 flex items-center">
+                  <FaEnvelope className="inline-block mr-3 text-blue-600 text-3xl" />{" "}
+                  E-mail:
                 </h1>
-                <p className="text-gray-600">info@arkpowerltd.com.bd</p>
+                <p className="text-gray-700 leading-relaxed">
+                  info@arkpowerltd.com.bd
+                </p>
               </div>
             </div>
           </div>
@@ -113,8 +125,6 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
 
 // import ContactForm from "./ContactForm";
 
@@ -219,5 +229,3 @@ export default Contact;
 // };
 
 // export default Contact;
-
-
