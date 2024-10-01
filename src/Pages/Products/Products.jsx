@@ -17,7 +17,6 @@ const Products = () => {
   });
   const productsPerPage = 8;
 
-  // Save current page to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
@@ -25,16 +24,13 @@ const Products = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
-  // Calculate the indices for the products to display on the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products ? products.slice(indexOfFirstProduct, indexOfLastProduct) : [];
 
 
-  // Calculate total number of pages
   const totalPages = Math.ceil(products.length / productsPerPage);
 
-  // Change page
   const paginate = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);

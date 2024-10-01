@@ -345,7 +345,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="flex">
+    <div className="">
       {/* Dashboard Sidebar content */}
       <div
         className={` ${open ? "w-56 p-4" : "w-14 text-center"} h-screen fixed left-0 top-0 bottom-0 bg-black text-white z-50 pt-8 duration-500 transition-all`}
