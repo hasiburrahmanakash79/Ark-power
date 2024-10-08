@@ -92,7 +92,7 @@ const Navbar = () => {
                   className={`text-gray-800 hover:text-blue-400 duration-500 ${
                     location.pathname === link.link ? "text-[#00ADF2]" : ""
                   }`}
-                  onClick={handleLinkClick} // Close dropdown on link click
+                  onClick={handleLinkClick}
                 >
                   {link.name}
                 </Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
                       <Link
                         to={dropdownLink.link}
                         className="text-gray-800 hover:text-blue-400 duration-500"
-                        onClick={handleLinkClick} // Close dropdown on link click
+                        onClick={handleLinkClick}
                       >
                         {dropdownLink.name}
                       </Link>
@@ -125,7 +125,7 @@ const Navbar = () => {
                       <Link
                         to={dropdownLink.link}
                         className="text-gray-800 hover:text-blue-400 duration-500"
-                        onClick={handleLinkClick} // Close dropdown on link click
+                        onClick={handleLinkClick}
                       >
                         {dropdownLink.name}
                       </Link>
