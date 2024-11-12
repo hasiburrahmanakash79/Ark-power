@@ -224,7 +224,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className={`w-full fixed top-0 z-50 left-0 transition-colors duration-300 ${isScrolled ? "bg-white shadow-md" : "backdrop-blur-3xl text-white"}`}>
+    <div className={`w-full fixed top-0 z-50 left-0 transition-colors duration-300 ${isScrolled ? "bg-white shadow-md" : "backdrop-blur-3xl text-blue-500"}`}>
       <div className="md:flex items-center justify-between container mx-auto p-3">
         <Link to="/" className="font-bold text-2xl cursor-pointer flex items-center gap-1">
           <img
@@ -253,7 +253,7 @@ const Navbar = () => {
               <div className="flex items-center">
                 <Link
                   to={link.link}
-                  className={`${isScrolled ? "text-black" : "md:text-white text-black"} hover:text-blue-400 duration-500 ${location.pathname === link.link ? "text-[#00ADF2]" : ""}`}
+                  className={` text-blue-500 duration-500 ${location.pathname === link.link ? "text-[#00ADF2]" : ""}`}
                   onClick={handleLinkClick}
                 >
                   {link.name}
@@ -266,7 +266,7 @@ const Navbar = () => {
                   ))}
               </div>
               {link.dropdown && dropdownOpen && (
-                <ul className="absolute bg-white shadow-md rounded-md md:block hidden md:group-hover:block md:w-40">
+                <ul className="absolute bg-white text-blue-500 shadow-md rounded-md md:block hidden md:group-hover:block md:w-40">
                   {dropdownLinks.map((dropdownLink) => (
                     <li key={dropdownLink.name} className="px-4 py-2">
                       <Link
