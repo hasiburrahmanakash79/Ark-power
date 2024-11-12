@@ -224,7 +224,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className={`w-full fixed top-0 z-50 left-0 transition-colors duration-300 ${isScrolled ? "bg-white shadow-md" : "backdrop-blur-3xl"}`}>
+    <div className={`w-full fixed top-0 z-50 left-0 transition-colors duration-300 ${isScrolled ? "bg-white shadow-md" : "backdrop-blur-3xl text-white"}`}>
       <div className="md:flex items-center justify-between container mx-auto p-3">
         <Link to="/" className="font-bold text-2xl cursor-pointer flex items-center gap-1">
           <img
@@ -241,7 +241,7 @@ const Navbar = () => {
           {open ? <XMarkIcon /> : <Bars3BottomRightIcon />}
         </div>
         
-        <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-slate-50 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-10 bg-white text-black" : "top-[-490px]"}`}>
+        <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-slate-50 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-10 bg-white md:bg-transparent text-black" : "top-[-490px]"}`}>
           {Links.map((link) => (
             <li
               key={link.name}
@@ -253,7 +253,7 @@ const Navbar = () => {
               <div className="flex items-center">
                 <Link
                   to={link.link}
-                  className={`${isScrolled ? "text-black" : "text-white"} hover:text-blue-400 duration-500 ${location.pathname === link.link ? "text-[#00ADF2]" : ""}`}
+                  className={`${isScrolled ? "text-black" : "md:text-white text-black"} hover:text-blue-400 duration-500 ${location.pathname === link.link ? "text-[#00ADF2]" : ""}`}
                   onClick={handleLinkClick}
                 >
                   {link.name}

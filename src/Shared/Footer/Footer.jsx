@@ -205,13 +205,13 @@ const Footer = () => {
   };
 
   return (
-    <div className="relative bg-cover bg-center bg-[url('https://png.pngtree.com/background/20230527/original/pngtree-render-of-a-3d-model-of-a-power-station-picture-image_2761474.jpg')] text-black/70">
+    <div className="relative bg-cover bg-center bg-[url('https://png.pngtree.com/background/20230527/original/pngtree-render-of-a-3d-model-of-a-power-station-picture-image_2761474.jpg')]">
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-black/80"></div>
       
       {/* Content */}
       <div className="relative text-white">
-        <div className="grid md:grid-cols-4 grid-cols-1 py-10 px-5 md:gap-5">
+        <div className="grid md:grid-cols-4 grid-cols-1 py-16 px-5 md:gap-5">
           <div>
             <img
               src="https://i.ibb.co/61nBkFS/ARK-power-ltd-main.png"
