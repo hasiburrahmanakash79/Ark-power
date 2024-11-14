@@ -1,7 +1,8 @@
 import React from "react";
 import useProducts from "../../Hooks/useProducts";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LoadingSpinner from "../../Hooks/Loading/LoadingSpinner";
+import { Card, CardBody, CardHeader } from "@material-tailwind/react";
 
 const ProductDetails = () => {
   const {products, isLoading} = useProducts();
@@ -11,6 +12,7 @@ const ProductDetails = () => {
   if (isLoading && products) {
     return <LoadingSpinner />;
   }
+  const slicedProducts = products.slice(0, 3);
 
   return (
     <div className="min-h-screen container mx-auto p-5">
@@ -40,6 +42,54 @@ const ProductDetails = () => {
               </a>
             </div>
           </div>
+        </div>
+        <div className="my-10 grid grid-cols-4">
+          <div className="col-span-1">
+            <h2 className="text-3xl font-bold text-gray-700 mb-10">Related Product</h2>
+            <Link to='/products' className="p-3 border-2 uppercase font-semibold rounded border-black hover:bg-black hover:text-white">View More Product</Link>
+          </div>
+        <div className="grid md:grid-cols-3 gap-10 col-span-3">
+          {slicedProducts.map((product) => (
+            <Card
+              key={product?._id}
+              className="overflow-hidden p-1 border hover:shadow-xl"
+            >
+              <CardHeader
+                floated={false}
+                shadow={false}
+                color="transparent"
+                className="m-0 rounded-none"
+              >
+                <div className="relative h-44 rounded-lg overflow-hidden">
+                  <Link to={`/ProductDetails/${product?._id}`}>
+                  
+                  <img
+                    src={product?.imageUrl}
+                    alt={product?.name}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                  </Link>
+                </div>
+              </CardHeader>
+              <CardBody>
+                <div className="py-3">
+                  <Link
+                    to={`/ProductDetails/${product?._id}`}
+                    className="md:text-xl text-black font-semibold text-sm"
+                  >
+                    {product?.name}
+                  </Link>
+                </div>
+                <div>
+                <Link to={`/ProductDetails/${product?._id}`}>{product?.description?.slice(0,100)}...<span  className="text-blue-700 hover:underline">
+                    Read more
+                    </span></Link>
+                    
+                </div>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
         </div>
       </div>
     </div>
