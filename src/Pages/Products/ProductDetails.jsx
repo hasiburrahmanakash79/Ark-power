@@ -17,6 +17,7 @@ const ProductDetails = () => {
   return (
     <div className="min-h-screen container mx-auto p-5">
       <div className="md:mt-24 mt-14">
+        
         <div className="grid md:grid-cols-5 gap-16 ">
           <div className="md:col-span-2">
             <img
@@ -43,12 +44,10 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <div className="my-10 grid grid-cols-4">
-          <div className="col-span-1">
-            <h2 className="text-3xl font-bold text-gray-700 mb-10">Related Product</h2>
-            <Link to='/products' className="p-3 border-2 uppercase font-semibold rounded border-black hover:bg-black hover:text-white">View More Product</Link>
-          </div>
-        <div className="grid md:grid-cols-3 gap-10 col-span-3">
+        <div className="my-10">
+        <h2 className="text-3xl font-bold text-gray-700 mb-5">Related Product</h2>
+          
+        <div className="grid md:grid-cols-3 gap-10">
           {slicedProducts.map((product) => (
             <Card
               key={product?._id}
@@ -90,6 +89,10 @@ const ProductDetails = () => {
             </Card>
           ))}
         </div>
+        <div className="mt-10 flex justify-center">
+            
+            <Link to='/products' className="p-3 border-2 uppercase font-semibold rounded border-black hover:bg-black hover:text-white">View More Product</Link>
+          </div>
         </div>
       </div>
     </div>
